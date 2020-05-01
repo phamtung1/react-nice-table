@@ -57,28 +57,41 @@ body {
     padding: 0.2rem;
   }
 
-  .NiceTable-Pagination a {
+  .NiceTable-Pagination div {
+    padding: 0.5rem 1rem;
+  }
+
+  .NiceTable-Pagination div[role=button] {
+    cursor: pointer;
     color: black;
     float: left;
     padding: 0.5rem 1rem;
     text-decoration: none;
     transition: background-color .3s;
+    border-radius: 50%;
   }
-
-  .NiceTable-Pagination a.active {
+  
+  .NiceTable-Pagination div[role=button].active {
     background-color: #4CAF50;
     color: white;
     border: 1px solid #4CAF50;
   }
 
-  .NiceTable-Pagination a:hover:not(.active) {background-color: #ddd;}
+  .NiceTable-Pagination div[role=button].disabled {
+    cursor: default;
+    color: #bbb;
+  }
+
+  .NiceTable-Pagination div[role=button]:hover:not(.active):not(.disabled) {background-color: #ddd;}
 
   .NiceTable-Pagination-Select{
-    padding: 0.2rem 1rem;
+    margin: 0.5rem;
+    padding: 0 1rem;
     border: 1px solid #ddd;
   }
 
   .NiceTable-Pagination-Text{
-    padding: 0.3rem 0.5rem;
+    padding: 0.5rem 0.5rem;
+    line-height: 2rem;
   }
 }

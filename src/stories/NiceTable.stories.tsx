@@ -20,7 +20,7 @@ const tableColumns:ColumnModel[] = [
 
 const tableData:any[] = [];
 
-for(let i = 1; i < 100; i++){
+for(let i = 1; i < 100; i++){ 
   const name = 'Name' + i;
   tableData.push({ 
     id: i, 
@@ -31,5 +31,6 @@ for(let i = 1; i < 100; i++){
   });
 }
 
-
 export const Default = () => <NiceTable columns={tableColumns} data={tableData} />;
+
+export const Pagination = () => <NiceTable columns={tableColumns} data={tableData} hasPagination={true}/>;
