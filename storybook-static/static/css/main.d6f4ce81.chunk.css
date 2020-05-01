@@ -1,0 +1,54 @@
+body {
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto;
+}
+
+/* table container */
+.NiceTableContainer {
+  height: 300px;
+  overflow: auto;
+  border: 1px solid #ccc;
+}
+
+.NiceTableContainer table {
+  margin: 0;
+}
+
+table {
+  /* for fixed header */
+  border-collapse: separate; 
+  border: none;
+  border-spacing: 0;
+  table-layout: fixed;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 0.4em 0.5em 0.4em 1em;
+  vertical-align: text-top;
+  text-align: left;
+  text-indent: -0.5em;
+  border: none;
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+  border-spacing: 0;
+}
+
+/* Fixed Headers */
+th {
+  background-color: #fff;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  font-weight: 500;
+}
+
+.NiceTableCell-alignRight{
+  text-align: right;
+}
+
+.NiceTableCell-alignCenter{
+  text-align: center;
+}
+
+/*# sourceMappingURL=main.d6f4ce81.chunk.css.map*/
