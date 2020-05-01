@@ -13,13 +13,22 @@ export default {
 const tableColumns = [
   { title: 'Id', field: 'id'},
   { title: 'Name', field: 'name'},
+  { title: 'Email', field: 'email'},
   { title: 'Age', field: 'age'},
+  { title: 'Address', field: 'address' }
 ];
 
 const tableData = [];
 
 for(let i = 1; i < 100; i++){
-  tableData.push({ id: i, name: 'Name ' + i, age: Math.floor(Math.random() * 10) });
+  const name = 'Name' + i;
+  tableData.push({ 
+    id: i, 
+    name: name, 
+    email: name +'@foo.com',
+    age: Math.floor(Math.random() * 10),
+    address:  'foo'
+  });
 }
 
 
