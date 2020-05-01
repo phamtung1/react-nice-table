@@ -1,5 +1,4 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
 
 import NiceTable from '../components/NiceTable';
 
@@ -10,7 +9,7 @@ export default {
   excludeStories: /.*Data$/,
 };
 
-const tableColumns = [
+const tableColumns:any[] = [
   { title: 'Id', field: 'id', align:'center'},
   { title: 'Name', field: 'name'},
   { title: 'Email', field: 'email'},
@@ -18,7 +17,7 @@ const tableColumns = [
   { title: 'Address', field: 'address' }
 ];
 
-const tableData = [];
+const tableData:any[] = [];
 
 for(let i = 1; i < 100; i++){
   const name = 'Name' + i;
@@ -32,4 +31,4 @@ for(let i = 1; i < 100; i++){
 }
 
 
-export const Default = () => <NiceTable style={{}} columns={tableColumns} data={tableData} />;
+export const Default = () => <NiceTable columns={tableColumns} data={tableData} />;

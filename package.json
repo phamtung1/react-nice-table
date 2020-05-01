@@ -11,8 +11,8 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts-ts start",
+    "build": "npm run lint && npm run build-lib && build-storybook",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
@@ -38,6 +38,8 @@
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/preset-create-react-app": "^2.1.1",
-    "@storybook/react": "^5.3.18"
+    "@storybook/react": "^5.3.18",
+    "ts-loader": "^7.0.2",
+    "typescript": "^3.8.3"
   }
 }

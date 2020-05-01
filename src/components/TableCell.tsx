@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { FC, PropsWithChildren  } from 'react';
 import ClassNameHelper from '../functions/ClassNameHelper';
 
-export default function TableCell({children, align}) {
+
+type Props = {
+  align:string;
+}
+
+const TableCell:FC<PropsWithChildren<Props>> = ({children, align}) => {
   const alignClass = ClassNameHelper.getCellAlignClass(align);
   return (
       <td className={alignClass}>
@@ -9,3 +14,5 @@ export default function TableCell({children, align}) {
       </td>
   );
 }
+
+export default TableCell;

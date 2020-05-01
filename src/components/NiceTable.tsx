@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './style.css';
 
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 
-export default function NiceTable({ style, columns, data }) {
- 
+type Props = {
+  columns: any[];
+  data: any[];
+}
+
+const NiceTable: FC<Props> = ({columns, data}) => {
   return (
-    <div class="NiceTableContainer">
+    <div className="NiceTableContainer">
     <table>
       <TableHead columns={columns} />
       <TableBody columns={columns} data={data} />
@@ -15,3 +19,5 @@ export default function NiceTable({ style, columns, data }) {
     </div>
   );
 }
+
+export default NiceTable;
