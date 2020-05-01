@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ColumnModel from '../types/ColumnModel';
 import NiceTable from '../components/NiceTable';
 
 export default {
@@ -9,7 +10,7 @@ export default {
   excludeStories: /.*Data$/,
 };
 
-const tableColumns:any[] = [
+const tableColumns:ColumnModel[] = [
   { title: 'Id', field: 'id', align:'center', width: '50px'},
   { title: 'Name', field: 'name'},
   { title: 'Email', field: 'email'},

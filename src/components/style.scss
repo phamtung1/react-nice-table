@@ -1,0 +1,84 @@
+body {
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto;
+}
+
+.NiceTableRoot {
+  /* table container */
+  .NiceTableContainer {
+    height: 300px;
+    overflow: auto;
+    border: 1px solid #ccc;
+  }
+
+  table {
+    /* for fixed header */
+    border-collapse: separate; 
+    border: none;
+    border-spacing: 0;
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  th, td {
+    padding: 0.4em 0.5em 0.4em 1em;
+    vertical-align: text-top;
+    text-align: left;
+    text-indent: -0.5em;
+    border: none;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    border-spacing: 0;
+  }
+
+  /* Fixed Headers */
+  th {
+    background-color: #fff;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    font-weight: 500;
+  }
+
+  .NiceTableCell-alignRight{
+    text-align: right;
+  }
+
+  .NiceTableCell-alignCenter{
+    text-align: center;
+  }
+
+  /* Pagination */
+  .NiceTable-Pagination {
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 0.2rem;
+  }
+
+  .NiceTable-Pagination a {
+    color: black;
+    float: left;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: background-color .3s;
+  }
+
+  .NiceTable-Pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+  }
+
+  .NiceTable-Pagination a:hover:not(.active) {background-color: #ddd;}
+
+  .NiceTable-Pagination-Select{
+    padding: 0.2rem 1rem;
+    border: 1px solid #ddd;
+  }
+
+  .NiceTable-Pagination-Text{
+    padding: 0.3rem 0.5rem;
+  }
+}
