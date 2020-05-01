@@ -5,7 +5,6 @@ body {
 .NiceTableRoot {
   /* table container */
   .NiceTableContainer {
-    height: 300px;
     overflow: auto;
     border: 1px solid #ccc;
   }
@@ -54,7 +53,7 @@ body {
     justify-content: flex-end;
     width: 100%;
     border: 1px solid #ddd;
-    padding: 0.2rem;
+    border-top:0;
   }
 
   .NiceTable-Pagination div {

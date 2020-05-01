@@ -3,19 +3,19 @@ import {createUseStyles} from 'react-jss';
 
 import ClassNameHelper from '../functions/ClassNameHelper';
 
+const useStyles = createUseStyles({
+  headcell: {
+    width: (props:any) => props.width
+  }
+})
+
 type Props = {
   align?: string;
   width?:number;
 }
 
 const TableHeadCell:FC<PropsWithChildren<Props>> = ({children, align, width}) => {
-  const useStyles = createUseStyles({
-    headcell: {
-      width: width
-    }
-  })
-
-  const classes = useStyles();
+  const classes = useStyles({width});
   const alignClass = ClassNameHelper.getCellAlignClass(align);
   
   return (

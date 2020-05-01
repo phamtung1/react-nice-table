@@ -33,4 +33,4 @@ for(let i = 1; i < 100; i++){
 
 export const Default = () => <NiceTable columns={tableColumns} data={tableData} />;
 
-export const Pagination = () => <NiceTable columns={tableColumns} data={tableData} hasPagination={true}/>;
+export const Pagination = () => <NiceTable columns={tableColumns} data={tableData} hasPagination={true} height="300px"/>;

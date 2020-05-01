@@ -1,16 +1,25 @@
 import React, { FC, useState } from 'react';
 import './style.scss';
 
+import {createUseStyles} from 'react-jss';
+
 import ColumnModel from '../types/ColumnModel';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 import TablePagination from './TablePagination';
+
+const useStyles = createUseStyles({
+  tableContainer: {
+    height: (props:any) => props.height
+  }
+})
 
 type Props = {
   columns: ColumnModel[];
   data: any[];
   hasPagination?: boolean;
   pageSizeOptions?: number[];
+  height?:string;
 }
 
 function getShowingData(data:any[], pageIndex:number, pageSize:number){
@@ -23,7 +32,8 @@ function getTotalPages(totalRows: number, pageSize: number) {
   return Math.ceil(totalRows / pageSize);
 }
 
-const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions}) => {
+const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions, height}) => {
+  const classes = useStyles({height});
   if(hasPagination && !pageSizeOptions)
   {
     pageSizeOptions = [10, 25, 50];
@@ -49,7 +59,7 @@ const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions}) =
 
   return (
     <div className="NiceTableRoot">
-    <div className="NiceTableContainer">
+    <div className={`NiceTableContainer ${classes.tableContainer}`}>
       <table>
       <TableHead columns={columns} />
       <TableBody columns={columns} data={showingData} />
