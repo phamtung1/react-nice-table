@@ -1,20 +1,20 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 
-import Table from '../components/Table';
+import NiceTable from '../components/NiceTable';
 
 export default {
-  component:Table,
-  title: 'Table',
+  component:NiceTable,
+  title: 'NiceTable',
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/,
 };
 
 const tableColumns = [
-  { title: 'Id', field: 'id'},
+  { title: 'Id', field: 'id', align:'center'},
   { title: 'Name', field: 'name'},
   { title: 'Email', field: 'email'},
-  { title: 'Age', field: 'age'},
+  { title: 'Age', field: 'age', align:'right'},
   { title: 'Address', field: 'address' }
 ];
 
@@ -32,4 +32,4 @@ for(let i = 1; i < 100; i++){
 }
 
 
-export const Default = () => <Table style={{}} columns={tableColumns} data={tableData} />;
+export const Default = () => <NiceTable style={{}} columns={tableColumns} data={tableData} />;

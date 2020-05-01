@@ -3,13 +3,13 @@ body {
 }
 
 /* table container */
-div.table-container {
-  height: 200px;
+.NiceTableContainer {
+  height: 300px;
   overflow: auto;
   border: 1px solid #ccc;
 }
 
-div.table-container table {
+.NiceTableContainer table {
   margin: 0;
 }
 
@@ -24,7 +24,7 @@ table {
 
 th,
 td {
-  padding: 0.25em 0.5em 0.25em 1em;
+  padding: 0.4em 0.5em 0.4em 1em;
   vertical-align: text-top;
   text-align: left;
   text-indent: -0.5em;
@@ -40,5 +40,13 @@ th {
   position: sticky;
   top: 0;
   z-index: 2;
+  font-weight: 500;
 }
 
+.NiceTableCell-alignRight{
+  text-align: right;
+}
+
+.NiceTableCell-alignCenter{
+  text-align: center;
+}
