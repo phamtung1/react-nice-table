@@ -12,8 +12,9 @@ export default {
 
 const tableColumns:ColumnModel[] = [
   { title: 'Id', field: 'id', align:'center', width: '50px'},
+  { title: 'Avatar',  width: '50px', render: (rowData:any) => <img src={`https://api.adorable.io/avatars/36/${rowData.id}.png`}/>},
   { title: 'Name', field: 'name'},
-  { title: 'Email', field: 'email'},
+  { title: 'Email', field: 'email', render: (rowData:any) => <a href={`mailto:${rowData.email}`}>{rowData.email}</a> },
   { title: 'Age', field: 'age', align:'right'},
   { title: 'Address', field: 'address' }
 ];
@@ -31,6 +32,4 @@ for(let i = 1; i < 100; i++){
   });
 }
 
-export const Default = () => <NiceTable columns={tableColumns} data={tableData} />;
-
-export const Pagination = () => <NiceTable columns={tableColumns} data={tableData} hasPagination={true} height="300px"/>;
+export const CustomRendering = () => <NiceTable columns={tableColumns} data={tableData} hasPagination={true} height="300px"/>;

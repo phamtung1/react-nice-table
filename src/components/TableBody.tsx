@@ -14,8 +14,11 @@ const TableBody:FC<Props> = ({data, columns}) => {
           return (
             <tr key={rowIndex}>
               {columns.map((column:ColumnModel, colIndex:number) => {
+                const content = column.render ? column.render(item) : item[column.field!];
               return (
-                <TableCell key={colIndex} align={column.align}>{item[column.field]}</TableCell>          
+                <TableCell key={colIndex} align={column.align}>
+                  {content}
+                </TableCell>          
               );
               })}
             </tr>);

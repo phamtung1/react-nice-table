@@ -9,6 +9,9 @@ import TableBody from './TableBody';
 import TablePagination from './TablePagination';
 
 const useStyles = createUseStyles({
+  tableRoot: {
+    width: (props:any) => props.width
+  },
   tableContainer: {
     height: (props:any) => props.height
   }
@@ -20,6 +23,7 @@ type Props = {
   hasPagination?: boolean;
   pageSizeOptions?: number[];
   height?:string;
+  width?:string;
 }
 
 function getShowingData(data:any[], pageIndex:number, pageSize:number){
@@ -32,8 +36,8 @@ function getTotalPages(totalRows: number, pageSize: number) {
   return Math.ceil(totalRows / pageSize);
 }
 
-const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions, height}) => {
-  const classes = useStyles({height});
+const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions, height, width}) => {
+  const classes = useStyles({height, width});
   if(hasPagination && !pageSizeOptions)
   {
     pageSizeOptions = [10, 25, 50];
@@ -58,7 +62,7 @@ const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions, he
   }
 
   return (
-    <div className="NiceTableRoot">
+    <div className={`NiceTableRoot ${classes.tableRoot}`}>
     <div className={`NiceTableContainer ${classes.tableContainer}`}>
       <table>
       <TableHead columns={columns} />
