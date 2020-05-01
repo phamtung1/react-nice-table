@@ -4,7 +4,7 @@ const CellAlignClassMap = {
 };
 
 export default {
-  getCellAlignClass: (align:string) => {
-    return CellAlignClassMap[align];
+  getCellAlignClass: (align?:string) => {
+    return align ? CellAlignClassMap[align] : null;
   }
 };

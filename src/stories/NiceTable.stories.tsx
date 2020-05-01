@@ -10,7 +10,7 @@ export default {
 };
 
 const tableColumns:any[] = [
-  { title: 'Id', field: 'id', align:'center'},
+  { title: 'Id', field: 'id', align:'center', width: '50px'},
   { title: 'Name', field: 'name'},
   { title: 'Email', field: 'email'},
   { title: 'Age', field: 'age', align:'right'},

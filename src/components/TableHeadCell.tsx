@@ -1,15 +1,25 @@
 import React, { FC, PropsWithChildren  } from 'react';
-import ClassNameHelper from '../functions/ClassNameHelper';
+import {createUseStyles} from 'react-jss';
 
+import ClassNameHelper from '../functions/ClassNameHelper';
 
 type Props = {
   align?: string;
+  width?:number;
 }
 
-const TableHeadCell:FC<PropsWithChildren<Props>> = ({children, align}) => {
+const TableHeadCell:FC<PropsWithChildren<Props>> = ({children, align, width}) => {
+  const useStyles = createUseStyles({
+    headcell: {
+      width: width
+    }
+  })
+
+  const classes = useStyles();
   const alignClass = ClassNameHelper.getCellAlignClass(align);
+  
   return (
-    <th className={alignClass}>
+    <th className={`${alignClass} ${classes.headcell}`}>
       {children}
     </th>
   );

@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
 import './style.css';
 
+import ColumnModel from '../types/ColumnModel';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 
 type Props = {
-  columns: any[];
+  columns: ColumnModel[];
   data: any[];
 }
 

@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
+import ColumnModel from '../types/ColumnModel';
 import TableCell from './TableCell';
 
 type Props = {
-  columns: any[];
+  columns: ColumnModel[];
   data: any[];
 }
 
@@ -12,7 +13,7 @@ const TableBody:FC<Props> = ({data, columns}) => {
         {data.map((item:any, rowIndex:number) => {
           return (
             <tr key={rowIndex}>
-              {columns.map((column:any, colIndex:number) => {
+              {columns.map((column:ColumnModel, colIndex:number) => {
               return (
                 <TableCell key={colIndex} align={column.align}>{item[column.field]}</TableCell>          
               );

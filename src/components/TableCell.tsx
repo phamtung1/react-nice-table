@@ -3,7 +3,7 @@ import ClassNameHelper from '../functions/ClassNameHelper';
 
 
 type Props = {
-  align:string;
+  align?:string;
 }
 
 const TableCell:FC<PropsWithChildren<Props>> = ({children, align}) => {
