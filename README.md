@@ -1,4 +1,5 @@
 # react-nice-table
+React-nice table is a component for displaying data in a tabular format. It's very simple to use and customizable for different use cases.
 
 ## Installation
 Release soon
@@ -40,7 +41,7 @@ const tableColumns:ColumnModel[] = [
 />
 ```
 
-## Comming Soon
+## Coming Soon
 - [x] Sorting
 - [x] Filtering
 - [x] Selection
