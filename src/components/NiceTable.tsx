@@ -6,6 +6,7 @@ import {createUseStyles} from 'react-jss';
 import ColumnModel from '../types/ColumnModel';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
+import TableFooter from './TableFooter';
 import TablePagination from './TablePagination';
 
 const useStyles = createUseStyles({
@@ -24,11 +25,11 @@ type Props = {
   pageSizeOptions?: number[];
   height?:string;
   width?:string;
+  footerToolbar?: React.ReactNode;
 }
 
 function getShowingData(data:any[], pageIndex:number, pageSize:number){
   const result = data.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize);
-  console.log(pageIndex, pageSize, result.length);
   return result;
 }
 
@@ -36,7 +37,7 @@ function getTotalPages(totalRows: number, pageSize: number) {
   return Math.ceil(totalRows / pageSize);
 }
 
-const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions, height, width}) => {
+const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions, height, width, footerToolbar}) => {
   const classes = useStyles({height, width});
   if(hasPagination && !pageSizeOptions)
   {
@@ -69,8 +70,23 @@ const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions, he
       <TableBody columns={columns} data={showingData} />
       </table>  
     </div>
-    { hasPagination &&
-    <TablePagination onChangePageSize={handleChangePageSize} onChangePageIndex={handleChangePageIndex} pageSizeOptions={pageSizeOptions!} pageIndex={pageIndex} pageSize={pageSize} totalPages={totalPages} />}
+    { (hasPagination || footerToolbar) &&
+    (
+      <TableFooter>
+        <div className='NiceTable-FooterToolbar'>
+          {footerToolbar}
+        </div>
+        {hasPagination &&
+        <TablePagination 
+            onChangePageSize={handleChangePageSize} 
+            onChangePageIndex={handleChangePageIndex} 
+            pageSizeOptions={pageSizeOptions!} 
+            pageIndex={pageIndex} 
+            pageSize={pageSize} 
+            totalPages={totalPages} />
+        }
+      </TableFooter>
+        )}
   </div>
   );
 }

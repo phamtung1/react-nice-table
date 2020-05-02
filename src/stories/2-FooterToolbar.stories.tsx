@@ -2,6 +2,8 @@ import React from 'react';
 
 import ColumnModel from '../types/ColumnModel';
 import NiceTable from '../components/NiceTable';
+
+import IconButton from '../components/core/IconButton';
 import { createData } from './storyhelper';
 
 export default {
@@ -19,10 +21,12 @@ const tableColumns:ColumnModel[] = [
   { title: 'Address', field: 'address' }
 ];
 
-const tableData = createData(99);
+const tableData = createData(20);
 
-export const Default = () => <NiceTable columns={tableColumns} data={tableData} />;
-
-export const Sizing = () => <NiceTable columns={tableColumns} data={tableData} height="300px" width='600px'/>;
-
-export const Pagination = () => <NiceTable columns={tableColumns} data={tableData} hasPagination={true} height="300px"/>;
+export const FooterToolbar = () => 
+  <NiceTable 
+    columns={tableColumns} 
+    data={tableData} 
+    height="300px"
+    footerToolbar={<IconButton label='CSV' onClick={() => alert('Export CSV')} />}
+    />;

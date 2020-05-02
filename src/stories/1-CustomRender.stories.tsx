@@ -2,6 +2,7 @@ import React from 'react';
 
 import ColumnModel from '../types/ColumnModel';
 import NiceTable from '../components/NiceTable';
+import { createData } from './storyhelper';
 
 export default {
   component:NiceTable,
@@ -19,17 +20,6 @@ const tableColumns:ColumnModel[] = [
   { title: 'Address', field: 'address' }
 ];
 
-const tableData:any[] = [];
+const tableData = createData(10)
 
-for(let i = 1; i < 100; i++){ 
-  const name = 'Name' + i;
-  tableData.push({ 
-    id: i, 
-    name: name, 
-    email: name +'@foo.com',
-    age: Math.floor(Math.random() * 10),
-    address:  'foo'
-  });
-}
-
-export const CustomRendering = () => <NiceTable columns={tableColumns} data={tableData} hasPagination={true} height="300px"/>;
+export const CustomRendering = () => <NiceTable columns={tableColumns} data={tableData} height="300px"/>;
