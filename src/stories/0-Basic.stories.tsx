@@ -19,10 +19,8 @@ const tableColumns:ColumnModel[] = [
   { title: 'Address', field: 'address' }
 ];
 
-const tableData = createData(99);
+const tableData = createData(50);
 
-export const Default = () => <NiceTable columns={tableColumns} data={tableData} />;
-
-export const Sizing = () => <NiceTable columns={tableColumns} data={tableData} height="300px" width='600px'/>;
+export const Default = () => <NiceTable columns={tableColumns} data={tableData} height="300px"/>;
 
 export const Pagination = () => <NiceTable columns={tableColumns} data={tableData} hasPagination={true} height="300px"/>;
