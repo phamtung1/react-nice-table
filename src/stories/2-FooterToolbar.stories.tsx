@@ -28,7 +28,6 @@ export const FooterToolbar = () =>
     columns={tableColumns} 
     data={tableData} 
     height="300px"
-    hasPagination={true}
     footerToolbar={
       <>
     <IconButton icon='save' label='CSV' onClick={() => alert('Export CSV')}/>
