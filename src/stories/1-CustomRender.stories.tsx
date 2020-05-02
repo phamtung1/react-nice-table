@@ -20,6 +20,6 @@ const tableColumns:ColumnModel[] = [
   { title: 'Address', field: 'address' }
 ];
 
-const tableData = createData(10)
+const tableData = createData(5)
 
-export const CustomRendering = () => <NiceTable columns={tableColumns} data={tableData} height="300px"/>;
+export const CustomRendering = () => <NiceTable columns={tableColumns} data={tableData}/>;
