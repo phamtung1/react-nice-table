@@ -1,8 +1,8 @@
-export function createData(length:number){
+export function createData(length:number, fromIndex: number = 0){
     const tableData:any[] = [];
 
     for(let i = 0; i < length; i++){ 
-        const id = i + 1;
+        const id = fromIndex++;
       const name = 'Name' + id;
       tableData.push({ 
         id: id, 

@@ -37,7 +37,7 @@ const TablePagination:FC<Props> = ({pageIndex, totalPages, pageSizeOptions, page
             {pageSizeOptions.map((value:number) => <option key={value}>{value}</option>)}
         </select>
         <div style={{display:'flex'}}>
-            <div role="button" className={pageIndex == 0 ? 'disabled' : ''} onClick={() => previousPage()}>❮</div>
+            <div role="button" className={pageIndex === 0 ? 'disabled' : ''} onClick={() => previousPage()}>❮</div>
             <div>Page {pageIndex + 1} / {totalPages}</div>
             <div role="button" className={pageIndex >= totalPages - 1 ? 'disabled' : ''} onClick={() => nextPage()}>❯</div>
         </div>
