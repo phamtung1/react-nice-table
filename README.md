@@ -1,10 +1,31 @@
 # react-nice-table
 
-[Demo](https://phamtung1.github.io/react-nice-table/storybook-static)
+## Installation
+Release soon
+
+## Demo
+
+[DEMO with Storybook](https://phamtung1.github.io/react-nice-table/storybook-static)
 
 ![alt text](https://raw.githubusercontent.com/phamtung1/react-nice-table/master/screenshots/table1.png)
 
-```html
+## Features
+* Fixed Header
+* Pagination
+* Custom Rendering
+* Footer Toolbar
+* Remote Data Loading 
+## Code example
+```js
+
+const tableColumns:ColumnModel[] = [
+  { title: 'Id', field: 'id', align:'center', width: '50px'},
+  { title: 'Name', field: 'name'},
+  { title: 'Email', field: 'email' },
+  { title: 'Age', field: 'age', align:'right'},
+  { title: 'Address', field: 'address' }
+];
+
 <NiceTable 
   columns={tableColumns} 
   data={tableData} 
@@ -18,3 +39,9 @@
   }
 />
 ```
+
+## Comming Soon
+- [x] Sorting
+- [x] Filtering
+- [x] Selection
+- [x] Detail Panel
