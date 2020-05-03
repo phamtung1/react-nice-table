@@ -63,7 +63,7 @@ export const CustomFiltering = () => {
    
 // Component containing filter controls  
 // const CustomFilter: React.FC<FilterProps> = ({onChange}) => {
-//   const data = {
+//   const [filterData, setFilterData] = useState({
 //     name: {
 //       value: '',
 //       rule: '' // always use indexOf() for string value
@@ -72,24 +72,26 @@ export const CustomFiltering = () => {
 //       value: 0,
 //       rule: '>=' // filter all ages greater than this
 //     }
-//   };
+//   });
 
 //   const handleChangeName =(value:string) => {
-//     data.name.value = value;
-//     onChange && onChange(data);
+//     const newData = { ...filterData, name: { value : value, rule: filterData.name.rule }};
+//     setFilterData(newData)
+//     onChange && onChange(newData);
 //   }
 
 //   const handleChangeAge =(value:number) => {
-//     data.age.value = value;
-//     onChange && onChange(data);
+//     const newData = { ...filterData, age: { value : value, rule: filterData.age.rule }};
+//     setFilterData(newData);
+//     onChange && onChange(newData);
 //   }
 
 //   return (
 //     <div>
 //       <label>Name: </label>
 //       <input className='demo-control' type='text' onChange={(event:any) => handleChangeName(event.target.value)} />
-//       {/* <label>Age (>=): </label>
-//       <input className='demo-control' type='number' onChange={(event:any) => handleChangeAge(parseInt(event.target.value))} /> */}
+//       <label>Age (>=): </label>
+//       <input className='demo-control' type='number' onChange={(event:any) => handleChangeAge(parseInt(event.target.value))} />
 //     </div>
 //   );
 // }

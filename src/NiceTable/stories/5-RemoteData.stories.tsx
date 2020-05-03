@@ -57,7 +57,10 @@ const CustomFilter: React.FC<FilterProps> = ({onChange}) => {
 export const RemoteDataLoading = () => {
    const [filterData, setFilterData] = React.useState(null);
 
-  return (<NiceTable 
+  return (
+    <>
+    <div>Check the console log to see the query data</div>
+  <NiceTable 
     filterData={filterData} 
     filterComponent={<CustomFilter onChange={setFilterData} />} 
     columns={tableColumns} 
@@ -74,5 +77,7 @@ export const RemoteDataLoading = () => {
     }} 
     height="300px"
     hasPagination={true}
-/>);
+/>
+</>
+);
 }
