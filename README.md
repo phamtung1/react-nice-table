@@ -14,6 +14,7 @@ Release soon
 ## Features
 * Fixed Header
 * Pagination
+* Customer Filtering
 * Custom Rendering
 * Footer Toolbar
 * Remote Data Loading 
@@ -44,6 +45,6 @@ const tableColumns:ColumnModel[] = [
 
 ## Coming Soon
 - [x] Sorting
-- [x] Filtering
 - [x] Selection
-- [x] Detail Panel
+- [ ] Detail Panel
+- [ ] Build-in Filtering

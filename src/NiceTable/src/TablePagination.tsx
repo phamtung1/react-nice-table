@@ -38,7 +38,7 @@ const TablePagination:FC<Props> = ({pageIndex, totalPages, pageSizeOptions, page
         </select>
         <div style={{display:'flex'}}>
             <div role="button" className={pageIndex === 0 ? 'disabled' : ''} onClick={() => previousPage()}>❮</div>
-            <div>Page {pageIndex + 1} / {totalPages}</div>
+            <div className='NiceTable-Pagination-CurrentPage'>Page {pageIndex + 1} / {totalPages}</div>
             <div role="button" className={pageIndex >= totalPages - 1 ? 'disabled' : ''} onClick={() => nextPage()}>❯</div>
         </div>
     </div>
