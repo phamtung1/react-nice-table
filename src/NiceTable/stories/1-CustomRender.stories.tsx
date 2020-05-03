@@ -1,7 +1,7 @@
 import React from 'react';
 
-import ColumnModel from '../types/ColumnModel';
-import NiceTable from '../NiceTable';
+import ColumnModel from '../src/types/ColumnModel';
+import NiceTable from '../src/NiceTable';
 import { createData } from './storyhelper';
 
 export default {

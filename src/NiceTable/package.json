@@ -1,0 +1,18 @@
+{
+  "name": "react-nice-table",
+  "version": "0.1.1",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "cross-env webpack -p --config ../../webpack.config.js",
+    "clean": "rimraf dist && rimraf node_modules && rimraf package-lock.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2"
+  }
+}

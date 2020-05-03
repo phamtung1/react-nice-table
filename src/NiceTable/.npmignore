@@ -1,0 +1,5 @@
+# ignore all stories.js in src
+stories/*
+
+# ignore all .log files
+*.log
