@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { ReactComponent as SaveIcon } from '../../assets/save.svg';
-import { ReactComponent as DownloadIcon } from '../../assets/download.svg';
+import { ReactComponent as SaveIcon } from '../assets/save.svg';
+import { ReactComponent as DownloadIcon } from '../assets/download.svg';
 
 type Props = {
   tooltip?: string;

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import ColumnModel from '../types/ColumnModel';
+import ColumnModel from './types/ColumnModel';
 import TableCell from './TableCell';
 
 type Props = {

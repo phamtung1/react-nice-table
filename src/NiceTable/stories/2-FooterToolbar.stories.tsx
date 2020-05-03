@@ -1,9 +1,9 @@
 import React from 'react';
 
 import ColumnModel from '../types/ColumnModel';
-import NiceTable from '../components/NiceTable';
+import NiceTable from '../NiceTable';
 
-import IconButton from '../components/core/IconButton';
+import IconButton from '../core/IconButton';
 import { createData } from './storyhelper';
 
 export default {

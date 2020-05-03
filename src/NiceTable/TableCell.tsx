@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren  } from 'react';
-import ClassNameHelper from '../functions/ClassNameHelper';
+import ClassNameHelper from './functions/ClassNameHelper';
 
 type Props = {
   align?:string;

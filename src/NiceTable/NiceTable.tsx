@@ -3,7 +3,7 @@ import './style.scss';
 
 import {createUseStyles} from 'react-jss';
 
-import ColumnModel from '../types/ColumnModel';
+import ColumnModel from './types/ColumnModel';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';

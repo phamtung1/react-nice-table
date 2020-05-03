@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren  } from 'react';
 import {createUseStyles} from 'react-jss';
 
-import ClassNameHelper from '../functions/ClassNameHelper';
+import ClassNameHelper from './functions/ClassNameHelper';
 
 const useStyles = createUseStyles({
   headcell: {
