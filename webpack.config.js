@@ -28,5 +28,25 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.jsx', '.json' ],
         modules: ['node_modules']
+    }, 
+    optimization: {
+        minimize: false
     },
+    externals: [
+        // nodeExternals(),
+        {
+          react: {
+            root: 'React',
+            commonjs2: 'react',
+            commonjs: 'react',
+            amd: 'react'
+          },
+          'react-dom': {
+            root: 'ReactDOM',
+            commonjs2: 'react-dom',
+            commonjs: 'react-dom',
+            amd: 'react-dom'
+          }
+        }
+    ]
 };

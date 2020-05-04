@@ -8,7 +8,6 @@ import TableHead from './TableHead';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';
 import TablePagination from './TablePagination';
-import { FilterProps } from './types/FilterProps';
 
 const useStyles = createUseStyles({
   tableRoot: {
