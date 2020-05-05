@@ -1,6 +1,4 @@
 import React, { FC } from 'react';
-// import { ReactComponent as SaveIcon } from '../assets/save.svg';
-// import { ReactComponent as DownloadIcon } from '../assets/download.svg';
 
 type Props = {
   tooltip?: string;
@@ -10,12 +8,10 @@ type Props = {
 }
 
 const IconButton:FC<Props> = ({tooltip,label,icon, onClick}) => {
-  
-  //  const IconComponent = icon === 'save' ? SaveIcon : DownloadIcon;
 
   return (
     <div className="NiceTable-IconButton" title={tooltip || label} onClick={() => onClick && onClick()}>
-    {/* <IconComponent className="NiceTable-IconButton-Svg" /> */}
+    <i className="material-icons">{icon}</i>
     <div className="NiceTable-IconButton-Label">{label}</div>
     </div>
   );

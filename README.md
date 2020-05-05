@@ -7,6 +7,18 @@ React-nice-table is a component for displaying data in a tabular format. It's ve
 ```
 npm i react-nice-table
 ```
+or yarn:
+```
+yarn add react-nice-table
+```
+Add material icons font if you some features related to it:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+/>
+```
 
 ## Demo
 
@@ -40,7 +52,7 @@ const tableColumns:ColumnModel[] = [
   footerToolbar={
     <>
   <IconButton icon='save' label='CSV' onClick={() => alert('Export CSV')}/>
-  <IconButton icon='download' label='PDF' onClick={() => alert('Export PDF')}/>
+  <IconButton icon='save_alt' label='PDF' onClick={() => alert('Export PDF')}/>
   </>
   }
 />
