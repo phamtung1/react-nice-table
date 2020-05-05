@@ -22,6 +22,7 @@ const tableColumns:ColumnModel[] = [
 ];
 
 const tableData = createData(20);
+// add this link to your app <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 // List icons https://material.io/resources/icons/?style=baseline
 export const FooterToolbar = () => 
   <NiceTable 
