@@ -22,7 +22,7 @@ const tableColumns:ColumnModel[] = [
 ];
 
 const tableData = createData(20);
-
+// List icons https://material.io/resources/icons/?style=baseline
 export const FooterToolbar = () => 
   <NiceTable 
     columns={tableColumns} 
@@ -31,7 +31,7 @@ export const FooterToolbar = () =>
     footerToolbar={
       <>
     <IconButton icon='save' label='CSV' onClick={() => alert('Export CSV')}/>
-    <IconButton icon='download' label='PDF' onClick={() => alert('Export PDF')}/>
+    <IconButton icon='save_alt' label='PDF' onClick={() => alert('Export PDF')}/>
     </>
     }
 />;

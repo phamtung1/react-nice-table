@@ -1,6 +1,6 @@
 module.exports = {
   stories: ['../src/**/*.stories.tsx'],
-  addons: ['@storybook/addon-storysource','@storybook/addon-actions', '@storybook/preset-typescript'],
+  addons: ['@storybook/addon-storysource', '@storybook/preset-typescript'],
   webpackFinal: async config => {
     
     config.module.rules = config.module.rules.map(rule => {
