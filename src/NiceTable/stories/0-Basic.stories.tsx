@@ -2,7 +2,6 @@ import React from 'react';
 
 import ColumnModel from '../src/types/ColumnModel';
 import NiceTable from '../src/NiceTable';
-// import { createData } from './storyhelper';
 
 export default {
   component:NiceTable,

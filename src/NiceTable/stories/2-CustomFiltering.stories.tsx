@@ -60,41 +60,6 @@ const CustomFilter: React.FC<FilterProps> = ({onChange}) => {
 
 export const CustomFiltering = () => {
   const [filterData, setFilterData] = useState(null);
-   
-// Component containing filter controls  
-// const CustomFilter: React.FC<FilterProps> = ({onChange}) => {
-//   const [filterData, setFilterData] = useState({
-//     name: {
-//       value: '',
-//       rule: '' // always use indexOf() for string value
-//     },
-//     age: {
-//       value: 0,
-//       rule: '>=' // filter all ages greater than this
-//     }
-//   });
-
-//   const handleChangeName =(value:string) => {
-//     const newData = { ...filterData, name: { value : value, rule: filterData.name.rule }};
-//     setFilterData(newData)
-//     onChange && onChange(newData);
-//   }
-
-//   const handleChangeAge =(value:number) => {
-//     const newData = { ...filterData, age: { value : value, rule: filterData.age.rule }};
-//     setFilterData(newData);
-//     onChange && onChange(newData);
-//   }
-
-//   return (
-//     <div>
-//       <label>Name: </label>
-//       <input className='demo-control' type='text' onChange={(event:any) => handleChangeName(event.target.value)} />
-//       <label>Age (>=): </label>
-//       <input className='demo-control' type='number' onChange={(event:any) => handleChangeAge(parseInt(event.target.value))} />
-//     </div>
-//   );
-// }
 
   return (
     <NiceTable 

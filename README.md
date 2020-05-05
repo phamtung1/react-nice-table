@@ -3,7 +3,10 @@ React-nice-table is a component for displaying data in a tabular format. It's ve
 
 [![Build Status](https://travis-ci.org/phamtung1/react-nice-table.svg?branch=master)](https://travis-ci.org/phamtung1/react-nice-table)
 ## Installation
-Release soon
+
+```
+npm i react-nice-table
+```
 
 ## Demo
 
