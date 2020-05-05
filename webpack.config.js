@@ -30,7 +30,7 @@ module.exports = {
         modules: ['node_modules']
     }, 
     optimization: {
-        minimize: false
+        minimize: true
     },
     externals: [
         // nodeExternals(),
