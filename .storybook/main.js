@@ -1,3 +1,5 @@
+var nodeExternals = require('webpack-node-externals');
+
 module.exports = {
   stories: ['../src/**/*.stories.tsx'],
   addons: ['@storybook/addon-storysource', '@storybook/preset-typescript'],
@@ -14,4 +16,6 @@ module.exports = {
     config.resolve.extensions.push('.ts', '.tsx');
     return config;
   },
-  };
+  target: 'node', // in order to ignore built-in modules like path, fs, etc. 
+    externals: [nodeExternals()], // in order to ignore all modules in node_modules folder 
+};

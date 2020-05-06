@@ -32,13 +32,20 @@ export type Props = {
   footerToolbar?: React.ReactNode;
   filterComponent?: React.ReactNode;
   filterData?: FilterDataType;
+  sortable?:boolean;
+  defaultSortBy?:string;
+  defaultSortOrder?:string;
 }
 
 function getTotalPages(totalRows: number, pageSize: number) {
   return Math.ceil(totalRows / pageSize);
 }
 
-const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions, height, width, footerToolbar, filterComponent, filterData}) => {
+const NiceTable: FC<Props> = ({
+  columns, data, hasPagination, pageSizeOptions, height, width, 
+  footerToolbar, filterComponent, filterData, 
+  sortable, defaultSortBy, defaultSortOrder}) => {
+  
   const isRemoteData = typeof(data) === 'function';
   const classes = useStyles({height, width});
   if(hasPagination && !pageSizeOptions)
@@ -51,12 +58,16 @@ const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions, he
   const [pageIndex, setPageIndex] = useState(0);
 
   const [totalPages, setTotalPages] = useState(0);
-  const [showingData, setShowingData] = useState([]);
+  const [showingData, setShowingData] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  
+  const [sortBy, setSortBy] = useState(defaultSortBy);
+  const [sortOrder, setSortOrder] = useState(defaultSortOrder);
 
-  const loadRemoteData = (newPageIndex: number, newPageSize: number, filterData:any) => {
+
+  const loadRemoteData = (newPageIndex: number, newPageSize: number, filterData:any, sortBy?:string, sortOrder?:string) => {
     setIsLoading(true);
-    const query = { pageIndex: newPageIndex, pageSize: newPageSize, filterData: filterData};
+    const query = { pageIndex: newPageIndex, pageSize: newPageSize, filterData: filterData, sortBy: sortBy, sortOrder: sortOrder};
     data(query).then((result:any)=> {
       setTotalPages(getTotalPages(result.totalRows, newPageSize));
       setShowingData(result.data);
@@ -64,47 +75,44 @@ const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions, he
     });
   }
   
-  const loadLocalData = (data:any, pageIndex:number, pageSize:number, filterData:any) => {
-    const filterResult = LocalDataService.getShowingData(data, pageIndex, pageSize, filterData);
+  const loadLocalData = (data:any, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
+    const result = LocalDataService.getShowingData(data, pageIndex, pageSize, filterData, sortBy, sortOrder);
     
-    setTotalPages(getTotalPages(filterResult.totalRows, pageSize));
-    setShowingData(filterResult.data);
+    setTotalPages(getTotalPages(result.totalRows, pageSize));
+    setShowingData(result.data);
+  }
+
+  const loadData = (data:any, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
+    if(isRemoteData){
+      loadRemoteData(pageIndex, pageSize, filterData, sortBy, sortOrder);
+    }
+    else
+    {
+      loadLocalData(data, pageIndex, pageSize, filterData, sortBy, sortOrder);
+    }
   }
 
  useEffect(() =>{
-  if(isRemoteData){
-    loadRemoteData(pageIndex, pageSize, filterData);
-  }
-  else
-  {
-    loadLocalData(data, pageIndex, pageSize, filterData);
-  }
+   loadData(data, pageIndex, pageSize, filterData, sortBy, sortOrder);
  },[isRemoteData, filterData]);
 
   const handleChangePageSize = (newPageSize:number) => {
     const newPageIndex = 0;
     setPageSize(newPageSize);
     setPageIndex(newPageIndex);
-    if(isRemoteData)
-    {
-      loadRemoteData(newPageIndex, newPageSize, filterData);
-    }
-    else {
-      loadLocalData(data, newPageIndex, newPageSize, filterData);
-    }
+    loadData(data, newPageIndex, newPageSize, filterData, sortBy, sortOrder);
   }
 
   const handleChangePageIndex = (newPageIndex:number) => {
     setPageIndex(newPageIndex);
-    if(isRemoteData)
-    {
-      loadRemoteData(newPageIndex, pageSize, filterData);
-    }
-    else
-    {
-      // should optimize to cache filter result
-      loadLocalData(data, newPageIndex, pageSize, filterData);
-    }
+    // should optimize to cache filter result
+    loadData(data, newPageIndex, pageSize, filterData, sortBy, sortOrder);
+  }
+
+  const handleOnSort = (newSortBy:string, newSortOrder:string) => {
+    setSortBy(newSortBy);
+    setSortOrder(newSortOrder);
+    loadData(data, pageIndex, pageSize, filterData, newSortBy, newSortOrder);
   }
 
   return (
@@ -114,7 +122,13 @@ const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions, he
       </div>
     <div className={`NiceTableContainer ${classes.tableContainer} ${isLoading ? 'loading' : ''}`}>
       <table>
-      <TableHead columns={columns} />
+      <TableHead 
+          columns={columns} 
+          sortable={sortable} 
+          defaultSortBy={sortBy} 
+          defaultSortOrder={sortOrder}
+          onSort={handleOnSort}
+           />
       {
         (isRemoteData && !showingData) ? 
         null :
