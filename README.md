@@ -14,15 +14,12 @@ yarn add react-nice-table
 Add material icons font if you some features related to it:
 
 ```html
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/icon?family=Material+Icons"
-/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 ```
 
 ## Demo
 
-[DEMO with Code examples](https://phamtung1.github.io/react-nice-table/storybook-static/?path=/docs/nicetable--default)
+[DEMO with Code examples](https://phamtung1.github.io/react-nice-table/storybook-static/)
 
 ![alt text](https://raw.githubusercontent.com/phamtung1/react-nice-table/master/screenshots/table1.png)
 
@@ -89,4 +86,4 @@ type ColumnModel = {
 - [x] Sorting
 - [x] Selection
 - [ ] Detail Panel
-- [ ] Build-in Filtering
+- [ ] Build-in Filter
