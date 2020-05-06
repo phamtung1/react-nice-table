@@ -30,6 +30,7 @@ Add material icons font if you some features related to it:
 * Custom Rendering
 * Footer Toolbar
 * Remote Data Loading 
+* Sorting
 ## Code example
 ```js
 
@@ -83,7 +84,6 @@ type ColumnModel = {
 ```
 
 ## Coming Soon
-- [x] Sorting
 - [x] Selection
 - [ ] Detail Panel
 - [ ] Build-in Filter
