@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import ColumnModel from '../src/types/ColumnModel';
 import NiceTable from '../src/NiceTable';
-import { FilterProps } from '../src/types/FilterProps';
+import { FilterComponentProps } from '../src/types/FilterComponentProps';
 import { FilterDataType } from '../src/types/FilterDataType';
 import { createData } from './storyhelper';
 
@@ -25,7 +25,7 @@ const tableColumns:ColumnModel[] = [
 const tableData = createData(50);
 
 // Component containing filter controls  
-const CustomFilter: React.FC<FilterProps> = ({onChange}) => {
+const CustomFilter: React.FC<FilterComponentProps> = ({onChange}) => {
   const defaultFilterData:FilterDataType = {
     name: {
       value: '',
