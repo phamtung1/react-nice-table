@@ -32,14 +32,21 @@ export type Props = {
   footerToolbar?: React.ReactNode;
   filterComponent?: React.ReactNode;
   filterData?: FilterDataType;
+  sortable?:boolean;
+  defaultSortBy?:string;
+  defaultSortOrder?:string;
 }
 
 function getTotalPages(totalRows: number, pageSize: number) {
   return Math.ceil(totalRows / pageSize);
 }
 
-const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions, height, width, footerToolbar, filterComponent, filterData}) => {
-  const isRemoteData = typeof(data) === 'function';
+const NiceTable: FC<Props> = ({
+  columns, data, hasPagination, pageSizeOptions, height, width, 
+  footerToolbar, filterComponent, filterData, 
+  sortable, defaultSortBy, defaultSortOrder}) => {
+  
+    const isRemoteData = typeof(data) === 'function';
   const classes = useStyles({height, width});
   if(hasPagination && !pageSizeOptions)
   {
@@ -107,6 +114,10 @@ const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions, he
     }
   }
 
+  const handleOnSort = (sortBy:string, sortOrder:string) => {
+    console.log(sortBy, sortOrder);
+  }
+
   return (
     <div className={`NiceTableRoot ${classes.tableRoot}`}>
       <div className='NiceTable-Filter'>
@@ -114,7 +125,13 @@ const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions, he
       </div>
     <div className={`NiceTableContainer ${classes.tableContainer} ${isLoading ? 'loading' : ''}`}>
       <table>
-      <TableHead columns={columns} />
+      <TableHead 
+          columns={columns} 
+          sortable={sortable} 
+          defaultSortBy={defaultSortBy} 
+          defaultSortOrder={defaultSortOrder}
+          onSort={handleOnSort}
+           />
       {
         (isRemoteData && !showingData) ? 
         null :
