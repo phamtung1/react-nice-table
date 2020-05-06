@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import ColumnModel from './types/ColumnModel';
 import TableHeadCell from './TableHeadCell';
 
@@ -14,12 +14,7 @@ const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder
   
   defaultSortOrder = defaultSortOrder ?? 'asc';
 
-  const [sortBy, setSortBy] = useState(defaultSortBy);
-  const [sortOrder, setSortOrder] = useState(defaultSortOrder);
-
   const handleOnSort = (sortBy:string, sortOrder:string) => {
-    setSortBy(sortBy);
-    setSortOrder(sortOrder);
     onSort && onSort(sortBy, sortOrder);
   }
 
@@ -27,7 +22,7 @@ const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder
     <thead>
         <tr>
         {columns.map((column:ColumnModel, colIndex:number) => {
-          const cellSortOrder = sortBy === column.field ? sortOrder : undefined; 
+          const cellSortOrder = defaultSortBy === column.field ? defaultSortOrder : undefined; 
           return (
             <TableHeadCell 
                 key={colIndex} 

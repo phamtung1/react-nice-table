@@ -21,13 +21,39 @@ function isMatchFilter(rowData:any, filterData:FilterDataType) {
     return true;
   }
 
-  
+function createCompareFn(key:string, order:string = 'asc') {
+  return function innerSort(a:any, b:any) {
+    if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+      return 0;
+    }
 
-function getShowingData(data:any, pageIndex:number, pageSize:number, filterData:FilterDataType){
+    const varA = (typeof a[key] === 'string') ? a[key].toUpperCase() : a[key];
+    const varB = (typeof b[key] === 'string') ? b[key].toUpperCase() : b[key];
+
+    let comparison = 0;
+    if (varA > varB) {
+      comparison = 1;
+    } else if (varA < varB) {
+      comparison = -1;
+    }
+    return (
+      (order === 'desc') ? (comparison * -1) : comparison
+    );
+  };
+}
+
+function getShowingData(
+  data:any[], 
+  pageIndex:number,
+  pageSize:number, 
+  filterData:FilterDataType,
+  sortBy?:string,
+  sortOrder?:string){
+
     if(typeof(data) === 'function'){
       return {
         totalRows: 0,
-        data: null
+        data: []
       } 
     }
   
@@ -38,6 +64,12 @@ function getShowingData(data:any, pageIndex:number, pageSize:number, filterData:
     }
   
     const totalRows = result.length
+
+    if(sortBy)
+    {
+      result = result.sort(createCompareFn(sortBy, sortOrder || 'asc'));
+    }
+
     if(!pageSize){
       return {
         totalRows: totalRows,

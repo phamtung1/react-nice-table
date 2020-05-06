@@ -79,6 +79,8 @@ export const RemoteDataLoading = () => {
     }} 
     height="300px"
     hasPagination={true}
+    sortable={true}
+    defaultSortBy="id"
 />
 </>
 );
