@@ -26,4 +26,6 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 ### `yarn build:components`
 
 ### `lerna publish` 
-This step will automatically run auto change log
+
+### `yarn version`
+Update Change log
