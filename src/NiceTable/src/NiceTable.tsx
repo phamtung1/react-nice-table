@@ -9,6 +9,10 @@ import TableBody from './TableBody';
 import TableFooter from './TableFooter';
 import TablePagination from './TablePagination';
 
+import LocalDataService from './functions/LocalDataService';
+
+import { FilterDataType } from '../src/types/FilterDataType';
+
 const useStyles = createUseStyles({
   tableRoot: {
     width: (props:any) => props.width
@@ -27,57 +31,7 @@ export type Props = {
   width?:string;
   footerToolbar?: React.ReactNode;
   filterComponent?: React.ReactNode;
-  filterData?: any;
-}
-
-function isMatchFilter(rowData:any, filterData:any) {
-  for(var propt in filterData) {
-    const filter = filterData[propt]; // { value: '', rule: '' }}
-    if(typeof(filter.value) === 'string') {
-      if(filter.value != '' && rowData[propt].indexOf(filter.value)<0){
-          return false;
-      }
-    }
-    else if(typeof(filter.value) === 'number') {
-      if(!isNaN(filter.value)) {
-        const evalText = rowData[propt] + filter.rule + filter.value;
-        if(!eval(evalText)){
-          return false;
-        }
-      }
-    }
-  }
-
-  return true;
-}
-
-function getShowingData(data:any, pageIndex:number, pageSize:number, filterData:any){
-  if(typeof(data) === 'function'){
-    return {
-      totalRows: 0,
-      data: null
-    } 
-  }
-
-  let result = data;
-
-  if(filterData){
-    result = result.filter((rowData:any) => isMatchFilter(rowData, filterData));
-  }
-
-  const totalRows = result.length
-  if(!pageSize){
-    return {
-      totalRows: totalRows,
-      data: result
-    } 
-  }
-
-  result = result.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize);
-  return {
-    totalRows: totalRows,
-    data: result
-  } 
+  filterData?: FilterDataType;
 }
 
 function getTotalPages(totalRows: number, pageSize: number) {
@@ -111,7 +65,7 @@ const NiceTable: FC<Props> = ({columns, data, hasPagination, pageSizeOptions, he
   }
   
   const loadLocalData = (data:any, pageIndex:number, pageSize:number, filterData:any) => {
-    const filterResult = getShowingData(data, pageIndex, pageSize, filterData);
+    const filterResult = LocalDataService.getShowingData(data, pageIndex, pageSize, filterData);
     
     setTotalPages(getTotalPages(filterResult.totalRows, pageSize));
     setShowingData(filterResult.data);

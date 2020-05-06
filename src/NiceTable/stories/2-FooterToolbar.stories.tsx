@@ -17,8 +17,7 @@ const tableColumns:ColumnModel[] = [
   { title: 'Id', field: 'id', align:'center', width: '50px'},
   { title: 'Name', field: 'name'},
   { title: 'Email', field: 'email' },
-  { title: 'Age', field: 'age', align:'right'},
-  { title: 'Address', field: 'address' }
+  { title: 'Age', field: 'age', align:'right'}
 ];
 
 const tableData = createData(20);

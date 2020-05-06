@@ -2,7 +2,8 @@ import React from 'react';
 
 import ColumnModel from '../src/types/ColumnModel';
 import NiceTable from '../src/NiceTable';
-import { FilterProps } from '../src/types/FilterProps';
+import { FilterComponentProps } from '../src/types/FilterComponentProps';
+import { FilterDataType } from '../src/types/FilterDataType';
 import { createData } from './storyhelper';
 
 export default {
@@ -16,12 +17,11 @@ const tableColumns:ColumnModel[] = [
   { title: 'Id', field: 'id', align:'center', width: '50px'},
   { title: 'Name', field: 'name'},
   { title: 'Email', field: 'email' },
-  { title: 'Age', field: 'age', align:'right'},
-  { title: 'Address', field: 'address' }
+  { title: 'Age', field: 'age', align:'right'}
 ];
 
-const CustomFilter: React.FC<FilterProps> = ({onChange}) => {
-  const [filterData, setFilterData] = React.useState({
+const CustomFilter: React.FC<FilterComponentProps> = ({onChange}) => {
+  const defaultFilterData:FilterDataType = {
     name: {
       value: '',
       rule: '' // always use indexOf() for string value
@@ -30,7 +30,9 @@ const CustomFilter: React.FC<FilterProps> = ({onChange}) => {
       value: 0,
       rule: '>=' // filter all ages greater than this
     }
-  });
+  };
+
+  const [filterData, setFilterData] = React.useState(defaultFilterData);
 
   const handleChangeName =(value:string) => {
     const newData = { ...filterData, name: { value : value, rule: filterData.name.rule }};
@@ -55,7 +57,7 @@ const CustomFilter: React.FC<FilterProps> = ({onChange}) => {
 }
 
 export const RemoteDataLoading = () => {
-   const [filterData, setFilterData] = React.useState(null);
+   const [filterData, setFilterData] = React.useState(undefined);
 
   return (
     <>
