@@ -3,6 +3,8 @@
   "version": "0.1.4",
   "main": "dist/index.js",
   "license": "MIT",
+  "description": "Simple data table component",
+  "repository": "https://github.com/phamtung1/react-nice-table.git",
   "publishConfig": {
     "access": "public"
   },
