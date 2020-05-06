@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import ColumnModel from '../src/types/ColumnModel';
 import NiceTable from '../src/NiceTable';
 import { FilterProps } from '../src/types/FilterProps';
+import { FilterDataType } from '../src/types/FilterDataType';
 import { createData } from './storyhelper';
 
 import './demo.css';
@@ -25,7 +26,7 @@ const tableData = createData(50);
 
 // Component containing filter controls  
 const CustomFilter: React.FC<FilterProps> = ({onChange}) => {
-  const [filterData, setFilterData] = useState({
+  const defaultFilterData:FilterDataType = {
     name: {
       value: '',
       rule: '' // always use indexOf() for string value
@@ -34,7 +35,9 @@ const CustomFilter: React.FC<FilterProps> = ({onChange}) => {
       value: 0,
       rule: '>=' // filter all ages greater than this
     }
-  });
+  };
+
+  const [filterData, setFilterData] = useState(defaultFilterData);
 
   const handleChangeName =(value:string) => {
     const newData = { ...filterData, name: { value : value, rule: filterData.name.rule }};
@@ -59,7 +62,7 @@ const CustomFilter: React.FC<FilterProps> = ({onChange}) => {
 }
 
 export const CustomFiltering = () => {
-  const [filterData, setFilterData] = useState(null);
+  const [filterData, setFilterData] = useState(undefined);
 
   return (
     <NiceTable 
