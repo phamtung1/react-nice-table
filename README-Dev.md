@@ -23,6 +23,8 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `yarn storybook`
 
+### `yarn build-storybook`
+
 ### `yarn build:components`
 
 ### `lerna publish` 
