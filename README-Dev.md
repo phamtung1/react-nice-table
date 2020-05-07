@@ -31,3 +31,6 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `yarn version`
 Update Change log
+
+### `npm deprecate react-nice-table@0.1.3 'Test'`
+### `npm unpublish react-nice-table@0.1.3`
