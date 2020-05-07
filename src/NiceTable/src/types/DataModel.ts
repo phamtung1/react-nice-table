@@ -19,8 +19,6 @@ export type FilterDataModel = {
   }
 }
 
-export type RemoteDataFn = (param:any) => Promise<DataResultModel>;
-
 export type DataQueryModel = {
   pageIndex:number, 
   pageSize:number, 
@@ -28,3 +26,5 @@ export type DataQueryModel = {
   sortBy?:string, 
   sortOrder?:string
 }
+
+export type RemoteDataFn = (param:DataQueryModel) => Promise<DataResultModel>;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ColumnModel, FilterDataModel } from '../src/types/DataModel';
+import { ColumnModel, FilterDataModel, DataQueryModel } from '../src/types/DataModel';
 import NiceTable from '../src/NiceTable';
 import { FilterComponentProps } from '../src/types/FilterComponentProps';
 import { createData } from './storyhelper';
@@ -65,8 +65,7 @@ export const RemoteDataLoading = () => {
     filterData={filterData} 
     filterComponent={<CustomFilter onChange={setFilterData} />} 
     columns={tableColumns} 
-    data={(query:any) => {
-      console.log(JSON.stringify(query)); // {"pageIndex":0,"pageSize":10,"filterData":{"name":{"value":"2","rule":""},"age":{"value":0,"rule":">="}}}
+    data={(query:DataQueryModel) => {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve({

@@ -14,7 +14,15 @@ function loadLocalData(data:any[], params: DataQueryModel) : Promise<DataResultM
   });
 }
 
-function loadData(data: any[] | RemoteDataFn, params: DataQueryModel){
+function loadData(data: any[] | RemoteDataFn, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string){
+  const params:DataQueryModel = {
+    filterData: filterData,
+    pageIndex: pageIndex,
+    pageSize: pageSize,
+    sortBy: sortBy,
+    sortOrder: sortOrder
+  };
+
   return Array.isArray(data) ? loadLocalData(data, params) : loadRemoteData(data as RemoteDataFn, params) ;
 }
 

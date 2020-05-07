@@ -3,7 +3,7 @@ import './style.scss';
 
 import {createUseStyles} from 'react-jss';
 
-import { ColumnModel, DataResultModel, FilterDataModel, RemoteDataFn, DataQueryModel } from './types/DataModel';
+import { ColumnModel, DataResultModel, FilterDataModel, RemoteDataFn } from './types/DataModel';
 import TableHead from './table-components/TableHead';
 import TableBody from './table-components/TableBody';
 import TableFooter from './table-components/TableFooter';
@@ -19,7 +19,8 @@ const useStyles = createUseStyles({
     height: (props:any) => props.height
   }
 })
-export type Props = {
+
+export type NiceTableProps = {
   columns: ColumnModel[];
   data: any[] | RemoteDataFn;
   hasPagination?: boolean;
@@ -38,7 +39,7 @@ function getTotalPages(totalRows: number, pageSize: number) {
   return Math.ceil(totalRows / pageSize);
 }
 
-const NiceTable: FC<Props> = ({
+const NiceTable: FC<NiceTableProps> = ({
   columns, data, hasPagination, pageSizeOptions, height, width, 
   footerToolbar, filterComponent, filterData, 
   sortable, defaultSortBy, defaultSortOrder}) => {
@@ -62,15 +63,8 @@ const NiceTable: FC<Props> = ({
 
   const loadData = (data:any[] | RemoteDataFn, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
     setIsLoading(true);
-    const params:DataQueryModel = {
-      filterData: filterData,
-      pageIndex: pageIndex,
-      pageSize: pageSize,
-      sortBy: sortBy,
-      sortOrder: sortOrder
-    };
-
-    DataService.loadData(data, params)
+    
+    DataService.loadData(data, pageIndex, pageSize, filterData, sortBy, sortOrder)
       .then(function(result:DataResultModel){
         setTotalPages(getTotalPages(result.totalRows, pageSize));
         setShowingData(result.data);
