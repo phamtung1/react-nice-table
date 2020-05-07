@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import ColumnModel from '../src/types/ColumnModel';
+import { ColumnModel } from '../src/types/DataModel';
 import NiceTable from '../src/NiceTable';
 import { FilterComponentProps } from '../src/types/FilterComponentProps';
 import { FilterDataType } from '../src/types/FilterDataType';

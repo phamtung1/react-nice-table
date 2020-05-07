@@ -3,15 +3,15 @@ import './style.scss';
 
 import {createUseStyles} from 'react-jss';
 
-import ColumnModel from './types/ColumnModel';
+import { ColumnModel, DataResultModel } from './types/DataModel';
 import TableHead from './table-components/TableHead';
 import TableBody from './table-components/TableBody';
 import TableFooter from './table-components/TableFooter';
 import TablePagination from './table-components/TablePagination';
 
-import LocalDataService from './functions/LocalDataService';
+import DataService from './functions/DataService';
 
-import { FilterDataType } from '../src/types/FilterDataType';
+import { FilterDataType } from './types/FilterDataType';
 
 const useStyles = createUseStyles({
   tableRoot: {
@@ -64,36 +64,17 @@ const NiceTable: FC<Props> = ({
   const [sortBy, setSortBy] = useState(defaultSortBy);
   const [sortOrder, setSortOrder] = useState(defaultSortOrder);
 
+  const loadData = (data:any, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
+    setIsLoading(true);
+    const promise = isRemoteData ?
+                      DataService.loadRemoteData(data, pageIndex, pageSize, filterData, sortBy, sortOrder) :
+                      DataService.loadLocalData(data, pageIndex, pageSize, filterData, sortBy, sortOrder);
 
-  const loadRemoteData = (newPageIndex: number, newPageSize: number, filterData:any, sortBy?:string, sortOrder?:string) => {
-    setIsLoading(true);
-    const query = { pageIndex: newPageIndex, pageSize: newPageSize, filterData: filterData, sortBy: sortBy, sortOrder: sortOrder};
-    data(query).then((result:any)=> {
-      setTotalPages(getTotalPages(result.totalRows, newPageSize));
-      setShowingData(result.data);
-      setIsLoading(false);
-    });
-  }
-  
-  const loadLocalData = (data:any, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
-    setIsLoading(true);
-      setTimeout(() => {
-      const result = LocalDataService.getShowingData(data, pageIndex, pageSize, filterData, sortBy, sortOrder);
-      
+    promise.then(function(result:DataResultModel){
       setTotalPages(getTotalPages(result.totalRows, pageSize));
       setShowingData(result.data);
       setIsLoading(false);
-    },50)
-  }
-
-  const loadData = (data:any, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
-    if(isRemoteData){
-      loadRemoteData(pageIndex, pageSize, filterData, sortBy, sortOrder);
-    }
-    else
-    {
-      loadLocalData(data, pageIndex, pageSize, filterData, sortBy, sortOrder);
-    }
+    });
   }
 
  useEffect(() =>{
