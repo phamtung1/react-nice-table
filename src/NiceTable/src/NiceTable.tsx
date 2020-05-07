@@ -4,10 +4,10 @@ import './style.scss';
 import {createUseStyles} from 'react-jss';
 
 import ColumnModel from './types/ColumnModel';
-import TableHead from './TableHead';
-import TableBody from './TableBody';
-import TableFooter from './TableFooter';
-import TablePagination from './TablePagination';
+import TableHead from './table-components/TableHead';
+import TableBody from './table-components/TableBody';
+import TableFooter from './table-components/TableFooter';
+import TablePagination from './table-components/TablePagination';
 
 import LocalDataService from './functions/LocalDataService';
 
