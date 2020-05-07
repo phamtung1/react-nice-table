@@ -1,23 +1,23 @@
 import LocalDataService from './LocalDataService';
-import { DataResultModel } from '../types/DataModel';
+import { DataResultModel, RemoteDataFn, DataQueryModel } from '../types/DataModel';
 
-function loadRemoteData(data:(param:any) => Promise<any>, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) 
-: Promise<DataResultModel> {
-  const query = { pageIndex: pageIndex, pageSize: pageSize, filterData: filterData, sortBy: sortBy, sortOrder: sortOrder};
-  return data(query);
+function loadRemoteData(remoteDataFn:RemoteDataFn, params: DataQueryModel) : Promise<DataResultModel> {
+  return remoteDataFn(params);
 }
 
-function loadLocalData(data:any[], pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) 
-: Promise<DataResultModel>{
+function loadLocalData(data:any[], params: DataQueryModel) : Promise<DataResultModel> {
   return new Promise(function(resolve, reject){
     setTimeout(function(){
-      const result = LocalDataService.getShowingData(data, pageIndex, pageSize, filterData, sortBy, sortOrder);
+      const result = LocalDataService.getShowingData(params, data);
       resolve(result);
     }, 50);
   });
 }
 
+function loadData(data: any[] | RemoteDataFn, params: DataQueryModel){
+  return Array.isArray(data) ? loadLocalData(data, params) : loadRemoteData(data as RemoteDataFn, params) ;
+}
+
 export default {
-  loadRemoteData: loadRemoteData,
-  loadLocalData: loadLocalData
+  loadData: loadData
 };

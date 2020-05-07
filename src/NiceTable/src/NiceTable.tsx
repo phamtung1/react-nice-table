@@ -3,15 +3,13 @@ import './style.scss';
 
 import {createUseStyles} from 'react-jss';
 
-import { ColumnModel, DataResultModel } from './types/DataModel';
+import { ColumnModel, DataResultModel, FilterDataModel, RemoteDataFn, DataQueryModel } from './types/DataModel';
 import TableHead from './table-components/TableHead';
 import TableBody from './table-components/TableBody';
 import TableFooter from './table-components/TableFooter';
 import TablePagination from './table-components/TablePagination';
 
 import DataService from './functions/DataService';
-
-import { FilterDataType } from './types/FilterDataType';
 
 const useStyles = createUseStyles({
   tableRoot: {
@@ -21,17 +19,16 @@ const useStyles = createUseStyles({
     height: (props:any) => props.height
   }
 })
-
 export type Props = {
   columns: ColumnModel[];
-  data: any;
+  data: any[] | RemoteDataFn;
   hasPagination?: boolean;
   pageSizeOptions?: number[];
   height?:string;
   width?:string;
   footerToolbar?: React.ReactNode;
   filterComponent?: React.ReactNode;
-  filterData?: FilterDataType;
+  filterData?: FilterDataModel;
   sortable?:boolean;
   defaultSortBy?:string;
   defaultSortOrder?:string;
@@ -46,7 +43,6 @@ const NiceTable: FC<Props> = ({
   footerToolbar, filterComponent, filterData, 
   sortable, defaultSortBy, defaultSortOrder}) => {
   
-  const isRemoteData = typeof(data) === 'function';
   const classes = useStyles({height, width});
   if(hasPagination && !pageSizeOptions)
   {
@@ -64,22 +60,27 @@ const NiceTable: FC<Props> = ({
   const [sortBy, setSortBy] = useState(defaultSortBy);
   const [sortOrder, setSortOrder] = useState(defaultSortOrder);
 
-  const loadData = (data:any, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
+  const loadData = (data:any[] | RemoteDataFn, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
     setIsLoading(true);
-    const promise = isRemoteData ?
-                      DataService.loadRemoteData(data, pageIndex, pageSize, filterData, sortBy, sortOrder) :
-                      DataService.loadLocalData(data, pageIndex, pageSize, filterData, sortBy, sortOrder);
+    const params:DataQueryModel = {
+      filterData: filterData,
+      pageIndex: pageIndex,
+      pageSize: pageSize,
+      sortBy: sortBy,
+      sortOrder: sortOrder
+    };
 
-    promise.then(function(result:DataResultModel){
-      setTotalPages(getTotalPages(result.totalRows, pageSize));
-      setShowingData(result.data);
-      setIsLoading(false);
-    });
+    DataService.loadData(data, params)
+      .then(function(result:DataResultModel){
+        setTotalPages(getTotalPages(result.totalRows, pageSize));
+        setShowingData(result.data);
+        setIsLoading(false);
+      });
   }
 
  useEffect(() =>{
    loadData(data, pageIndex, pageSize, filterData, sortBy, sortOrder);
- },[isRemoteData, filterData, data]);
+ },[filterData, data]);
 
   const handleChangePageSize = (newPageSize:number) => {
     const newPageIndex = 0;
@@ -114,12 +115,7 @@ const NiceTable: FC<Props> = ({
           defaultSortOrder={sortOrder}
           onSort={handleOnSort}
            />
-      {
-        (isRemoteData && !showingData) ? 
-        null :
-        <TableBody columns={columns} data={showingData} />
-      }
-      
+      <TableBody columns={columns} data={showingData} />
       </table>  
     </div>
     { (hasPagination || footerToolbar) &&

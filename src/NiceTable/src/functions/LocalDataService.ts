@@ -1,6 +1,6 @@
-import { FilterDataType } from '../types/FilterDataType';
+import { FilterDataModel, DataQueryModel, DataResultModel } from '../types/DataModel';
 
-function isMatchFilter(rowData:any, filterData:FilterDataType) {
+function isMatchFilter(rowData:any, filterData:FilterDataModel) : boolean {
     for(var propt in filterData) {
       const filter = filterData[propt]; // { value: '', rule: '' }}
       if(typeof(filter.value) === 'string') {
@@ -22,7 +22,7 @@ function isMatchFilter(rowData:any, filterData:FilterDataType) {
   }
 
 function createCompareFn(key:string, order:string = 'asc') {
-  return function innerSort(a:any, b:any) {
+  return function innerSort(a:any, b:any):number {
     if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
       return 0;
     }
@@ -42,13 +42,7 @@ function createCompareFn(key:string, order:string = 'asc') {
   };
 }
 
-function getShowingData(
-  data:any[], 
-  pageIndex:number,
-  pageSize:number, 
-  filterData:FilterDataType,
-  sortBy?:string,
-  sortOrder?:string){
+function getShowingData(params: DataQueryModel, data:any[]) : DataResultModel {
 
     if(typeof(data) === 'function'){
       return {
@@ -59,25 +53,25 @@ function getShowingData(
   
     let result = data;
   
-    if(filterData){
-      result = result.filter((rowData:any) => isMatchFilter(rowData, filterData));
+    if(params.filterData){
+      result = result.filter((rowData:any) => isMatchFilter(rowData, params.filterData));
     }
   
     const totalRows = result.length
 
-    if(sortBy)
+    if(params.sortBy)
     {
-      result = result.sort(createCompareFn(sortBy, sortOrder || 'asc'));
+      result = result.sort(createCompareFn(params.sortBy, params.sortOrder || 'asc'));
     }
 
-    if(!pageSize){
+    if(!params.pageSize){
       return {
         totalRows: totalRows,
         data: result
       } 
     }
   
-    result = result.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize);
+    result = result.slice(params.pageIndex * params.pageSize, params.pageIndex * params.pageSize + params.pageSize);
     return {
       totalRows: totalRows,
       data: result
