@@ -76,10 +76,14 @@ const NiceTable: FC<Props> = ({
   }
   
   const loadLocalData = (data:any, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
-    const result = LocalDataService.getShowingData(data, pageIndex, pageSize, filterData, sortBy, sortOrder);
-    
-    setTotalPages(getTotalPages(result.totalRows, pageSize));
-    setShowingData(result.data);
+    setIsLoading(true);
+      setTimeout(() => {
+      const result = LocalDataService.getShowingData(data, pageIndex, pageSize, filterData, sortBy, sortOrder);
+      
+      setTotalPages(getTotalPages(result.totalRows, pageSize));
+      setShowingData(result.data);
+      setIsLoading(false);
+    },50)
   }
 
   const loadData = (data:any, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
@@ -94,7 +98,7 @@ const NiceTable: FC<Props> = ({
 
  useEffect(() =>{
    loadData(data, pageIndex, pageSize, filterData, sortBy, sortOrder);
- },[isRemoteData, filterData]);
+ },[isRemoteData, filterData, data]);
 
   const handleChangePageSize = (newPageSize:number) => {
     const newPageIndex = 0;
