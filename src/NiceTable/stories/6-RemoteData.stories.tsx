@@ -1,9 +1,8 @@
 import React from 'react';
 
-import ColumnModel from '../src/types/ColumnModel';
+import { ColumnModel, FilterDataModel, DataQueryModel } from '../src/types/DataModel';
 import NiceTable from '../src/NiceTable';
 import { FilterComponentProps } from '../src/types/FilterComponentProps';
-import { FilterDataType } from '../src/types/FilterDataType';
 import { createData } from './storyhelper';
 
 export default {
@@ -21,7 +20,7 @@ const tableColumns:ColumnModel[] = [
 ];
 
 const CustomFilter: React.FC<FilterComponentProps> = ({onChange}) => {
-  const defaultFilterData:FilterDataType = {
+  const defaultFilterData:FilterDataModel = {
     name: {
       value: '',
       rule: '' // always use indexOf() for string value
@@ -66,8 +65,7 @@ export const RemoteDataLoading = () => {
     filterData={filterData} 
     filterComponent={<CustomFilter onChange={setFilterData} />} 
     columns={tableColumns} 
-    data={(query:any) => {
-      console.log(JSON.stringify(query)); // {"pageIndex":0,"pageSize":10,"filterData":{"name":{"value":"2","rule":""},"age":{"value":0,"rule":">="}}}
+    data={(query:DataQueryModel) => {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve({

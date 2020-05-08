@@ -3,15 +3,13 @@ import './style.scss';
 
 import {createUseStyles} from 'react-jss';
 
-import ColumnModel from './types/ColumnModel';
+import { ColumnModel, DataResultModel, FilterDataModel, RemoteDataFn } from './types/DataModel';
 import TableHead from './table-components/TableHead';
 import TableBody from './table-components/TableBody';
 import TableFooter from './table-components/TableFooter';
 import TablePagination from './table-components/TablePagination';
 
-import LocalDataService from './functions/LocalDataService';
-
-import { FilterDataType } from '../src/types/FilterDataType';
+import DataService from './functions/DataService';
 
 const useStyles = createUseStyles({
   tableRoot: {
@@ -22,16 +20,16 @@ const useStyles = createUseStyles({
   }
 })
 
-export type Props = {
+export type NiceTableProps = {
   columns: ColumnModel[];
-  data: any;
+  data: any[] | RemoteDataFn;
   hasPagination?: boolean;
   pageSizeOptions?: number[];
   height?:string;
   width?:string;
   footerToolbar?: React.ReactNode;
   filterComponent?: React.ReactNode;
-  filterData?: FilterDataType;
+  filterData?: FilterDataModel;
   sortable?:boolean;
   defaultSortBy?:string;
   defaultSortOrder?:string;
@@ -41,12 +39,11 @@ function getTotalPages(totalRows: number, pageSize: number) {
   return Math.ceil(totalRows / pageSize);
 }
 
-const NiceTable: FC<Props> = ({
+const NiceTable: FC<NiceTableProps> = ({
   columns, data, hasPagination, pageSizeOptions, height, width, 
   footerToolbar, filterComponent, filterData, 
   sortable, defaultSortBy, defaultSortOrder}) => {
   
-  const isRemoteData = typeof(data) === 'function';
   const classes = useStyles({height, width});
   if(hasPagination && !pageSizeOptions)
   {
@@ -64,41 +61,20 @@ const NiceTable: FC<Props> = ({
   const [sortBy, setSortBy] = useState(defaultSortBy);
   const [sortOrder, setSortOrder] = useState(defaultSortOrder);
 
-
-  const loadRemoteData = (newPageIndex: number, newPageSize: number, filterData:any, sortBy?:string, sortOrder?:string) => {
+  const loadData = (data:any[] | RemoteDataFn, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
     setIsLoading(true);
-    const query = { pageIndex: newPageIndex, pageSize: newPageSize, filterData: filterData, sortBy: sortBy, sortOrder: sortOrder};
-    data(query).then((result:any)=> {
-      setTotalPages(getTotalPages(result.totalRows, newPageSize));
-      setShowingData(result.data);
-      setIsLoading(false);
-    });
-  }
-  
-  const loadLocalData = (data:any, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
-    setIsLoading(true);
-      setTimeout(() => {
-      const result = LocalDataService.getShowingData(data, pageIndex, pageSize, filterData, sortBy, sortOrder);
-      
-      setTotalPages(getTotalPages(result.totalRows, pageSize));
-      setShowingData(result.data);
-      setIsLoading(false);
-    },50)
-  }
-
-  const loadData = (data:any, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
-    if(isRemoteData){
-      loadRemoteData(pageIndex, pageSize, filterData, sortBy, sortOrder);
-    }
-    else
-    {
-      loadLocalData(data, pageIndex, pageSize, filterData, sortBy, sortOrder);
-    }
+    
+    DataService.loadData(data, pageIndex, pageSize, filterData, sortBy, sortOrder)
+      .then(function(result:DataResultModel){
+        setTotalPages(getTotalPages(result.totalRows, pageSize));
+        setShowingData(result.data);
+        setIsLoading(false);
+      });
   }
 
  useEffect(() =>{
    loadData(data, pageIndex, pageSize, filterData, sortBy, sortOrder);
- },[isRemoteData, filterData, data]);
+ },[filterData, data]);
 
   const handleChangePageSize = (newPageSize:number) => {
     const newPageIndex = 0;
@@ -133,12 +109,7 @@ const NiceTable: FC<Props> = ({
           defaultSortOrder={sortOrder}
           onSort={handleOnSort}
            />
-      {
-        (isRemoteData && !showingData) ? 
-        null :
-        <TableBody columns={columns} data={showingData} />
-      }
-      
+      <TableBody columns={columns} data={showingData} />
       </table>  
     </div>
     { (hasPagination || footerToolbar) &&
