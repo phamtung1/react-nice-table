@@ -2,18 +2,29 @@ import React, { FC } from 'react';
 import { ColumnModel } from '../types/DataModel';
 import TableCell from './TableCell';
 import SelectionTableCell from '../table-components/SelectionTableCell';
+import {CheckedState} from '../types/Enum';
 
 type Props = {
   columns: ColumnModel[];
   data: any[];
   selection?:boolean;
+  onSelectionChange?(rowDataId:any, newState: CheckedState):void;
+  selectedRowDataIds?:any[];
 }
 
-const TableBody:FC<Props> = ({data, columns, selection}) => {
+const TableBody:FC<Props> = ({data, columns, selection, onSelectionChange, selectedRowDataIds}) => {
 
   const renderBodyData = () => {
-    const selectionCell = selection && <SelectionTableCell />;
     return data.map((item:any, rowIndex:number) => {
+      
+      const handleSelectionChange = (rowDataId:any, newState: CheckedState) => {
+        onSelectionChange && onSelectionChange(rowDataId, newState);
+      };
+
+      const checkState = selectedRowDataIds && selectedRowDataIds.indexOf(item['id']) > -1 ? CheckedState.Checked : CheckedState.Unchecked;
+      
+      const selectionCell = selection && <SelectionTableCell checkedState={checkState} rowDataId={item['id']} onChange={handleSelectionChange}/>;
+
       return (
         <tr key={rowIndex}>
           {selectionCell}

@@ -4,12 +4,17 @@ type Props = {
   pageSizeOptions: number[];
   pageSize: number;
   pageIndex: number;
-  totalPages: number;
+  totalRows: number;
   onChangePageSize?(value:number): void;
   onChangePageIndex?(value:number): void;
 }
 
-const TablePagination:FC<Props> = ({pageIndex, totalPages, pageSizeOptions, pageSize, onChangePageSize, onChangePageIndex}) => {
+function getTotalPages(totalRows: number, pageSize: number) {
+    return Math.ceil(totalRows / pageSize);
+}
+
+const TablePagination:FC<Props> = ({pageIndex, totalRows, pageSizeOptions, pageSize, onChangePageSize, onChangePageIndex}) => {
+    const totalPages = getTotalPages(totalRows, pageSize);
     const previousPage = () => {
         if(pageIndex > 0){
             handleChangePageIndex(pageIndex - 1);

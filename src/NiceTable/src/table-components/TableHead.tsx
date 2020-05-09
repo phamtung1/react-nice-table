@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { ColumnModel } from '../types/DataModel';
 import TableHeadCell from './TableHeadCell';
 import SelectionTableCell from '../table-components/SelectionTableCell';
+import {CheckedState} from '../types/Enum';
 
 type Props = {
   columns: ColumnModel[];
@@ -10,9 +11,11 @@ type Props = {
   defaultSortOrder?:string;
   onSort?(sortBy:string, sortOrder:string):void;
   selection?:boolean;
+  checkedState?:CheckedState;
+  onSelectionChange?(newState:CheckedState):void;
 }
 
-const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder, onSort, selection}) => {
+const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder, onSort, selection,checkedState, onSelectionChange}) => {
   
   defaultSortOrder = defaultSortOrder ?? 'asc';
 
@@ -20,10 +23,14 @@ const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder
     onSort && onSort(sortBy, sortOrder);
   }
 
+  const handleSelectionChange = (newState:CheckedState) => {
+    onSelectionChange && onSelectionChange(newState);
+  }
+
   return (
     <thead>
         <tr>
-          {selection && <SelectionTableCell />}
+        {selection && <SelectionTableCell checkedState={checkedState} onChange={(_:any, newState:CheckedState) => handleSelectionChange(newState)}/>}
         {columns.map((column:ColumnModel, colIndex:number) => {
           const cellSortOrder = defaultSortBy === column.field ? defaultSortOrder : undefined; 
           return (

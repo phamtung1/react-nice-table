@@ -10,6 +10,7 @@ import TableFooter from './table-components/TableFooter';
 import TablePagination from './table-components/TablePagination';
 
 import DataService from './functions/DataService';
+import {CheckedState} from './types/Enum';
 
 const useStyles = createUseStyles({
   tableRoot: {
@@ -34,17 +35,14 @@ export type NiceTableProps = {
   defaultSortBy?:string;
   defaultSortOrder?:string;
   selection?:boolean;
-}
-
-function getTotalPages(totalRows: number, pageSize: number) {
-  return Math.ceil(totalRows / pageSize);
+  onSelectionChange?(selectedRowDataIds:any[]):void;
 }
 
 const NiceTable: FC<NiceTableProps> = ({
   columns, data, hasPagination, pageSizeOptions, height, width, 
   footerToolbar, filterComponent, filterData, 
   sortable, defaultSortBy, defaultSortOrder,
-  selection}) => {
+  selection, onSelectionChange}) => {
   
   const classes = useStyles({height, width});
   if(hasPagination && !pageSizeOptions)
@@ -55,20 +53,23 @@ const NiceTable: FC<NiceTableProps> = ({
   const defaultPageSize = hasPagination ? pageSizeOptions![0] : 0;
   const [pageSize, setPageSize] = useState(defaultPageSize);
   const [pageIndex, setPageIndex] = useState(0);
+  const [totalRows, setTotalRows] = useState(0);
 
-  const [totalPages, setTotalPages] = useState(0);
   const [showingData, setShowingData] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   
   const [sortBy, setSortBy] = useState(defaultSortBy);
   const [sortOrder, setSortOrder] = useState(defaultSortOrder);
+  
+  const [selectedRowDataIds, setSelectedRowDataIds] = useState<any[]>([]);
+  const [headerCheckedState, setHeaderCheckedState] = useState<CheckedState>(CheckedState.Unchecked);
 
   const loadData = (data:any[] | RemoteDataFn, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
     setIsLoading(true);
     
     DataService.loadData(data, pageIndex, pageSize, filterData, sortBy, sortOrder)
       .then(function(result:DataResultModel){
-        setTotalPages(getTotalPages(result.totalRows, pageSize));
+        setTotalRows(result.totalRows);
         setShowingData(result.data);
         setIsLoading(false);
       });
@@ -97,6 +98,44 @@ const NiceTable: FC<NiceTableProps> = ({
     loadData(data, pageIndex, pageSize, filterData, newSortBy, newSortOrder);
   }
 
+  const handleSelectionChange = (rowDataId:any, newState: CheckedState) => {
+    if(newState === CheckedState.Checked) {
+      const index = selectedRowDataIds.indexOf(rowDataId);
+      if (index == -1) {
+        selectedRowDataIds.push(rowDataId);
+      }
+       
+    }
+    else if(newState === CheckedState.Unchecked){
+      const index = selectedRowDataIds.indexOf(rowDataId);
+      if (index > -1) {
+        selectedRowDataIds.splice(index, 1);
+      }
+    }
+
+    const newArray = [...selectedRowDataIds];
+
+    const newHeaderCheckedState = newArray.length === 0 ? CheckedState.Unchecked : 
+        (newArray.length === totalRows ? CheckedState.Checked : CheckedState.Indeterminate);
+    
+    setHeaderCheckedState(newHeaderCheckedState);
+    setSelectedRowDataIds(newArray);
+
+    onSelectionChange && onSelectionChange(newArray);
+  }
+
+  const handleHeaderSelectionChange = (newState:CheckedState) => {
+    let newIds = [];
+    if(newState === CheckedState.Checked) {
+       newIds = typeof(data) === 'function' ? [] : data.map((item:any) => item['id']);
+    }
+
+    setSelectedRowDataIds(newIds);
+    setHeaderCheckedState(newState);
+
+    onSelectionChange && onSelectionChange(newIds);
+  }
+
   return (
     <div className={`NiceTableRoot ${classes.tableRoot}`}>
       <div className='NiceTable-Filter'>
@@ -111,8 +150,10 @@ const NiceTable: FC<NiceTableProps> = ({
           defaultSortOrder={sortOrder}
           onSort={handleOnSort}
           selection={selection}
+          checkedState={headerCheckedState}
+          onSelectionChange={handleHeaderSelectionChange}
            />
-      <TableBody columns={columns} data={showingData} selection={selection}/>
+      <TableBody columns={columns} data={showingData} selection={selection} onSelectionChange={handleSelectionChange} selectedRowDataIds={selectedRowDataIds}/>
       </table>  
     </div>
     { (hasPagination || footerToolbar) &&
@@ -128,7 +169,7 @@ const NiceTable: FC<NiceTableProps> = ({
             pageSizeOptions={pageSizeOptions!} 
             pageIndex={pageIndex} 
             pageSize={pageSize} 
-            totalPages={totalPages} />
+            totalRows={totalRows} />
         }
       </TableFooter>
         )}

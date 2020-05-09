@@ -19,7 +19,9 @@ const tableColumns:ColumnModel[] = [
   { title: 'Age', field: 'age', align:'right'}
 ];
 
-
 export const Selection = () => {
-  return <NiceTable columns={tableColumns} data={tableData} hasPagination={true} height="300px" selection={true}/>;
+  const handleSelectionChange = (selectedRowDataIds:any[]) => {
+    console.log(selectedRowDataIds)
+  }
+  return <NiceTable columns={tableColumns} data={tableData} hasPagination={true} height="300px" selection={true} onSelectionChange={handleSelectionChange}/>;
 }

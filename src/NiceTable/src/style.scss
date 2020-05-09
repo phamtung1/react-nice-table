@@ -21,7 +21,6 @@ body {
   }
 
   table {
-    /* for fixed header */
     border-collapse: separate; 
     border: none;
     border-spacing: 0;
@@ -35,10 +34,6 @@ body {
     .NiceTableSortLabel {
       cursor: pointer;
       user-select: none; 
-      
-      .material-icons {
-        font-size: 1rem;
-      }
     }
   }
   tbody tr:hover {
@@ -54,7 +49,7 @@ body {
   }
 
   /* Fixed Headers */
-  th {
+  thead th, thead td {
     background-color: #fff;
     position: -webkit-sticky;
     position: sticky;
@@ -168,9 +163,12 @@ body {
     width: 1.5rem;
     height: 1.5rem;
     justify-content: center;
+    
     .material-icons {
       font-size:1.2rem;
       text-indent: 0;
+      color: #1E90FF;
+      user-select: none; 
     }
   }
 
