@@ -11,11 +11,13 @@ type Props = {
   defaultSortOrder?:string;
   onSort?(sortBy:string, sortOrder:string):void;
   selection?:boolean;
+  hideSelectionBox?:boolean;
   checkedState?:CheckedState;
   onSelectionChange?(newState:CheckedState):void;
 }
 
-const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder, onSort, selection,checkedState, onSelectionChange}) => {
+const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder, onSort, 
+    selection, hideSelectionBox,checkedState, onSelectionChange}) => {
   
   defaultSortOrder = defaultSortOrder ?? 'asc';
 
@@ -27,10 +29,18 @@ const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder
     onSelectionChange && onSelectionChange(newState);
   }
 
+  const getSelectionCell = () => {
+    if(!selection) {
+      return null;
+    }
+    
+    return <SelectionTableCell hideCheckbox={hideSelectionBox} checkedState={checkedState} onChange={(_:any, newState:CheckedState) => handleSelectionChange(newState)}/>
+  }
+
   return (
     <thead>
         <tr>
-        {selection && <SelectionTableCell checkedState={checkedState} onChange={(_:any, newState:CheckedState) => handleSelectionChange(newState)}/>}
+        { getSelectionCell() }
         {columns.map((column:ColumnModel, colIndex:number) => {
           const cellSortOrder = defaultSortBy === column.field ? defaultSortOrder : undefined; 
           return (

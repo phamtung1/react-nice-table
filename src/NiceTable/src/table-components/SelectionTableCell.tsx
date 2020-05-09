@@ -7,19 +7,27 @@ type Props = {
   checkedState?:CheckedState;
   onChange?(rowDataId:any, newState: CheckedState):void;
   rowDataId?:any;
+  hideCheckbox?:boolean;
 }
 
-const SelectionTableCell:FC<Props> = ({checkedState, onChange, rowDataId}) => {
+const SelectionTableCell:FC<Props> = ({checkedState, onChange, rowDataId, hideCheckbox}) => {
   const alignClass = ClassNameHelper.getCellAlignClass('center');
-  const icon = checkedState === CheckedState.Checked ?  'check_box' : (checkedState === CheckedState.Indeterminate ? 'indeterminate_check_box' : 'check_box_outline_blank');
+  
   const handleOnChange = () => {
     if(onChange){
       const newState = checkedState === CheckedState.Checked ? CheckedState.Unchecked : CheckedState.Checked;
       onChange(rowDataId, newState);
     }
   }
+
+  let icon = null;
+  if(!hideCheckbox){
+    const iconKey = checkedState === CheckedState.Checked ?  'check_box' : (checkedState === CheckedState.Indeterminate ? 'indeterminate_check_box' : 'check_box_outline_blank');
+    icon = <IconButton icon={iconKey} onClick={handleOnChange}/>;
+  }
+
   return (
-    <td className={`NiceTableCell-noPadding ${alignClass}`} style={{width:'35px'}}><IconButton icon={icon} onClick={handleOnChange}/></td>
+    <td className={`NiceTableCell-noPadding ${alignClass}`} style={{width:'35px'}}>{icon}</td>
   );
 }
 

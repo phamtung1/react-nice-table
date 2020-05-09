@@ -20,8 +20,15 @@ const tableColumns:ColumnModel[] = [
 ];
 
 export const Selection = () => {
+  const [selectedIds, setSelectedIds] = React.useState<any[]>([]);
   const handleSelectionChange = (selectedRowDataIds:any[]) => {
-    console.log(selectedRowDataIds)
+    setSelectedIds(selectedRowDataIds);
   }
-  return <NiceTable columns={tableColumns} data={tableData} hasPagination={true} height="300px" selection={true} onSelectionChange={handleSelectionChange}/>;
+  return (
+    <>
+    <div>A limitation: Header will not show checkbox in remote data mode.</div>
+  <NiceTable columns={tableColumns} data={tableData} hasPagination={true} height="300px" selection={true} onSelectionChange={handleSelectionChange}/>
+  <div>Selected Ids: [{selectedIds.join(',')}]</div>
+  </>
+  );
 }

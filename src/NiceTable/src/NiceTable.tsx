@@ -44,6 +44,8 @@ const NiceTable: FC<NiceTableProps> = ({
   sortable, defaultSortBy, defaultSortOrder,
   selection, onSelectionChange}) => {
   
+  const isRemoteData = typeof(data) === 'function';
+
   const classes = useStyles({height, width});
   if(hasPagination && !pageSizeOptions)
   {
@@ -150,6 +152,7 @@ const NiceTable: FC<NiceTableProps> = ({
           defaultSortOrder={sortOrder}
           onSort={handleOnSort}
           selection={selection}
+          hideSelectionBox={isRemoteData}
           checkedState={headerCheckedState}
           onSelectionChange={handleHeaderSelectionChange}
            />
