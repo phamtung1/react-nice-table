@@ -1,4 +1,4 @@
 import NiceTable from './NiceTable';
-import IconButton from './core/IconButton';
+import IconButton from './core-components/IconButton';
 
 export { NiceTable, IconButton };

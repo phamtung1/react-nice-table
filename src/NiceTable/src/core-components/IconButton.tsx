@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import Icon from './Icon';
 
 type Props = {
   tooltip?: string;
@@ -11,7 +12,7 @@ const IconButton:FC<Props> = ({tooltip,label,icon, onClick}) => {
 
   return (
     <div className="NiceTable-IconButton" title={tooltip || label} onClick={() => onClick && onClick()}>
-    <i className="material-icons">{icon}</i>
+    <Icon icon={icon} />
     <div className="NiceTable-IconButton-Label">{label}</div>
     </div>
   );

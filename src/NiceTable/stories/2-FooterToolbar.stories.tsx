@@ -3,7 +3,7 @@ import React from 'react';
 import { ColumnModel } from '../src/types/DataModel';
 import NiceTable from '../src/NiceTable';
 
-import IconButton from '../src/core/IconButton';
+import IconButton from '../src/core-components/IconButton';
 import { createData } from './storyhelper';
 
 export default {
