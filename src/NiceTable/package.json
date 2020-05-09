@@ -1,6 +1,6 @@
 {
   "name": "react-nice-table",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "license": "MIT",
   "description": "Simple data table component",
