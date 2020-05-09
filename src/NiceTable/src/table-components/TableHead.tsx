@@ -8,9 +8,10 @@ type Props = {
   defaultSortBy?:string;
   defaultSortOrder?:string;
   onSort?(sortBy:string, sortOrder:string):void;
+  selection?:boolean;
 }
 
-const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder, onSort}) => {
+const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder, onSort, selection}) => {
   
   defaultSortOrder = defaultSortOrder ?? 'asc';
 
@@ -21,6 +22,9 @@ const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder
   return (
     <thead>
         <tr>
+          {selection && 
+          <td><input type='checkbox' /></td>
+          }
         {columns.map((column:ColumnModel, colIndex:number) => {
           const cellSortOrder = defaultSortBy === column.field ? defaultSortOrder : undefined; 
           return (

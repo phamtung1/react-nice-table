@@ -33,6 +33,7 @@ export type NiceTableProps = {
   sortable?:boolean;
   defaultSortBy?:string;
   defaultSortOrder?:string;
+  selection?:boolean;
 }
 
 function getTotalPages(totalRows: number, pageSize: number) {
@@ -42,7 +43,8 @@ function getTotalPages(totalRows: number, pageSize: number) {
 const NiceTable: FC<NiceTableProps> = ({
   columns, data, hasPagination, pageSizeOptions, height, width, 
   footerToolbar, filterComponent, filterData, 
-  sortable, defaultSortBy, defaultSortOrder}) => {
+  sortable, defaultSortBy, defaultSortOrder,
+  selection}) => {
   
   const classes = useStyles({height, width});
   if(hasPagination && !pageSizeOptions)
@@ -108,8 +110,9 @@ const NiceTable: FC<NiceTableProps> = ({
           defaultSortBy={sortBy} 
           defaultSortOrder={sortOrder}
           onSort={handleOnSort}
+          selection={selection}
            />
-      <TableBody columns={columns} data={showingData} />
+      <TableBody columns={columns} data={showingData} selection={selection}/>
       </table>  
     </div>
     { (hasPagination || footerToolbar) &&
