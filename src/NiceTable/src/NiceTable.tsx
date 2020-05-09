@@ -11,6 +11,7 @@ import TablePagination from './table-components/TablePagination';
 
 import DataService from './functions/DataService';
 import {CheckedState} from './types/Enum';
+import AppConsts from './types/AppConsts';
 
 const useStyles = createUseStyles({
   tableRoot: {
@@ -37,15 +38,18 @@ export type NiceTableProps = {
   selection?:boolean;
   onSelectionChange?(selectedRowDataIds:any[]):void;
   defaultSelectedIds?:any[];
+  dataIdField?:string;
 }
 
 const NiceTable: FC<NiceTableProps> = ({
   columns, data, hasPagination, pageSizeOptions, height, width, 
   footerToolbar, filterComponent, filterData, 
   sortable, defaultSortBy, defaultSortOrder,
-  selection, onSelectionChange, defaultSelectedIds}) => {
-  
+  selection, onSelectionChange, defaultSelectedIds, dataIdField = AppConsts.DefaultDataIdField}) => {
+
   const isRemoteData = typeof(data) === 'function';
+  
+  const divContainerRef = React.useRef<any>(null); // show loading
 
   const classes = useStyles({height, width});
   if(hasPagination && !pageSizeOptions)
@@ -59,7 +63,6 @@ const NiceTable: FC<NiceTableProps> = ({
   const [totalRows, setTotalRows] = useState(0);
 
   const [showingData, setShowingData] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
   
   const [sortBy, setSortBy] = useState(defaultSortBy);
   const [sortOrder, setSortOrder] = useState(defaultSortOrder);
@@ -67,14 +70,25 @@ const NiceTable: FC<NiceTableProps> = ({
   const [selectedRowDataIds, setSelectedRowDataIds] = useState<any[]>(defaultSelectedIds || []);
   const [headerCheckedState, setHeaderCheckedState] = useState<CheckedState>(CheckedState.Unchecked);
 
+  const showLoading = () => {
+    if(divContainerRef.current){
+      divContainerRef.current.classList.add('loading');
+    }
+  }
+
+  const hideLoading = () => {
+    if(divContainerRef.current){
+      divContainerRef.current.classList.remove('loading');
+    }
+  }
+
   const loadData = (data:any[] | RemoteDataFn, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
-    setIsLoading(true);
-    
+    showLoading();
     DataService.loadData(data, pageIndex, pageSize, filterData, sortBy, sortOrder)
       .then(function(result:DataResultModel){
         setTotalRows(result.totalRows);
         setShowingData(result.data);
-        setIsLoading(false);
+        hideLoading();
       });
   }
 
@@ -130,7 +144,7 @@ const NiceTable: FC<NiceTableProps> = ({
   const handleHeaderSelectionChange = (newState:CheckedState) => {
     let newIds = [];
     if(newState === CheckedState.Checked) {
-       newIds = typeof(data) === 'function' ? [] : data.map((item:any) => item['id']);
+       newIds = typeof(data) === 'function' ? [] : data.map((item:any) => item[dataIdField]);
     }
 
     setSelectedRowDataIds(newIds);
@@ -144,7 +158,7 @@ const NiceTable: FC<NiceTableProps> = ({
       <div className='NiceTable-Filter'>
         {filterComponent}
       </div>
-    <div className={`NiceTableContainer ${classes.tableContainer} ${isLoading ? 'loading' : ''}`}>
+    <div ref={divContainerRef} className={`NiceTableContainer ${classes.tableContainer}`}>
       <table>
       <TableHead 
           columns={columns} 

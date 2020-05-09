@@ -2,7 +2,7 @@
 
 exports[`Storyshots NiceTable Custom Filtering 1`] = `
 <div
-  className="NiceTableRoot tableRoot-0-2-1 tableRoot-d10-0-2-35"
+  className="NiceTableRoot tableRoot-0-2-1 tableRoot-d12-0-2-41"
 >
   <div
     className="NiceTable-Filter"
@@ -27,28 +27,28 @@ exports[`Storyshots NiceTable Custom Filtering 1`] = `
     </div>
   </div>
   <div
-    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d11-0-2-36 "
+    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d13-0-2-42"
   >
     <table>
       <thead>
         <tr>
           <th
-            className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d21-0-2-37"
+            className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d25-0-2-43"
           >
             Id
           </th>
           <th
-            className="undefined headcell-0-2-5 headcell-d22-0-2-38"
+            className="undefined headcell-0-2-5 headcell-d26-0-2-44"
           >
             Name
           </th>
           <th
-            className="undefined headcell-0-2-5 headcell-d23-0-2-39"
+            className="undefined headcell-0-2-5 headcell-d27-0-2-45"
           >
             Email
           </th>
           <th
-            className="NiceTableCell-alignRight headcell-0-2-5 headcell-d24-0-2-40"
+            className="NiceTableCell-alignRight headcell-0-2-5 headcell-d28-0-2-46"
           >
             Age
           </th>
@@ -143,7 +143,7 @@ exports[`Storyshots NiceTable Custom Rendering 1`] = `
     className="NiceTable-Filter"
   />
   <div
-    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d3-0-2-11 "
+    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d3-0-2-11"
   >
     <table>
       <thead>
@@ -203,7 +203,7 @@ exports[`Storyshots NiceTable Default 1`] = `
     className="NiceTable-Filter"
   />
   <div
-    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d1-0-2-4 "
+    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d1-0-2-4"
   >
     <table>
       <thead>
@@ -250,6 +250,148 @@ exports[`Storyshots NiceTable Default 1`] = `
 </div>
 `;
 
+exports[`Storyshots NiceTable Default Selected Rows 1`] = `
+Array [
+  <div
+    className="NiceTableRoot tableRoot-0-2-1 tableRoot-d10-0-2-35"
+  >
+    <div
+      className="NiceTable-Filter"
+    />
+    <div
+      className="NiceTableContainer tableContainer-0-2-2 tableContainer-d11-0-2-36"
+    >
+      <table>
+        <thead>
+          <tr>
+            <td
+              className="NiceTableCell-noPadding NiceTableCell-alignCenter"
+              style={
+                Object {
+                  "width": "35px",
+                }
+              }
+            >
+              <div
+                className="NiceTable-Button NiceTable-Button-Icon"
+                onClick={[Function]}
+              >
+                <i
+                  className="material-icons"
+                >
+                  check_box_outline_blank
+                </i>
+              </div>
+            </td>
+            <th
+              className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d21-0-2-37"
+            >
+              Id
+            </th>
+            <th
+              className="undefined headcell-0-2-5 headcell-d22-0-2-38"
+            >
+              Name
+            </th>
+            <th
+              className="undefined headcell-0-2-5 headcell-d23-0-2-39"
+            >
+              Email
+            </th>
+            <th
+              className="NiceTableCell-alignRight headcell-0-2-5 headcell-d24-0-2-40"
+            >
+              Age
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              colSpan={4}
+              style={
+                Object {
+                  "border": 0,
+                  "textAlign": "center",
+                }
+              }
+            >
+              No data available
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      className="NiceTable-Footer"
+    >
+      <div
+        className="NiceTable-FooterToolbar"
+      />
+      <div
+        className="NiceTable-Pagination"
+      >
+        <div
+          className="NiceTable-Pagination-Text"
+        >
+          Rows per page:
+        </div>
+        <select
+          className="NiceTable-Pagination-Select"
+          onChange={[Function]}
+          value={10}
+        >
+          <option>
+            10
+          </option>
+          <option>
+            25
+          </option>
+          <option>
+            50
+          </option>
+        </select>
+        <div
+          style={
+            Object {
+              "display": "flex",
+            }
+          }
+        >
+          <div
+            className="disabled"
+            onClick={[Function]}
+            role="button"
+          >
+            ❮
+          </div>
+          <div
+            className="NiceTable-Pagination-CurrentPage"
+          >
+            Page 
+            1
+             / 
+            0
+          </div>
+          <div
+            className="disabled"
+            onClick={[Function]}
+            role="button"
+          >
+            ❯
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div>
+    Selected Ids: [
+    1,4,5,6,20,21
+    ]
+  </div>,
+]
+`;
+
 exports[`Storyshots NiceTable Footer Toolbar 1`] = `
 <div
   className="NiceTableRoot tableRoot-0-2-1 tableRoot-d4-0-2-17"
@@ -258,7 +400,7 @@ exports[`Storyshots NiceTable Footer Toolbar 1`] = `
     className="NiceTable-Filter"
   />
   <div
-    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d5-0-2-18 "
+    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d5-0-2-18"
   >
     <table>
       <thead>
@@ -367,19 +509,19 @@ Array [
     0
   </span>,
   <div
-    className="NiceTableRoot tableRoot-0-2-1 tableRoot-d16-0-2-53"
+    className="NiceTableRoot tableRoot-0-2-1 tableRoot-d18-0-2-59"
   >
     <div
       className="NiceTable-Filter"
     />
     <div
-      className="NiceTableContainer tableContainer-0-2-2 tableContainer-d17-0-2-54 "
+      className="NiceTableContainer tableContainer-0-2-2 tableContainer-d19-0-2-60"
     >
       <table>
         <thead>
           <tr>
             <th
-              className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d33-0-2-55"
+              className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d37-0-2-61"
             >
               <span
                 className="NiceTableSortLabel"
@@ -392,7 +534,7 @@ Array [
               </span>
             </th>
             <th
-              className="undefined headcell-0-2-5 headcell-d34-0-2-56"
+              className="undefined headcell-0-2-5 headcell-d38-0-2-62"
             >
               <span
                 className="NiceTableSortLabel"
@@ -405,7 +547,7 @@ Array [
               </span>
             </th>
             <th
-              className="undefined headcell-0-2-5 headcell-d35-0-2-57"
+              className="undefined headcell-0-2-5 headcell-d39-0-2-63"
             >
               <span
                 className="NiceTableSortLabel"
@@ -418,7 +560,7 @@ Array [
               </span>
             </th>
             <th
-              className="NiceTableCell-alignRight headcell-0-2-5 headcell-d36-0-2-58"
+              className="NiceTableCell-alignRight headcell-0-2-5 headcell-d40-0-2-64"
             >
               <span
                 className="NiceTableSortLabel"
@@ -461,7 +603,7 @@ exports[`Storyshots NiceTable Pagination 1`] = `
     className="NiceTable-Filter"
   />
   <div
-    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d7-0-2-24 "
+    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d7-0-2-24"
   >
     <table>
       <thead>
@@ -571,11 +713,8 @@ exports[`Storyshots NiceTable Pagination 1`] = `
 
 exports[`Storyshots NiceTable Remote Data Loading 1`] = `
 Array [
-  <div>
-    Check the console log to see the query data
-  </div>,
   <div
-    className="NiceTableRoot tableRoot-0-2-1 tableRoot-d14-0-2-47"
+    className="NiceTableRoot tableRoot-0-2-1 tableRoot-d16-0-2-53"
   >
     <div
       className="NiceTable-Filter"
@@ -600,13 +739,21 @@ Array [
       </div>
     </div>
     <div
-      className="NiceTableContainer tableContainer-0-2-2 tableContainer-d15-0-2-48 "
+      className="NiceTableContainer tableContainer-0-2-2 tableContainer-d17-0-2-54"
     >
       <table>
         <thead>
           <tr>
+            <td
+              className="NiceTableCell-noPadding NiceTableCell-alignCenter"
+              style={
+                Object {
+                  "width": "35px",
+                }
+              }
+            />
             <th
-              className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d29-0-2-49"
+              className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d33-0-2-55"
             >
               <span
                 className="NiceTableSortLabel"
@@ -621,7 +768,7 @@ Array [
               </span>
             </th>
             <th
-              className="undefined headcell-0-2-5 headcell-d30-0-2-50"
+              className="undefined headcell-0-2-5 headcell-d34-0-2-56"
             >
               <span
                 className="NiceTableSortLabel"
@@ -634,7 +781,7 @@ Array [
               </span>
             </th>
             <th
-              className="undefined headcell-0-2-5 headcell-d31-0-2-51"
+              className="undefined headcell-0-2-5 headcell-d35-0-2-57"
             >
               <span
                 className="NiceTableSortLabel"
@@ -647,7 +794,7 @@ Array [
               </span>
             </th>
             <th
-              className="NiceTableCell-alignRight headcell-0-2-5 headcell-d32-0-2-52"
+              className="NiceTableCell-alignRight headcell-0-2-5 headcell-d36-0-2-58"
             >
               <span
                 className="NiceTableSortLabel"
@@ -740,159 +887,177 @@ Array [
       </div>
     </div>
   </div>,
+  <div>
+    Selected Ids: [
+    <span />
+    ]
+  </div>,
 ]
 `;
 
 exports[`Storyshots NiceTable Selection 1`] = `
-<div
-  className="NiceTableRoot tableRoot-0-2-1 tableRoot-d8-0-2-29"
->
+Array [
+  <div>
+    A limitation: In remote data mode, checkbox will not appear in header row.
+  </div>,
+  <div>
+    The data must have the 'id' property. You can change it with the prop 'dataIdField'
+  </div>,
   <div
-    className="NiceTable-Filter"
-  />
-  <div
-    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d9-0-2-30 "
-  >
-    <table>
-      <thead>
-        <tr>
-          <td
-            className="NiceTableCell-noPadding NiceTableCell-alignCenter"
-            style={
-              Object {
-                "width": "35px",
-              }
-            }
-          >
-            <div
-              className="NiceTable-Button NiceTable-Button-Icon"
-              onClick={[Function]}
-            >
-              <i
-                className="material-icons"
-              >
-                check_box_outline_blank
-              </i>
-            </div>
-          </td>
-          <th
-            className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d17-0-2-31"
-          >
-            Id
-          </th>
-          <th
-            className="undefined headcell-0-2-5 headcell-d18-0-2-32"
-          >
-            Name
-          </th>
-          <th
-            className="undefined headcell-0-2-5 headcell-d19-0-2-33"
-          >
-            Email
-          </th>
-          <th
-            className="NiceTableCell-alignRight headcell-0-2-5 headcell-d20-0-2-34"
-          >
-            Age
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td
-            colSpan={4}
-            style={
-              Object {
-                "border": 0,
-                "textAlign": "center",
-              }
-            }
-          >
-            No data available
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div
-    className="NiceTable-Footer"
+    className="NiceTableRoot tableRoot-0-2-1 tableRoot-d8-0-2-29"
   >
     <div
-      className="NiceTable-FooterToolbar"
+      className="NiceTable-Filter"
     />
     <div
-      className="NiceTable-Pagination"
+      className="NiceTableContainer tableContainer-0-2-2 tableContainer-d9-0-2-30"
+    >
+      <table>
+        <thead>
+          <tr>
+            <td
+              className="NiceTableCell-noPadding NiceTableCell-alignCenter"
+              style={
+                Object {
+                  "width": "35px",
+                }
+              }
+            >
+              <div
+                className="NiceTable-Button NiceTable-Button-Icon"
+                onClick={[Function]}
+              >
+                <i
+                  className="material-icons"
+                >
+                  check_box_outline_blank
+                </i>
+              </div>
+            </td>
+            <th
+              className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d17-0-2-31"
+            >
+              Id
+            </th>
+            <th
+              className="undefined headcell-0-2-5 headcell-d18-0-2-32"
+            >
+              Name
+            </th>
+            <th
+              className="undefined headcell-0-2-5 headcell-d19-0-2-33"
+            >
+              Email
+            </th>
+            <th
+              className="NiceTableCell-alignRight headcell-0-2-5 headcell-d20-0-2-34"
+            >
+              Age
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              colSpan={4}
+              style={
+                Object {
+                  "border": 0,
+                  "textAlign": "center",
+                }
+              }
+            >
+              No data available
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      className="NiceTable-Footer"
     >
       <div
-        className="NiceTable-Pagination-Text"
-      >
-        Rows per page:
-      </div>
-      <select
-        className="NiceTable-Pagination-Select"
-        onChange={[Function]}
-        value={10}
-      >
-        <option>
-          10
-        </option>
-        <option>
-          25
-        </option>
-        <option>
-          50
-        </option>
-      </select>
+        className="NiceTable-FooterToolbar"
+      />
       <div
-        style={
-          Object {
-            "display": "flex",
-          }
-        }
+        className="NiceTable-Pagination"
       >
         <div
-          className="disabled"
-          onClick={[Function]}
-          role="button"
+          className="NiceTable-Pagination-Text"
         >
-          ❮
+          Rows per page:
         </div>
-        <div
-          className="NiceTable-Pagination-CurrentPage"
+        <select
+          className="NiceTable-Pagination-Select"
+          onChange={[Function]}
+          value={10}
         >
-          Page 
-          1
-           / 
-          0
-        </div>
+          <option>
+            10
+          </option>
+          <option>
+            25
+          </option>
+          <option>
+            50
+          </option>
+        </select>
         <div
-          className="disabled"
-          onClick={[Function]}
-          role="button"
+          style={
+            Object {
+              "display": "flex",
+            }
+          }
         >
-          ❯
+          <div
+            className="disabled"
+            onClick={[Function]}
+            role="button"
+          >
+            ❮
+          </div>
+          <div
+            className="NiceTable-Pagination-CurrentPage"
+          >
+            Page 
+            1
+             / 
+            0
+          </div>
+          <div
+            className="disabled"
+            onClick={[Function]}
+            role="button"
+          >
+            ❯
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </div>,
+  <div>
+    Selected Ids: [
+    
+    ]
+  </div>,
+]
 `;
 
 exports[`Storyshots NiceTable Sorting 1`] = `
 <div
-  className="NiceTableRoot tableRoot-0-2-1 tableRoot-d12-0-2-41"
+  className="NiceTableRoot tableRoot-0-2-1 tableRoot-d14-0-2-47"
 >
   <div
     className="NiceTable-Filter"
   />
   <div
-    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d13-0-2-42 "
+    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d15-0-2-48"
   >
     <table>
       <thead>
         <tr>
           <th
-            className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d25-0-2-43"
+            className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d29-0-2-49"
           >
             <span
               className="NiceTableSortLabel"
@@ -907,7 +1072,7 @@ exports[`Storyshots NiceTable Sorting 1`] = `
             </span>
           </th>
           <th
-            className="undefined headcell-0-2-5 headcell-d26-0-2-44"
+            className="undefined headcell-0-2-5 headcell-d30-0-2-50"
           >
             <span
               className="NiceTableSortLabel"
@@ -920,7 +1085,7 @@ exports[`Storyshots NiceTable Sorting 1`] = `
             </span>
           </th>
           <th
-            className="undefined headcell-0-2-5 headcell-d27-0-2-45"
+            className="undefined headcell-0-2-5 headcell-d31-0-2-51"
           >
             <span
               className="NiceTableSortLabel"
@@ -933,7 +1098,7 @@ exports[`Storyshots NiceTable Sorting 1`] = `
             </span>
           </th>
           <th
-            className="NiceTableCell-alignRight headcell-0-2-5 headcell-d28-0-2-46"
+            className="NiceTableCell-alignRight headcell-0-2-5 headcell-d32-0-2-52"
           >
             <span
               className="NiceTableSortLabel"

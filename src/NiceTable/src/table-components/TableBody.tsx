@@ -3,6 +3,7 @@ import { ColumnModel } from '../types/DataModel';
 import TableCell from './TableCell';
 import SelectionTableCell from '../table-components/SelectionTableCell';
 import {CheckedState} from '../types/Enum';
+import AppConsts from '../types/AppConsts';
 
 type Props = {
   columns: ColumnModel[];
@@ -10,9 +11,10 @@ type Props = {
   selection?:boolean;
   onSelectionChange?(rowDataId:any, newState: CheckedState):void;
   selectedRowDataIds?:any[];
+  dataIdField?:string;
 }
 
-const TableBody:FC<Props> = ({data, columns, selection, onSelectionChange, selectedRowDataIds}) => {
+const TableBody:FC<Props> = ({data, columns, selection, onSelectionChange, selectedRowDataIds, dataIdField = AppConsts.DefaultDataIdField}) => {
 
   const renderBodyData = () => {
     return data.map((item:any, rowIndex:number) => {
@@ -21,9 +23,9 @@ const TableBody:FC<Props> = ({data, columns, selection, onSelectionChange, selec
         onSelectionChange && onSelectionChange(rowDataId, newState);
       };
 
-      const checkState = selectedRowDataIds && selectedRowDataIds.indexOf(item['id']) > -1 ? CheckedState.Checked : CheckedState.Unchecked;
+      const checkState = selectedRowDataIds && selectedRowDataIds.indexOf(item[dataIdField]) > -1 ? CheckedState.Checked : CheckedState.Unchecked;
       
-      const selectionCell = selection && <SelectionTableCell checkedState={checkState} rowDataId={item['id']} onChange={handleSelectionChange}/>;
+      const selectionCell = selection && <SelectionTableCell checkedState={checkState} rowDataId={item[dataIdField]} onChange={handleSelectionChange}/>;
 
       return (
         <tr key={rowIndex}>

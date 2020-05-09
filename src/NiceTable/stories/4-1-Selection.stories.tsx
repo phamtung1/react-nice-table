@@ -26,8 +26,16 @@ export const Selection = () => {
   }
   return (
     <>
-    <div>A limitation: Header will not show checkbox in remote data mode.</div>
-  <NiceTable columns={tableColumns} data={tableData} hasPagination={true} height="300px" selection={true} onSelectionChange={handleSelectionChange}/>
+    <div>A limitation: In remote data mode, checkbox will not appear in header row.</div>
+    <div>The data must have the 'id' property. You can change it with the prop 'dataIdField'</div>
+  <NiceTable 
+      columns={tableColumns} 
+      data={tableData} 
+      hasPagination={true} 
+      height="300px" 
+      selection={true} 
+      onSelectionChange={handleSelectionChange}
+      dataIdField='id'/>
   <div>Selected Ids: [{selectedIds.join(',')}]</div>
   </>
   );
