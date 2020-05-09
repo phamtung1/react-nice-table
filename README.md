@@ -36,6 +36,8 @@ Add material icons font if you some features related to it:
 * Footer Toolbar
 * Remote Data Loading 
 * Sorting
+* Selection
+
 ## Code example
 ```js
 
@@ -62,18 +64,25 @@ const tableColumns:ColumnModel[] = [
 ```
 ## Api
 
-NiceGrid
+NiceTable
 ```js
-type Props = {
+type NiceTableProps = {
   columns: ColumnModel[];
-  data: any; // array or function (for remote data)
+  data: any[] | RemoteDataFn;
   hasPagination?: boolean;
   pageSizeOptions?: number[];
   height?:string;
   width?:string;
   footerToolbar?: React.ReactNode;
   filterComponent?: React.ReactNode;
-  filterData?: any;
+  filterData?: FilterDataModel;
+  sortable?:boolean;
+  defaultSortBy?:string;
+  defaultSortOrder?:string;
+  selection?:boolean;
+  onSelectionChange?(selectedRowDataIds:any[]):void;
+  defaultSelectedIds?:any[];
+  dataIdField?:string;
 }
 ```
 
@@ -88,7 +97,9 @@ type ColumnModel = {
 }
 ```
 
-## Coming Soon
-- [x] Selection
-- [ ] Detail Panel
-- [ ] Build-in Filter
+# TODO List
+- [] Localization
+- [] Actions column
+
+# Licensee
+MIT
