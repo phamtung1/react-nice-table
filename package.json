@@ -1,6 +1,6 @@
 {
   "name": "storybook-react-nice-table",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "react": "^16.13.1",
