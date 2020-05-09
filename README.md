@@ -6,7 +6,7 @@ React-nice-table is a component for displaying data in a tabular format. It's ve
 <a href="https://npm.im/react-nice-table"><img src="https://badgen.net/npm/dm/react-nice-table"></a>
 <a href="https://bundlephobia.com/result?p=react-nice-table"><img src="https://badgen.net/bundlephobia/minzip/react-nice-table"></a>
 [![Build Status](https://travis-ci.org/phamtung1/react-nice-table.svg?branch=master)](https://travis-ci.org/phamtung1/react-nice-table)
-
+[![npm](https://img.shields.io/badge/npm%40latest-1.0.1-brightgreen)](https://www.npmjs.com/package/react-nice-table)
 ## Installation
 
 ```
