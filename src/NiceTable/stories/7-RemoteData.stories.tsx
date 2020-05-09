@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ColumnModel, FilterDataModel, DataQueryModel } from '../src/types/DataModel';
+import { ColumnModel, FilterDataModel, DataQueryModel, RemoteDataFn } from '../src/types/DataModel';
 import NiceTable from '../src/NiceTable';
 import { FilterComponentProps } from '../src/types/FilterComponentProps';
 import { createData } from './storyhelper';
@@ -57,29 +57,41 @@ const CustomFilter: React.FC<FilterComponentProps> = ({onChange}) => {
 
 export const RemoteDataLoading = () => {
    const [filterData, setFilterData] = React.useState(undefined);
+   
+   const spanContentRef = React.useRef<any>(null);
+
+  const handleSelectionChange = (selectedRowDataIds:any[]) => {
+    if(spanContentRef.current){
+      spanContentRef.current.innerHTML = selectedRowDataIds.join(',');
+    }
+  }
+   
+  const loadRemoteData:RemoteDataFn = (query:DataQueryModel) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log('Query data: ', query);
+        resolve({
+          data: createData(query.pageSize, query.pageIndex * query.pageSize),
+          totalRows: 100
+        });
+      }, 200); // simulate request
+    });
+  }
 
   return (
     <>
-    <div>Check the console log to see the query data</div>
   <NiceTable 
     filterData={filterData} 
     filterComponent={<CustomFilter onChange={setFilterData} />} 
     columns={tableColumns} 
-    data={(query:DataQueryModel) => {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve({
-            data: createData(query.pageSize, query.pageIndex * query.pageSize),
-            totalRows: 100
-          });
-        }, 500); // simulate request
-    })
-    }} 
+    data={loadRemoteData} 
     height="300px"
     hasPagination={true}
     sortable={true}
     defaultSortBy="id"
-/>
-</>
+    selection={true} onSelectionChange={handleSelectionChange}
+    />
+  <div>Selected Ids: [<span ref={spanContentRef}></span>]</div>
+  </>
 );
 }
