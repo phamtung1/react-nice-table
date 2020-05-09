@@ -63,12 +63,18 @@ body {
     font-weight: 500;
   }
 
-  .NiceTableCell-alignRight{
-    text-align: right;
-  }
+  .NiceTableCell {
+    &-alignRight {
+      text-align: right;
+    }
 
-  .NiceTableCell-alignCenter{
-    text-align: center;
+    &-alignCenter{
+      text-align: center;
+    }
+
+    &-noPadding {
+      padding: 0;
+    }
   }
 
   // Footer
@@ -144,21 +150,33 @@ body {
     align-items: center;
   }
 
-  .NiceTable-IconButton {
+  .NiceTable-Button {
     cursor: pointer;
-    padding:  0.5rem;
+    padding:  0.3rem;
     margin: 0.2rem;
     display:flex;
     align-items: center;
   }
 
-  .NiceTable-IconButton:hover {background-color: #ddd;}
-
-  .NiceTable-IconButton-Svg { 
-    width: 1.2rem;
+  .NiceTable-Button-Icon {
+    cursor: pointer;
+    padding:  0.2rem;
+    margin: 0.1rem;
+    display:flex;
+    align-items: center;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    justify-content: center;
+    .material-icons {
+      font-size:1.2rem;
+      text-indent: 0;
+    }
   }
 
-  .NiceTable-IconButton-Label {
+  .NiceTable-Button:hover {background-color: #ddd;}
+
+  .NiceTable-Button-Label {
     font-size:0.7rem;
   }
  

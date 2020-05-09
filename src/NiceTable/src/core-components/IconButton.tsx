@@ -3,17 +3,15 @@ import Icon from './Icon';
 
 type Props = {
   tooltip?: string;
-  label?: string;
   icon: string;
   onClick?():void;
 }
 
-const IconButton:FC<Props> = ({tooltip,label,icon, onClick}) => {
+const IconButton:FC<Props> = ({tooltip,icon, onClick}) => {
 
   return (
-    <div className="NiceTable-IconButton" title={tooltip || label} onClick={() => onClick && onClick()}>
+    <div className="NiceTable-Button NiceTable-Button-Icon" title={tooltip} onClick={() => onClick && onClick()}>
     <Icon icon={icon} />
-    <div className="NiceTable-IconButton-Label">{label}</div>
     </div>
   );
 }

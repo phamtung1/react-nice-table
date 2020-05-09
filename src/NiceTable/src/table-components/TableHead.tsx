@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { ColumnModel } from '../types/DataModel';
 import TableHeadCell from './TableHeadCell';
+import SelectionTableCell from '../table-components/SelectionTableCell';
 
 type Props = {
   columns: ColumnModel[];
@@ -22,9 +23,7 @@ const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder
   return (
     <thead>
         <tr>
-          {selection && 
-          <td><input type='checkbox' /></td>
-          }
+          {selection && <SelectionTableCell />}
         {columns.map((column:ColumnModel, colIndex:number) => {
           const cellSortOrder = defaultSortBy === column.field ? defaultSortOrder : undefined; 
           return (

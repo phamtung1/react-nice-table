@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 type Props = {
-  icon: string;
+  icon?: string;
 }
 
 const Icon:FC<Props> = ({icon}) => {

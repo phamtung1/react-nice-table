@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { ColumnModel } from '../types/DataModel';
 import TableCell from './TableCell';
+import SelectionTableCell from '../table-components/SelectionTableCell';
 
 type Props = {
   columns: ColumnModel[];
@@ -11,7 +12,7 @@ type Props = {
 const TableBody:FC<Props> = ({data, columns, selection}) => {
 
   const renderBodyData = () => {
-    const selectionCell = selection && <TableCell><input type='checkbox' /></TableCell>
+    const selectionCell = selection && <SelectionTableCell />;
     return data.map((item:any, rowIndex:number) => {
       return (
         <tr key={rowIndex}>

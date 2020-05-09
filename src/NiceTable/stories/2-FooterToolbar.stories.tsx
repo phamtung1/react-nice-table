@@ -3,7 +3,7 @@ import React from 'react';
 import { ColumnModel } from '../src/types/DataModel';
 import NiceTable from '../src/NiceTable';
 
-import IconButton from '../src/core-components/IconButton';
+import Button from '../src/core-components/Button';
 import { createData } from './storyhelper';
 
 export default {
@@ -30,8 +30,8 @@ export const FooterToolbar = () =>
     height="300px"
     footerToolbar={
       <>
-    <IconButton icon='save' label='CSV' onClick={() => alert('Export CSV')}/>
-    <IconButton icon='save_alt' label='PDF' onClick={() => alert('Export PDF')}/>
+    <Button icon='save' label='CSV' onClick={() => alert('Export CSV')}/>
+    <Button icon='save_alt' label='PDF' onClick={() => alert('Export PDF')}/>
     </>
     }
 />;

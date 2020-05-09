@@ -1,6 +1,7 @@
 import React, { FC, PropsWithChildren  } from 'react';
 import {createUseStyles} from 'react-jss';
 
+import Icon from '../core-components/Icon';
 import ClassNameHelper from '../functions/ClassNameHelper';
 
 const useStyles = createUseStyles({
@@ -31,7 +32,7 @@ const TableHeadCell:FC<PropsWithChildren<Props>> = ({children, align, width, sor
       arrowicon = sortOrder === 'desc' ? 'arrow_downward' : 'arrow_upward'
     }
 
-    return <span className='NiceTableSortLabel' onClick={handleClickSort}><i className="material-icons">{arrowicon}</i>{children}</span>
+    return <span className='NiceTableSortLabel' onClick={handleClickSort}><Icon icon={arrowicon}/>{children}</span>
   }
 
   const content = sortKey ? buildSortableContent() : children;
