@@ -74,7 +74,7 @@ export const RemoteDataLoading = () => {
           data: createData(query.pageSize, query.pageIndex * query.pageSize),
           totalRows: 100
         });
-      }, 500); // simulate request
+      }, 200); // simulate request
     });
   }
 

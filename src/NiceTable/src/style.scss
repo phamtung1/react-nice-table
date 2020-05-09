@@ -56,6 +56,10 @@ body {
     top: 0;
     z-index: 2;
     font-weight: 500;
+
+    .material-icons {
+      font-size:1rem; // smaller sorting icon
+    }
   }
 
   .NiceTableCell {

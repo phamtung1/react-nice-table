@@ -36,13 +36,14 @@ export type NiceTableProps = {
   defaultSortOrder?:string;
   selection?:boolean;
   onSelectionChange?(selectedRowDataIds:any[]):void;
+  defaultSelectedIds?:any[];
 }
 
 const NiceTable: FC<NiceTableProps> = ({
   columns, data, hasPagination, pageSizeOptions, height, width, 
   footerToolbar, filterComponent, filterData, 
   sortable, defaultSortBy, defaultSortOrder,
-  selection, onSelectionChange}) => {
+  selection, onSelectionChange, defaultSelectedIds}) => {
   
   const isRemoteData = typeof(data) === 'function';
 
@@ -63,7 +64,7 @@ const NiceTable: FC<NiceTableProps> = ({
   const [sortBy, setSortBy] = useState(defaultSortBy);
   const [sortOrder, setSortOrder] = useState(defaultSortOrder);
   
-  const [selectedRowDataIds, setSelectedRowDataIds] = useState<any[]>([]);
+  const [selectedRowDataIds, setSelectedRowDataIds] = useState<any[]>(defaultSelectedIds || []);
   const [headerCheckedState, setHeaderCheckedState] = useState<CheckedState>(CheckedState.Unchecked);
 
   const loadData = (data:any[] | RemoteDataFn, pageIndex:number, pageSize:number, filterData:any, sortBy?:string, sortOrder?:string) => {
