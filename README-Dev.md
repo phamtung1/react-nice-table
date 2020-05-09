@@ -23,9 +23,15 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `yarn storybook`
 
+Run storybook
+
 ### `yarn build-storybook`
 
+Build storybook-static folder
+
 ### `yarn build:components`
+
+Build component to 'dist' folder
 
 ### `lerna publish` 
 
