@@ -98,8 +98,8 @@ type ColumnModel = {
 ```
 
 # TODO List
-- [] Localization
-- [] Actions column
+- [ ] Localization
+- [ ] Actions column
 
 # Licensee
 MIT
