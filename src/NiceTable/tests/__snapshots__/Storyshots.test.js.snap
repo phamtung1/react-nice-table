@@ -1,0 +1,894 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots NiceTable Custom Filtering 1`] = `
+<div
+  className="NiceTableRoot tableRoot-0-2-1 tableRoot-d8-0-2-29"
+>
+  <div
+    className="NiceTable-Filter"
+  >
+    <div>
+      <label>
+        Name: 
+      </label>
+      <input
+        className="demo-control"
+        onChange={[Function]}
+        type="text"
+      />
+      <label>
+        Age (&gt;=): 
+      </label>
+      <input
+        className="demo-control"
+        onChange={[Function]}
+        type="number"
+      />
+    </div>
+  </div>
+  <div
+    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d9-0-2-30 "
+  >
+    <table>
+      <thead>
+        <tr>
+          <th
+            className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d17-0-2-31"
+          >
+            Id
+          </th>
+          <th
+            className="undefined headcell-0-2-5 headcell-d18-0-2-32"
+          >
+            Name
+          </th>
+          <th
+            className="undefined headcell-0-2-5 headcell-d19-0-2-33"
+          >
+            Email
+          </th>
+          <th
+            className="NiceTableCell-alignRight headcell-0-2-5 headcell-d20-0-2-34"
+          >
+            Age
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            colSpan={4}
+            style={
+              Object {
+                "border": 0,
+                "textAlign": "center",
+              }
+            }
+          >
+            No data available
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    className="NiceTable-Footer"
+  >
+    <div
+      className="NiceTable-FooterToolbar"
+    />
+    <div
+      className="NiceTable-Pagination"
+    >
+      <div
+        className="NiceTable-Pagination-Text"
+      >
+        Rows per page:
+      </div>
+      <select
+        className="NiceTable-Pagination-Select"
+        onChange={[Function]}
+        value={10}
+      >
+        <option>
+          10
+        </option>
+        <option>
+          25
+        </option>
+        <option>
+          50
+        </option>
+      </select>
+      <div
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
+      >
+        <div
+          className="disabled"
+          onClick={[Function]}
+          role="button"
+        >
+          ❮
+        </div>
+        <div
+          className="NiceTable-Pagination-CurrentPage"
+        >
+          Page 
+          1
+           / 
+          0
+        </div>
+        <div
+          className="disabled"
+          onClick={[Function]}
+          role="button"
+        >
+          ❯
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots NiceTable Custom Rendering 1`] = `
+<div
+  className="NiceTableRoot tableRoot-0-2-1 tableRoot-d2-0-2-10"
+>
+  <div
+    className="NiceTable-Filter"
+  />
+  <div
+    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d3-0-2-11 "
+  >
+    <table>
+      <thead>
+        <tr>
+          <th
+            className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d4-0-2-12"
+          >
+            Id
+          </th>
+          <th
+            className="undefined headcell-0-2-5 headcell-d5-0-2-13"
+          >
+            Avatar
+          </th>
+          <th
+            className="undefined headcell-0-2-5 headcell-d6-0-2-14"
+          >
+            Name
+          </th>
+          <th
+            className="undefined headcell-0-2-5 headcell-d7-0-2-15"
+          >
+            Email
+          </th>
+          <th
+            className="NiceTableCell-alignRight headcell-0-2-5 headcell-d8-0-2-16"
+          >
+            Age
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            colSpan={5}
+            style={
+              Object {
+                "border": 0,
+                "textAlign": "center",
+              }
+            }
+          >
+            No data available
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`Storyshots NiceTable Default 1`] = `
+<div
+  className="NiceTableRoot tableRoot-0-2-1 tableRoot-d0-0-2-3"
+>
+  <div
+    className="NiceTable-Filter"
+  />
+  <div
+    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d1-0-2-4 "
+  >
+    <table>
+      <thead>
+        <tr>
+          <th
+            className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d0-0-2-6"
+          >
+            Id
+          </th>
+          <th
+            className="undefined headcell-0-2-5 headcell-d1-0-2-7"
+          >
+            Name
+          </th>
+          <th
+            className="undefined headcell-0-2-5 headcell-d2-0-2-8"
+          >
+            Email
+          </th>
+          <th
+            className="NiceTableCell-alignRight headcell-0-2-5 headcell-d3-0-2-9"
+          >
+            Age
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            colSpan={4}
+            style={
+              Object {
+                "border": 0,
+                "textAlign": "center",
+              }
+            }
+          >
+            No data available
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`Storyshots NiceTable Footer Toolbar 1`] = `
+<div
+  className="NiceTableRoot tableRoot-0-2-1 tableRoot-d4-0-2-17"
+>
+  <div
+    className="NiceTable-Filter"
+  />
+  <div
+    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d5-0-2-18 "
+  >
+    <table>
+      <thead>
+        <tr>
+          <th
+            className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d9-0-2-19"
+          >
+            Id
+          </th>
+          <th
+            className="undefined headcell-0-2-5 headcell-d10-0-2-20"
+          >
+            Name
+          </th>
+          <th
+            className="undefined headcell-0-2-5 headcell-d11-0-2-21"
+          >
+            Email
+          </th>
+          <th
+            className="NiceTableCell-alignRight headcell-0-2-5 headcell-d12-0-2-22"
+          >
+            Age
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            colSpan={4}
+            style={
+              Object {
+                "border": 0,
+                "textAlign": "center",
+              }
+            }
+          >
+            No data available
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    className="NiceTable-Footer"
+  >
+    <div
+      className="NiceTable-FooterToolbar"
+    >
+      <div
+        className="NiceTable-IconButton"
+        onClick={[Function]}
+        title="CSV"
+      >
+        <i
+          className="material-icons"
+        >
+          save
+        </i>
+        <div
+          className="NiceTable-IconButton-Label"
+        >
+          CSV
+        </div>
+      </div>
+      <div
+        className="NiceTable-IconButton"
+        onClick={[Function]}
+        title="PDF"
+      >
+        <i
+          className="material-icons"
+        >
+          save_alt
+        </i>
+        <div
+          className="NiceTable-IconButton-Label"
+        >
+          PDF
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots NiceTable Large Data Set 1`] = `
+Array [
+  <button
+    onClick={[Function]}
+  >
+    Clear Data
+  </button>,
+  <button
+    onClick={[Function]}
+    style={
+      Object {
+        "margin": "0 10px",
+      }
+    }
+  >
+    Add 1000 rows
+  </button>,
+  <span>
+    Total rows = 
+    0
+  </span>,
+  <div
+    className="NiceTableRoot tableRoot-0-2-1 tableRoot-d14-0-2-47"
+  >
+    <div
+      className="NiceTable-Filter"
+    />
+    <div
+      className="NiceTableContainer tableContainer-0-2-2 tableContainer-d15-0-2-48 "
+    >
+      <table>
+        <thead>
+          <tr>
+            <th
+              className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d29-0-2-49"
+            >
+              <span
+                className="NiceTableSortLabel"
+                onClick={[Function]}
+              >
+                <i
+                  className="material-icons"
+                />
+                Id
+              </span>
+            </th>
+            <th
+              className="undefined headcell-0-2-5 headcell-d30-0-2-50"
+            >
+              <span
+                className="NiceTableSortLabel"
+                onClick={[Function]}
+              >
+                <i
+                  className="material-icons"
+                />
+                Name
+              </span>
+            </th>
+            <th
+              className="undefined headcell-0-2-5 headcell-d31-0-2-51"
+            >
+              <span
+                className="NiceTableSortLabel"
+                onClick={[Function]}
+              >
+                <i
+                  className="material-icons"
+                />
+                Email
+              </span>
+            </th>
+            <th
+              className="NiceTableCell-alignRight headcell-0-2-5 headcell-d32-0-2-52"
+            >
+              <span
+                className="NiceTableSortLabel"
+                onClick={[Function]}
+              >
+                <i
+                  className="material-icons"
+                />
+                Age
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              colSpan={4}
+              style={
+                Object {
+                  "border": 0,
+                  "textAlign": "center",
+                }
+              }
+            >
+              No data available
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Storyshots NiceTable Pagination 1`] = `
+<div
+  className="NiceTableRoot tableRoot-0-2-1 tableRoot-d6-0-2-23"
+>
+  <div
+    className="NiceTable-Filter"
+  />
+  <div
+    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d7-0-2-24 "
+  >
+    <table>
+      <thead>
+        <tr>
+          <th
+            className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d13-0-2-25"
+          >
+            Id
+          </th>
+          <th
+            className="undefined headcell-0-2-5 headcell-d14-0-2-26"
+          >
+            Name
+          </th>
+          <th
+            className="undefined headcell-0-2-5 headcell-d15-0-2-27"
+          >
+            Email
+          </th>
+          <th
+            className="NiceTableCell-alignRight headcell-0-2-5 headcell-d16-0-2-28"
+          >
+            Age
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            colSpan={4}
+            style={
+              Object {
+                "border": 0,
+                "textAlign": "center",
+              }
+            }
+          >
+            No data available
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    className="NiceTable-Footer"
+  >
+    <div
+      className="NiceTable-FooterToolbar"
+    />
+    <div
+      className="NiceTable-Pagination"
+    >
+      <div
+        className="NiceTable-Pagination-Text"
+      >
+        Rows per page:
+      </div>
+      <select
+        className="NiceTable-Pagination-Select"
+        onChange={[Function]}
+        value={10}
+      >
+        <option>
+          10
+        </option>
+        <option>
+          25
+        </option>
+        <option>
+          50
+        </option>
+      </select>
+      <div
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
+      >
+        <div
+          className="disabled"
+          onClick={[Function]}
+          role="button"
+        >
+          ❮
+        </div>
+        <div
+          className="NiceTable-Pagination-CurrentPage"
+        >
+          Page 
+          1
+           / 
+          0
+        </div>
+        <div
+          className="disabled"
+          onClick={[Function]}
+          role="button"
+        >
+          ❯
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots NiceTable Remote Data Loading 1`] = `
+Array [
+  <div>
+    Check the console log to see the query data
+  </div>,
+  <div
+    className="NiceTableRoot tableRoot-0-2-1 tableRoot-d12-0-2-41"
+  >
+    <div
+      className="NiceTable-Filter"
+    >
+      <div>
+        <label>
+          Name: 
+        </label>
+        <input
+          className="demo-control"
+          onChange={[Function]}
+          type="text"
+        />
+        <label>
+          Age (&gt;=): 
+        </label>
+        <input
+          className="demo-control"
+          onChange={[Function]}
+          type="number"
+        />
+      </div>
+    </div>
+    <div
+      className="NiceTableContainer tableContainer-0-2-2 tableContainer-d13-0-2-42 "
+    >
+      <table>
+        <thead>
+          <tr>
+            <th
+              className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d25-0-2-43"
+            >
+              <span
+                className="NiceTableSortLabel"
+                onClick={[Function]}
+              >
+                <i
+                  className="material-icons"
+                >
+                  arrow_upward
+                </i>
+                Id
+              </span>
+            </th>
+            <th
+              className="undefined headcell-0-2-5 headcell-d26-0-2-44"
+            >
+              <span
+                className="NiceTableSortLabel"
+                onClick={[Function]}
+              >
+                <i
+                  className="material-icons"
+                />
+                Name
+              </span>
+            </th>
+            <th
+              className="undefined headcell-0-2-5 headcell-d27-0-2-45"
+            >
+              <span
+                className="NiceTableSortLabel"
+                onClick={[Function]}
+              >
+                <i
+                  className="material-icons"
+                />
+                Email
+              </span>
+            </th>
+            <th
+              className="NiceTableCell-alignRight headcell-0-2-5 headcell-d28-0-2-46"
+            >
+              <span
+                className="NiceTableSortLabel"
+                onClick={[Function]}
+              >
+                <i
+                  className="material-icons"
+                />
+                Age
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              colSpan={4}
+              style={
+                Object {
+                  "border": 0,
+                  "textAlign": "center",
+                }
+              }
+            >
+              No data available
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      className="NiceTable-Footer"
+    >
+      <div
+        className="NiceTable-FooterToolbar"
+      />
+      <div
+        className="NiceTable-Pagination"
+      >
+        <div
+          className="NiceTable-Pagination-Text"
+        >
+          Rows per page:
+        </div>
+        <select
+          className="NiceTable-Pagination-Select"
+          onChange={[Function]}
+          value={10}
+        >
+          <option>
+            10
+          </option>
+          <option>
+            25
+          </option>
+          <option>
+            50
+          </option>
+        </select>
+        <div
+          style={
+            Object {
+              "display": "flex",
+            }
+          }
+        >
+          <div
+            className="disabled"
+            onClick={[Function]}
+            role="button"
+          >
+            ❮
+          </div>
+          <div
+            className="NiceTable-Pagination-CurrentPage"
+          >
+            Page 
+            1
+             / 
+            0
+          </div>
+          <div
+            className="disabled"
+            onClick={[Function]}
+            role="button"
+          >
+            ❯
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`Storyshots NiceTable Sorting 1`] = `
+<div
+  className="NiceTableRoot tableRoot-0-2-1 tableRoot-d10-0-2-35"
+>
+  <div
+    className="NiceTable-Filter"
+  />
+  <div
+    className="NiceTableContainer tableContainer-0-2-2 tableContainer-d11-0-2-36 "
+  >
+    <table>
+      <thead>
+        <tr>
+          <th
+            className="NiceTableCell-alignCenter headcell-0-2-5 headcell-d21-0-2-37"
+          >
+            <span
+              className="NiceTableSortLabel"
+              onClick={[Function]}
+            >
+              <i
+                className="material-icons"
+              >
+                arrow_upward
+              </i>
+              Id
+            </span>
+          </th>
+          <th
+            className="undefined headcell-0-2-5 headcell-d22-0-2-38"
+          >
+            <span
+              className="NiceTableSortLabel"
+              onClick={[Function]}
+            >
+              <i
+                className="material-icons"
+              />
+              Name
+            </span>
+          </th>
+          <th
+            className="undefined headcell-0-2-5 headcell-d23-0-2-39"
+          >
+            <span
+              className="NiceTableSortLabel"
+              onClick={[Function]}
+            >
+              <i
+                className="material-icons"
+              />
+              Email
+            </span>
+          </th>
+          <th
+            className="NiceTableCell-alignRight headcell-0-2-5 headcell-d24-0-2-40"
+          >
+            <span
+              className="NiceTableSortLabel"
+              onClick={[Function]}
+            >
+              <i
+                className="material-icons"
+              />
+              Age
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            colSpan={4}
+            style={
+              Object {
+                "border": 0,
+                "textAlign": "center",
+              }
+            }
+          >
+            No data available
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    className="NiceTable-Footer"
+  >
+    <div
+      className="NiceTable-FooterToolbar"
+    />
+    <div
+      className="NiceTable-Pagination"
+    >
+      <div
+        className="NiceTable-Pagination-Text"
+      >
+        Rows per page:
+      </div>
+      <select
+        className="NiceTable-Pagination-Select"
+        onChange={[Function]}
+        value={10}
+      >
+        <option>
+          10
+        </option>
+        <option>
+          25
+        </option>
+        <option>
+          50
+        </option>
+      </select>
+      <div
+        style={
+          Object {
+            "display": "flex",
+          }
+        }
+      >
+        <div
+          className="disabled"
+          onClick={[Function]}
+          role="button"
+        >
+          ❮
+        </div>
+        <div
+          className="NiceTable-Pagination-CurrentPage"
+        >
+          Page 
+          1
+           / 
+          0
+        </div>
+        <div
+          className="disabled"
+          onClick={[Function]}
+          role="button"
+        >
+          ❯
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
