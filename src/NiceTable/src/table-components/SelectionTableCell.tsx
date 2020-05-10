@@ -27,7 +27,7 @@ const SelectionTableCell:FC<Props> = ({checkedState, onChange, rowDataId, hideCh
   }
 
   return (
-    <td className={`NiceTableCell-noPadding ${alignClass}`} style={{width:'35px'}}>{icon}</td>
+    <td className={`NiceTableCell-Checkbox NiceTableCell-noPadding ${alignClass}`} style={{width:'35px'}}>{icon}</td>
   );
 }
 

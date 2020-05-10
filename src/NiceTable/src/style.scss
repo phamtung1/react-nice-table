@@ -80,6 +80,10 @@ body {
     }
   }
 
+  .NiceTableCell-Checkbox{
+    color:#1E90FF;
+  }
+
   // Footer
   .NiceTable-Footer {
     width: 100%;
@@ -132,8 +136,6 @@ body {
     margin: 0.2rem;
     display:flex;
     align-items: center;
-    
-    color: #1E90FF;
     user-select: none; 
     
     &.disabled {
