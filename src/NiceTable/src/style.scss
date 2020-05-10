@@ -62,6 +62,10 @@ body {
     }
   }
 
+  .NiceTable-Row-Selected {
+    background-color: #ffffee;
+  }
+
   .NiceTableCell {
     &-alignRight {
       text-align: right;
