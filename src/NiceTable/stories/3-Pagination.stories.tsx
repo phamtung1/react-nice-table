@@ -11,7 +11,7 @@ export default {
   excludeStories: /.*Data$/
 };
 
-const tableData = createData(50);
+const tableData = createData(36);
 const tableColumns:ColumnModel[] = [
   { title: 'Id', field: 'id', align:'center', width: '50px'},
   { title: 'Name', field: 'name'},

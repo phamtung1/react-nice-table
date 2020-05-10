@@ -15,7 +15,7 @@ or yarn:
 ```
 yarn add react-nice-table
 ```
-Add material icons font if you use features related to it (sorting, footer toolbar, selection):
+Add material icons font if you use features related to it (pagination, sorting, footer toolbar, selection):
 
 ```html
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />

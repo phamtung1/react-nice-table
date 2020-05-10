@@ -95,51 +95,23 @@ body {
   }
 
   .NiceTable-Pagination div {
-    padding: 0.5rem 1rem;
+    padding: 0.3rem;
   }
-
-  .NiceTable-Pagination div[role=button] {
-    cursor: pointer;
-    color: black;
-    float: left;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    transition: background-color .3s;
-    border-radius: 50%;
-  }
-  
-  .NiceTable-Pagination div[role=button].active {
-    background-color: #4CAF50;
-    color: white;
-    border: 1px solid #4CAF50;
-  }
-
-  .NiceTable-Pagination div[role=button].disabled {
-    cursor: default;
-    color: #bbb;
-  }
-
-  .NiceTable-Pagination div[role=button]:hover:not(.active):not(.disabled) {background-color: #ddd;}
 
   .NiceTable-Pagination-Select{
-    margin: 0.5rem;
-    padding: 0 1rem;
-    border: 1px solid #ddd;
+    margin: 0.6rem;
+    padding: 0 0.5rem;
+    border: 0;
   }
 
-  .NiceTable-Pagination-Text{
-    padding: 0.5rem 0.5rem;
-    line-height: 2rem;
+  .NiceTable-Pagination-CurrentPage {
+    white-space: nowrap;
+    font-size:0.8rem;
+    line-height: 1.8rem;
   }
 
   @media only screen and (max-width: 350px) {
     .NiceTable-Pagination-CurrentPage {
-      display: none;
-    }
-  }
-
-  @media only screen and (max-width: 600px) {
-    .NiceTable-Pagination-Text {
       display: none;
     }
   }
@@ -150,11 +122,22 @@ body {
   }
 
   .NiceTable-Button {
+    transition: background-color .4s;
     cursor: pointer;
     padding:  0.3rem;
     margin: 0.2rem;
     display:flex;
     align-items: center;
+    
+    color: #1E90FF;
+    user-select: none; 
+    
+    &.disabled {
+      cursor: default;
+      color: #bbb;
+    }
+
+    &:hover:not(.active):not(.disabled) {background-color: #ddd;}
   }
 
   .NiceTable-Button-Icon {
@@ -171,12 +154,8 @@ body {
     .material-icons {
       font-size:1.2rem;
       text-indent: 0;
-      color: #1E90FF;
-      user-select: none; 
     }
   }
-
-  .NiceTable-Button:hover {background-color: #ddd;}
 
   .NiceTable-Button-Label {
     font-size:0.7rem;
