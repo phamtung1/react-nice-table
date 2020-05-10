@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { ColumnModel } from '../types/DataModel';
-import TableCell from './TableCell';
-import SelectionTableCell from '../table-components/SelectionTableCell';
+import TableRow from './TableRow';
 import {CheckedState} from '../types/Enum';
 import AppConsts from '../types/AppConsts';
 
@@ -11,10 +10,11 @@ type Props = {
   selection?:boolean;
   onSelectionChange?(rowDataId:any, newState: CheckedState):void;
   selectedRowDataIds?:any[];
+  fullRowSelectable?:boolean;
   dataIdField?:string;
 }
 
-const TableBody:FC<Props> = ({data, columns, selection, onSelectionChange, selectedRowDataIds, dataIdField = AppConsts.DefaultDataIdField}) => {
+const TableBody:FC<Props> = ({data, columns, selection, onSelectionChange, selectedRowDataIds, fullRowSelectable, dataIdField = AppConsts.DefaultDataIdField}) => {
 
   const renderBodyData = () => {
     return data.map((item:any, rowIndex:number) => {
@@ -23,24 +23,19 @@ const TableBody:FC<Props> = ({data, columns, selection, onSelectionChange, selec
         onSelectionChange && onSelectionChange(rowDataId, newState);
       };
 
-      const checkState = selectedRowDataIds && selectedRowDataIds.indexOf(item[dataIdField]) > -1 ? CheckedState.Checked : CheckedState.Unchecked;
+      const isSelected = selectedRowDataIds && selectedRowDataIds.indexOf(item[dataIdField]) > -1;
       
-      const selectionCell = selection && <SelectionTableCell checkedState={checkState} rowDataId={item[dataIdField]} onChange={handleSelectionChange}/>;
-      const rowClassName = selection && checkState === CheckedState.Checked ? 'NiceTable-Row-Selected' : '';
-      
-      return (
-        <tr key={rowIndex} className={rowClassName}>
-          {selectionCell}
-          {columns.map((column:ColumnModel, colIndex:number) => {
-            const content = column.render ? column.render(item) : item[column.field!];
-          return (
-            <TableCell key={colIndex} align={column.align}>
-              {content}
-            </TableCell>          
-          );
-          })}
-        </tr>);
-      });
+      return <TableRow 
+              rowIndex={rowIndex} 
+              columns={columns} 
+              rowData={item} 
+              selection={selection} 
+              selected={isSelected} 
+              dataIdField={dataIdField}
+              onSelectionChange={handleSelectionChange}
+              fullRowSelectable={fullRowSelectable}
+               />
+    });
   }
 
   return (
