@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import IconButton from '../core-components/IconButton';
 
 type Props = {
   pageSizeOptions: number[];
@@ -15,6 +16,11 @@ function getTotalPages(totalRows: number, pageSize: number) {
 
 const TablePagination:FC<Props> = ({pageIndex, totalRows, pageSizeOptions, pageSize, onChangePageSize, onChangePageIndex}) => {
     const totalPages = getTotalPages(totalRows, pageSize);
+    
+    const firstPage = () => {
+        handleChangePageIndex(0);
+    }
+
     const previousPage = () => {
         if(pageIndex > 0){
             handleChangePageIndex(pageIndex - 1);
@@ -27,24 +33,34 @@ const TablePagination:FC<Props> = ({pageIndex, totalRows, pageSizeOptions, pageS
         }
     }
 
-    const handleChangePageSize = (value:number) => {
-        onChangePageSize && onChangePageSize(value);
+    const lastPage = () => {
+        handleChangePageIndex(totalPages - 1);
+    }
+
+    const handleChangePageSize = (event:any) => {
+        onChangePageSize && onChangePageSize(parseInt(event.target.value));
     }
 
     const handleChangePageIndex = (value:number) => {
         onChangePageIndex && onChangePageIndex(value);
     }
     
+    const startIndex = pageIndex * pageSize;
+    let endIndex = startIndex + pageSize;
+    if(endIndex > totalRows){
+        endIndex = totalRows;
+    }
   return (
     <div className="NiceTable-Pagination">
-        <div  className="NiceTable-Pagination-Text">Rows per page:</div>
-        <select className="NiceTable-Pagination-Select" onChange={(event:any) => handleChangePageSize(parseInt(event.target.value))} value={pageSize}>
-            {pageSizeOptions.map((value:number) => <option key={value}>{value}</option>)}
+        <select className="NiceTable-Pagination-Select" onChange={handleChangePageSize} value={pageSize}>
+            {pageSizeOptions.map((value:number) => <option key={value} value={value}>{value} rows</option>)}
         </select>
         <div style={{display:'flex'}}>
-            <div role="button" className={pageIndex === 0 ? 'disabled' : ''} onClick={() => previousPage()}>❮</div>
-            <div className='NiceTable-Pagination-CurrentPage'>Page {pageIndex + 1} / {totalPages}</div>
-            <div role="button" className={pageIndex >= totalPages - 1 ? 'disabled' : ''} onClick={() => nextPage()}>❯</div>
+            <IconButton disabled={pageIndex === 0} icon='first_page' color='#000' onClick={firstPage} /> 
+            <IconButton disabled={pageIndex === 0} icon='chevron_left' color='#000' onClick={previousPage} /> 
+            <div className='NiceTable-Pagination-CurrentPage'>{startIndex + 1}-{endIndex} of {totalRows}</div>
+            <IconButton disabled={pageIndex >= totalPages - 1} icon='chevron_right' color='#000' onClick={nextPage} /> 
+            <IconButton disabled={pageIndex >= totalPages - 1} icon='last_page' color='#000' onClick={lastPage} /> 
         </div>
     </div>
   );

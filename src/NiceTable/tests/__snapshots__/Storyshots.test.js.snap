@@ -80,24 +80,28 @@ exports[`Storyshots NiceTable Custom Filtering 1`] = `
     <div
       className="NiceTable-Pagination"
     >
-      <div
-        className="NiceTable-Pagination-Text"
-      >
-        Rows per page:
-      </div>
       <select
         className="NiceTable-Pagination-Select"
         onChange={[Function]}
         value={10}
       >
-        <option>
+        <option
+          value={10}
+        >
           10
+           rows
         </option>
-        <option>
+        <option
+          value={25}
+        >
           25
+           rows
         </option>
-        <option>
+        <option
+          value={50}
+        >
           50
+           rows
         </option>
       </select>
       <div
@@ -108,26 +112,73 @@ exports[`Storyshots NiceTable Custom Filtering 1`] = `
         }
       >
         <div
-          className="disabled"
+          className="NiceTable-Button NiceTable-Button-Icon disabled"
           onClick={[Function]}
-          role="button"
+          style={
+            Object {
+              "color": "",
+            }
+          }
         >
-          ❮
+          <i
+            className="material-icons"
+          >
+            first_page
+          </i>
+        </div>
+        <div
+          className="NiceTable-Button NiceTable-Button-Icon disabled"
+          onClick={[Function]}
+          style={
+            Object {
+              "color": "",
+            }
+          }
+        >
+          <i
+            className="material-icons"
+          >
+            chevron_left
+          </i>
         </div>
         <div
           className="NiceTable-Pagination-CurrentPage"
         >
-          Page 
           1
-           / 
+          -
+          0
+           of 
           0
         </div>
         <div
-          className="disabled"
+          className="NiceTable-Button NiceTable-Button-Icon disabled"
           onClick={[Function]}
-          role="button"
+          style={
+            Object {
+              "color": "",
+            }
+          }
         >
-          ❯
+          <i
+            className="material-icons"
+          >
+            chevron_right
+          </i>
+        </div>
+        <div
+          className="NiceTable-Button NiceTable-Button-Icon disabled"
+          onClick={[Function]}
+          style={
+            Object {
+              "color": "",
+            }
+          }
+        >
+          <i
+            className="material-icons"
+          >
+            last_page
+          </i>
         </div>
       </div>
     </div>
@@ -273,8 +324,13 @@ Array [
               }
             >
               <div
-                className="NiceTable-Button NiceTable-Button-Icon"
+                className="NiceTable-Button NiceTable-Button-Icon "
                 onClick={[Function]}
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
               >
                 <i
                   className="material-icons"
@@ -331,24 +387,28 @@ Array [
       <div
         className="NiceTable-Pagination"
       >
-        <div
-          className="NiceTable-Pagination-Text"
-        >
-          Rows per page:
-        </div>
         <select
           className="NiceTable-Pagination-Select"
           onChange={[Function]}
           value={10}
         >
-          <option>
+          <option
+            value={10}
+          >
             10
+             rows
           </option>
-          <option>
+          <option
+            value={25}
+          >
             25
+             rows
           </option>
-          <option>
+          <option
+            value={50}
+          >
             50
+             rows
           </option>
         </select>
         <div
@@ -359,26 +419,73 @@ Array [
           }
         >
           <div
-            className="disabled"
+            className="NiceTable-Button NiceTable-Button-Icon disabled"
             onClick={[Function]}
-            role="button"
+            style={
+              Object {
+                "color": "",
+              }
+            }
           >
-            ❮
+            <i
+              className="material-icons"
+            >
+              first_page
+            </i>
+          </div>
+          <div
+            className="NiceTable-Button NiceTable-Button-Icon disabled"
+            onClick={[Function]}
+            style={
+              Object {
+                "color": "",
+              }
+            }
+          >
+            <i
+              className="material-icons"
+            >
+              chevron_left
+            </i>
           </div>
           <div
             className="NiceTable-Pagination-CurrentPage"
           >
-            Page 
             1
-             / 
+            -
+            0
+             of 
             0
           </div>
           <div
-            className="disabled"
+            className="NiceTable-Button NiceTable-Button-Icon disabled"
             onClick={[Function]}
-            role="button"
+            style={
+              Object {
+                "color": "",
+              }
+            }
           >
-            ❯
+            <i
+              className="material-icons"
+            >
+              chevron_right
+            </i>
+          </div>
+          <div
+            className="NiceTable-Button NiceTable-Button-Icon disabled"
+            onClick={[Function]}
+            style={
+              Object {
+                "color": "",
+              }
+            }
+          >
+            <i
+              className="material-icons"
+            >
+              last_page
+            </i>
           </div>
         </div>
       </div>
@@ -656,24 +763,28 @@ exports[`Storyshots NiceTable Pagination 1`] = `
     <div
       className="NiceTable-Pagination"
     >
-      <div
-        className="NiceTable-Pagination-Text"
-      >
-        Rows per page:
-      </div>
       <select
         className="NiceTable-Pagination-Select"
         onChange={[Function]}
         value={10}
       >
-        <option>
+        <option
+          value={10}
+        >
           10
+           rows
         </option>
-        <option>
+        <option
+          value={25}
+        >
           25
+           rows
         </option>
-        <option>
+        <option
+          value={50}
+        >
           50
+           rows
         </option>
       </select>
       <div
@@ -684,26 +795,73 @@ exports[`Storyshots NiceTable Pagination 1`] = `
         }
       >
         <div
-          className="disabled"
+          className="NiceTable-Button NiceTable-Button-Icon disabled"
           onClick={[Function]}
-          role="button"
+          style={
+            Object {
+              "color": "",
+            }
+          }
         >
-          ❮
+          <i
+            className="material-icons"
+          >
+            first_page
+          </i>
+        </div>
+        <div
+          className="NiceTable-Button NiceTable-Button-Icon disabled"
+          onClick={[Function]}
+          style={
+            Object {
+              "color": "",
+            }
+          }
+        >
+          <i
+            className="material-icons"
+          >
+            chevron_left
+          </i>
         </div>
         <div
           className="NiceTable-Pagination-CurrentPage"
         >
-          Page 
           1
-           / 
+          -
+          0
+           of 
           0
         </div>
         <div
-          className="disabled"
+          className="NiceTable-Button NiceTable-Button-Icon disabled"
           onClick={[Function]}
-          role="button"
+          style={
+            Object {
+              "color": "",
+            }
+          }
         >
-          ❯
+          <i
+            className="material-icons"
+          >
+            chevron_right
+          </i>
+        </div>
+        <div
+          className="NiceTable-Button NiceTable-Button-Icon disabled"
+          onClick={[Function]}
+          style={
+            Object {
+              "color": "",
+            }
+          }
+        >
+          <i
+            className="material-icons"
+          >
+            last_page
+          </i>
         </div>
       </div>
     </div>
@@ -834,24 +992,28 @@ Array [
       <div
         className="NiceTable-Pagination"
       >
-        <div
-          className="NiceTable-Pagination-Text"
-        >
-          Rows per page:
-        </div>
         <select
           className="NiceTable-Pagination-Select"
           onChange={[Function]}
           value={10}
         >
-          <option>
+          <option
+            value={10}
+          >
             10
+             rows
           </option>
-          <option>
+          <option
+            value={25}
+          >
             25
+             rows
           </option>
-          <option>
+          <option
+            value={50}
+          >
             50
+             rows
           </option>
         </select>
         <div
@@ -862,26 +1024,73 @@ Array [
           }
         >
           <div
-            className="disabled"
+            className="NiceTable-Button NiceTable-Button-Icon disabled"
             onClick={[Function]}
-            role="button"
+            style={
+              Object {
+                "color": "",
+              }
+            }
           >
-            ❮
+            <i
+              className="material-icons"
+            >
+              first_page
+            </i>
+          </div>
+          <div
+            className="NiceTable-Button NiceTable-Button-Icon disabled"
+            onClick={[Function]}
+            style={
+              Object {
+                "color": "",
+              }
+            }
+          >
+            <i
+              className="material-icons"
+            >
+              chevron_left
+            </i>
           </div>
           <div
             className="NiceTable-Pagination-CurrentPage"
           >
-            Page 
             1
-             / 
+            -
+            0
+             of 
             0
           </div>
           <div
-            className="disabled"
+            className="NiceTable-Button NiceTable-Button-Icon disabled"
             onClick={[Function]}
-            role="button"
+            style={
+              Object {
+                "color": "",
+              }
+            }
           >
-            ❯
+            <i
+              className="material-icons"
+            >
+              chevron_right
+            </i>
+          </div>
+          <div
+            className="NiceTable-Button NiceTable-Button-Icon disabled"
+            onClick={[Function]}
+            style={
+              Object {
+                "color": "",
+              }
+            }
+          >
+            <i
+              className="material-icons"
+            >
+              last_page
+            </i>
           </div>
         </div>
       </div>
@@ -924,8 +1133,13 @@ Array [
               }
             >
               <div
-                className="NiceTable-Button NiceTable-Button-Icon"
+                className="NiceTable-Button NiceTable-Button-Icon "
                 onClick={[Function]}
+                style={
+                  Object {
+                    "color": undefined,
+                  }
+                }
               >
                 <i
                   className="material-icons"
@@ -982,24 +1196,28 @@ Array [
       <div
         className="NiceTable-Pagination"
       >
-        <div
-          className="NiceTable-Pagination-Text"
-        >
-          Rows per page:
-        </div>
         <select
           className="NiceTable-Pagination-Select"
           onChange={[Function]}
           value={10}
         >
-          <option>
+          <option
+            value={10}
+          >
             10
+             rows
           </option>
-          <option>
+          <option
+            value={25}
+          >
             25
+             rows
           </option>
-          <option>
+          <option
+            value={50}
+          >
             50
+             rows
           </option>
         </select>
         <div
@@ -1010,26 +1228,73 @@ Array [
           }
         >
           <div
-            className="disabled"
+            className="NiceTable-Button NiceTable-Button-Icon disabled"
             onClick={[Function]}
-            role="button"
+            style={
+              Object {
+                "color": "",
+              }
+            }
           >
-            ❮
+            <i
+              className="material-icons"
+            >
+              first_page
+            </i>
+          </div>
+          <div
+            className="NiceTable-Button NiceTable-Button-Icon disabled"
+            onClick={[Function]}
+            style={
+              Object {
+                "color": "",
+              }
+            }
+          >
+            <i
+              className="material-icons"
+            >
+              chevron_left
+            </i>
           </div>
           <div
             className="NiceTable-Pagination-CurrentPage"
           >
-            Page 
             1
-             / 
+            -
+            0
+             of 
             0
           </div>
           <div
-            className="disabled"
+            className="NiceTable-Button NiceTable-Button-Icon disabled"
             onClick={[Function]}
-            role="button"
+            style={
+              Object {
+                "color": "",
+              }
+            }
           >
-            ❯
+            <i
+              className="material-icons"
+            >
+              chevron_right
+            </i>
+          </div>
+          <div
+            className="NiceTable-Button NiceTable-Button-Icon disabled"
+            onClick={[Function]}
+            style={
+              Object {
+                "color": "",
+              }
+            }
+          >
+            <i
+              className="material-icons"
+            >
+              last_page
+            </i>
           </div>
         </div>
       </div>
@@ -1138,24 +1403,28 @@ exports[`Storyshots NiceTable Sorting 1`] = `
     <div
       className="NiceTable-Pagination"
     >
-      <div
-        className="NiceTable-Pagination-Text"
-      >
-        Rows per page:
-      </div>
       <select
         className="NiceTable-Pagination-Select"
         onChange={[Function]}
         value={10}
       >
-        <option>
+        <option
+          value={10}
+        >
           10
+           rows
         </option>
-        <option>
+        <option
+          value={25}
+        >
           25
+           rows
         </option>
-        <option>
+        <option
+          value={50}
+        >
           50
+           rows
         </option>
       </select>
       <div
@@ -1166,26 +1435,73 @@ exports[`Storyshots NiceTable Sorting 1`] = `
         }
       >
         <div
-          className="disabled"
+          className="NiceTable-Button NiceTable-Button-Icon disabled"
           onClick={[Function]}
-          role="button"
+          style={
+            Object {
+              "color": "",
+            }
+          }
         >
-          ❮
+          <i
+            className="material-icons"
+          >
+            first_page
+          </i>
+        </div>
+        <div
+          className="NiceTable-Button NiceTable-Button-Icon disabled"
+          onClick={[Function]}
+          style={
+            Object {
+              "color": "",
+            }
+          }
+        >
+          <i
+            className="material-icons"
+          >
+            chevron_left
+          </i>
         </div>
         <div
           className="NiceTable-Pagination-CurrentPage"
         >
-          Page 
           1
-           / 
+          -
+          0
+           of 
           0
         </div>
         <div
-          className="disabled"
+          className="NiceTable-Button NiceTable-Button-Icon disabled"
           onClick={[Function]}
-          role="button"
+          style={
+            Object {
+              "color": "",
+            }
+          }
         >
-          ❯
+          <i
+            className="material-icons"
+          >
+            chevron_right
+          </i>
+        </div>
+        <div
+          className="NiceTable-Button NiceTable-Button-Icon disabled"
+          onClick={[Function]}
+          style={
+            Object {
+              "color": "",
+            }
+          }
+        >
+          <i
+            className="material-icons"
+          >
+            last_page
+          </i>
         </div>
       </div>
     </div>
