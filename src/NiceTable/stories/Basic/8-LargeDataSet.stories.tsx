@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { ColumnModel } from '../src/types/DataModel';
-import NiceTable from '../src/NiceTable';
-import { createData } from './storyhelper';
+import { ColumnModel } from '../../src/types/DataModel';
+import NiceTable from '../../src/NiceTable';
+import { createData } from '../storyhelper';
 
 export default {
   component:NiceTable,
-  title: 'NiceTable',
+  title: 'Basic',
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/
 };

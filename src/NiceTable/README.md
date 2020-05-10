@@ -22,6 +22,7 @@ Add material icons font if you some features related to it:
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 ```
 
+List of icons: https://material.io/resources/icons/?icon=picture_as_pdf&style=baseline
 ## Demo
 
 [DEMO with Code examples](https://phamtung1.github.io/react-nice-table/storybook-static/)

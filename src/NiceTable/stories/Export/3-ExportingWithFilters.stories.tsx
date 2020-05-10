@@ -1,17 +1,15 @@
 import React, {useState} from 'react';
 
-import { ColumnModel, FilterDataModel } from '../src/types/DataModel';
-import NiceTable from '../src/NiceTable';
-import { FilterComponentProps } from '../src/types/FilterComponentProps';
-import { createData } from './storyhelper';
+import { ColumnModel, FilterDataModel, ExportButtonModel } from '../../src/types/DataModel';
+import NiceTable from '../../src/NiceTable';
+import { FilterComponentProps } from '../../src/types/FilterComponentProps';
+import { createData } from '../storyhelper';
 
-import './demo.css';
+import '../demo.css';
 
 export default {
   component:NiceTable,
-  title: 'NiceTable',
-  // Our exports that end in "Data" are not stories.
-  excludeStories: /.*Data$/,
+  title: 'Export'
 };
 
 const tableColumns:ColumnModel[] = [
@@ -22,17 +20,23 @@ const tableColumns:ColumnModel[] = [
 ];
 
 const tableData = createData(50);
+const exportButtons:ExportButtonModel[] = [
+  {
+    icon:'save',
+    label:'Export CSV',
+    exportFn: (columns:ColumnModel[], data:any[]) => {
+      console.log(data)
+      alert('Implement a code to export ' + data.length +' rows');
+    }
+  }
+];
 
 // Component containing filter controls  
 const CustomFilter: React.FC<FilterComponentProps> = ({onChange}) => {
   const defaultFilterData:FilterDataModel = {
     name: {
       value: '',
-      rule: '' // always use indexOf() for string value
-    },
-    age: {
-      value: 0,
-      rule: '>=' // filter all ages greater than this
+      rule: ''
     }
   };
 
@@ -44,23 +48,15 @@ const CustomFilter: React.FC<FilterComponentProps> = ({onChange}) => {
     onChange && onChange(newData);
   }
 
-  const handleChangeAge =(value:number) => {
-    const newData = { ...filterData, age: { value : value, rule: filterData.age.rule }};
-    setFilterData(newData);
-    onChange && onChange(newData);
-  }
-
   return (
     <div>
       <label>Name: </label>
       <input className='demo-control' type='text' onChange={(event:any) => handleChangeName(event.target.value)} />
-      <label>Age (>=): </label>
-      <input className='demo-control' type='number' onChange={(event:any) => handleChangeAge(parseInt(event.target.value))} />
     </div>
   );
 }
 
-export const CustomFiltering = () => {
+export const ExportingWithFilters = () => {
   const [filterData, setFilterData] = useState(undefined);
 
   return (
@@ -69,6 +65,9 @@ export const CustomFiltering = () => {
         filterComponent={<CustomFilter onChange={setFilterData} />} 
         columns={tableColumns} 
         data={tableData} 
-        hasPagination={true} height="300px"/>
+        sortable={true}
+        exportButtons={exportButtons}
+        hasPagination={true} 
+        height="300px"/>
   );
 }

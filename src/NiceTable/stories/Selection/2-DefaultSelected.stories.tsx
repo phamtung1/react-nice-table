@@ -33,7 +33,7 @@ export const DefaultSelectedRows = () => {
       data={tableData} 
       hasPagination={true} 
       height="300px" 
-      selection={true} 
+      selectable={true} 
       onSelectionChange={handleSelectionChange}
       defaultSelectedIds={DefaultSelectedIds}
       />

@@ -47,7 +47,7 @@ function getShowingData(params: DataQueryModel, data:any[]) : DataResultModel {
     if(typeof(data) === 'function'){
       return {
         totalRows: 0,
-        data: []
+        currentPageData: []
       } 
     }
   
@@ -67,15 +67,17 @@ function getShowingData(params: DataQueryModel, data:any[]) : DataResultModel {
     if(!params.pageSize){
       return {
         totalRows: totalRows,
-        data: result
+        currentPageData: result
       } 
     }
   
+    const filteredData = result;
     result = result.slice(params.pageIndex * params.pageSize, params.pageIndex * params.pageSize + params.pageSize);
     return {
       totalRows: totalRows,
-      data: result
-    } 
+      currentPageData: result,
+      filteredData: filteredData
+    }
   }
   
 

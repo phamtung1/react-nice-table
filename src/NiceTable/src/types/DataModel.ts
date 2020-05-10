@@ -8,8 +8,9 @@ export type ColumnModel = {
 }
 
 export type DataResultModel = {
-    data:any[],
-    totalRows:number;
+    currentPageData:any[];
+    totalRows:number; // totalrows of filteredData
+    filteredData?:any[];
 }
 
 export type FilterDataModel = {
@@ -28,3 +29,9 @@ export type DataQueryModel = {
 }
 
 export type RemoteDataFn = (param:DataQueryModel) => Promise<DataResultModel>;
+
+export type ExportButtonModel = {
+  icon?:string, 
+  label?:string, 
+  exportFn?(columns:ColumnModel[], data:any[]):void;
+}

@@ -10,14 +10,14 @@ type Props = {
   defaultSortBy?:string;
   defaultSortOrder?:string;
   onSort?(sortBy:string, sortOrder:string):void;
-  selection?:boolean;
+  selectable?:boolean;
   hideSelectionBox?:boolean;
   checkedState?:CheckedState;
   onSelectionChange?(newState:CheckedState):void;
 }
 
 const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder, onSort, 
-    selection, hideSelectionBox,checkedState, onSelectionChange}) => {
+  selectable, hideSelectionBox,checkedState, onSelectionChange}) => {
   
   defaultSortOrder = defaultSortOrder ?? 'asc';
 
@@ -30,7 +30,7 @@ const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder
   }
 
   const getSelectionCell = () => {
-    if(!selection) {
+    if(!selectable) {
       return null;
     }
     

@@ -7,14 +7,14 @@ import AppConsts from '../types/AppConsts';
 type Props = {
   columns: ColumnModel[];
   data: any[];
-  selection?:boolean;
+  selectable?:boolean;
   onSelectionChange?(rowDataId:any, newState: CheckedState):void;
   selectedRowDataIds?:any[];
   fullRowSelectable?:boolean;
   dataIdField?:string;
 }
 
-const TableBody:FC<Props> = ({data, columns, selection, onSelectionChange, selectedRowDataIds, fullRowSelectable, dataIdField = AppConsts.DefaultDataIdField}) => {
+const TableBody:FC<Props> = ({data, columns, selectable, onSelectionChange, selectedRowDataIds, fullRowSelectable, dataIdField = AppConsts.DefaultDataIdField}) => {
 
   const renderBodyData = () => {
     return data.map((item:any, rowIndex:number) => {
@@ -26,10 +26,10 @@ const TableBody:FC<Props> = ({data, columns, selection, onSelectionChange, selec
       const isSelected = selectedRowDataIds && selectedRowDataIds.indexOf(item[dataIdField]) > -1;
       
       return <TableRow 
-              rowIndex={rowIndex} 
+              key={rowIndex} 
               columns={columns} 
               rowData={item} 
-              selection={selection} 
+              selectable={selectable} 
               selected={isSelected} 
               dataIdField={dataIdField}
               onSelectionChange={handleSelectionChange}

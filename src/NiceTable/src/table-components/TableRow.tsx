@@ -6,17 +6,16 @@ import {CheckedState} from '../types/Enum';
 import AppConsts from '../types/AppConsts';
 
 type Props = {
-  rowIndex:number;
   columns: ColumnModel[];
   rowData: any;
   onSelectionChange?(rowDataId:any, newState: CheckedState):void;
-  selection?:boolean;
+  selectable?:boolean;
   selected?:boolean;
   fullRowSelectable?:boolean;
   dataIdField?:string;
 }
 
-const TableRow:FC<Props> = ({rowIndex, columns, rowData, onSelectionChange, selection, selected, fullRowSelectable, dataIdField = AppConsts.DefaultDataIdField}) => {
+const TableRow:FC<Props> = ({columns, rowData, onSelectionChange, selectable, selected, fullRowSelectable, dataIdField = AppConsts.DefaultDataIdField}) => {
 
   const handleCheckboxSelectionChange = () => {
     if(fullRowSelectable){
@@ -28,7 +27,7 @@ const TableRow:FC<Props> = ({rowIndex, columns, rowData, onSelectionChange, sele
   };
 
   const handleRowSelectionChange = () => {
-       if(!selection || !fullRowSelectable){
+       if(!selectable || !fullRowSelectable){
          return;
        }
 
@@ -38,11 +37,11 @@ const TableRow:FC<Props> = ({rowIndex, columns, rowData, onSelectionChange, sele
 
   const checkState = selected ? CheckedState.Checked : CheckedState.Unchecked;
   
-  const selectionCell = selection && <SelectionTableCell checkedState={checkState} rowDataId={rowData[dataIdField]} onChange={handleCheckboxSelectionChange}/>;
-  const rowClassName = selection && checkState === CheckedState.Checked ? 'NiceTable-Row-Selected' : '';
+  const selectionCell = selectable && <SelectionTableCell checkedState={checkState} rowDataId={rowData[dataIdField]} onChange={handleCheckboxSelectionChange}/>;
+  const rowClassName = selectable && checkState === CheckedState.Checked ? 'NiceTable-Row-Selected' : '';
   
   return (
-    <tr key={rowIndex} className={rowClassName} onClick={handleRowSelectionChange}>
+    <tr className={rowClassName} onClick={handleRowSelectionChange}>
       {selectionCell}
       {columns.map((column:ColumnModel, colIndex:number) => {
         const content = column.render ? column.render(rowData) : rowData[column.field!];

@@ -5,7 +5,9 @@ import NiceTable from '../../src/NiceTable';
 import { createData } from '../storyhelper';
 
 export default {
+  component:NiceTable,
   title: 'Selection',
+  // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/
 };
 
@@ -17,23 +19,23 @@ const tableColumns:ColumnModel[] = [
   { title: 'Age', field: 'age', align:'right'}
 ];
 
-export const Basic = () => {
+export const FullRowSelectable = () => {
   const [selectedIds, setSelectedIds] = React.useState<any[]>([]);
   const handleSelectionChange = (selectedRowDataIds:any[]) => {
     setSelectedIds(selectedRowDataIds);
   }
   return (
     <>
-    <div>A limitation: In remote data mode, checkbox will not appear in header row.</div>
-    <div>The data must have the 'id' property. You can change it with the prop 'dataIdField'</div>
   <NiceTable 
       columns={tableColumns} 
       data={tableData} 
       hasPagination={true} 
       height="300px" 
-      selection={true} 
+      selectable={true} 
       onSelectionChange={handleSelectionChange}
-      dataIdField='id'/>
+      dataIdField='id'
+      fullRowSelectable={true}
+      />
   <div>Selected Ids: [{selectedIds.join(',')}]</div>
   </>
   );
