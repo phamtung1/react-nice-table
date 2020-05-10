@@ -71,7 +71,7 @@ export const RemoteDataLoading = () => {
       setTimeout(() => {
         console.log('Query data: ', query);
         resolve({
-          data: createData(query.pageSize, query.pageIndex * query.pageSize),
+          currentPageData: createData(query.pageSize, query.pageIndex * query.pageSize),
           totalRows: 100
         });
       }, 200); // simulate request

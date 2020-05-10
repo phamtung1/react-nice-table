@@ -26,7 +26,7 @@ const TableBody:FC<Props> = ({data, columns, selection, onSelectionChange, selec
       const isSelected = selectedRowDataIds && selectedRowDataIds.indexOf(item[dataIdField]) > -1;
       
       return <TableRow 
-              rowIndex={rowIndex} 
+              key={rowIndex} 
               columns={columns} 
               rowData={item} 
               selection={selection} 

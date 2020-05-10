@@ -3,7 +3,7 @@ import './style.scss';
 
 import {createUseStyles} from 'react-jss';
 
-import { ColumnModel, DataResultModel, FilterDataModel, RemoteDataFn } from './types/DataModel';
+import { ColumnModel, DataResultModel, FilterDataModel, RemoteDataFn, ExportButtonModel } from './types/DataModel';
 import TableHead from './table-components/TableHead';
 import TableBody from './table-components/TableBody';
 import TableFooter from './table-components/TableFooter';
@@ -12,6 +12,8 @@ import TablePagination from './table-components/TablePagination';
 import DataService from './functions/DataService';
 import {CheckedState} from './types/Enum';
 import AppConsts from './types/AppConsts';
+import Button from './core-components/Button';
+import TableFooterToolbar from './table-components/TableFooterToolbar';
 
 const useStyles = createUseStyles({
   tableRoot: {
@@ -29,7 +31,6 @@ export type NiceTableProps = {
   pageSizeOptions?: number[];
   height?:string;
   width?:string;
-  footerToolbar?: React.ReactNode;
   filterComponent?: React.ReactNode;
   filterData?: FilterDataModel;
   sortable?:boolean;
@@ -40,13 +41,15 @@ export type NiceTableProps = {
   defaultSelectedIds?:any[];
   fullRowSelectable?:boolean;
   dataIdField?:string;
+  exportButtons?:ExportButtonModel[];
 }
 
 const NiceTable: FC<NiceTableProps> = ({
   columns, data, hasPagination, pageSizeOptions, height, width, 
-  footerToolbar, filterComponent, filterData, 
+  filterComponent, filterData, 
   sortable, defaultSortBy, defaultSortOrder,
-  selection, onSelectionChange, defaultSelectedIds, fullRowSelectable, dataIdField = AppConsts.DefaultDataIdField}) => {
+  selection, onSelectionChange, defaultSelectedIds, fullRowSelectable, dataIdField = AppConsts.DefaultDataIdField,
+  exportButtons}) => {
 
   const isRemoteData = typeof(data) === 'function';
   
@@ -59,9 +62,10 @@ const NiceTable: FC<NiceTableProps> = ({
   }
 
   const defaultPageSize = hasPagination ? pageSizeOptions![0] : 0;
-  const [pageSize, setPageSize] = useState(defaultPageSize);
-  const [pageIndex, setPageIndex] = useState(0);
-  const [totalRows, setTotalRows] = useState(0);
+  const [pageSize, setPageSize] = useState<number>(defaultPageSize);
+  const [pageIndex, setPageIndex] = useState<number>(0);
+  const [totalRows, setTotalRows] = useState<number>(0);
+  const [filteredData, setFilteredData] = useState<any[]>([]);
 
   const [showingData, setShowingData] = useState<any[]>([]);
   
@@ -88,7 +92,12 @@ const NiceTable: FC<NiceTableProps> = ({
     DataService.loadData(data, pageIndex, pageSize, filterData, sortBy, sortOrder)
       .then(function(result:DataResultModel){
         setTotalRows(result.totalRows);
-        setShowingData(result.data);
+        setShowingData(result.currentPageData);
+        if(result.filteredData)
+        {
+          setFilteredData(result.filteredData);
+        }
+
         hideLoading();
       });
   }
@@ -106,7 +115,6 @@ const NiceTable: FC<NiceTableProps> = ({
 
   const handleChangePageIndex = (newPageIndex:number) => {
     setPageIndex(newPageIndex);
-    // should optimize to cache filter result
     loadData(data, newPageIndex, pageSize, filterData, sortBy, sortOrder);
   }
 
@@ -182,12 +190,12 @@ const NiceTable: FC<NiceTableProps> = ({
           />
       </table>  
     </div>
-    { (hasPagination || footerToolbar) &&
+    { (hasPagination || (exportButtons && exportButtons.length > 0)) &&
     (
       <TableFooter>
-        <div className='NiceTable-FooterToolbar'>
-          {footerToolbar}
-        </div>
+        {exportButtons && exportButtons.length > 0 && 
+          <TableFooterToolbar columns={columns} exportButtons={exportButtons} exportingData={(isRemoteData ? [] : (filteredData.length > 0 ? filteredData : showingData))} />
+          }
         {hasPagination &&
         <TablePagination 
             onChangePageSize={handleChangePageSize} 

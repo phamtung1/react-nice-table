@@ -6,7 +6,6 @@ import {CheckedState} from '../types/Enum';
 import AppConsts from '../types/AppConsts';
 
 type Props = {
-  rowIndex:number;
   columns: ColumnModel[];
   rowData: any;
   onSelectionChange?(rowDataId:any, newState: CheckedState):void;
@@ -16,7 +15,7 @@ type Props = {
   dataIdField?:string;
 }
 
-const TableRow:FC<Props> = ({rowIndex, columns, rowData, onSelectionChange, selection, selected, fullRowSelectable, dataIdField = AppConsts.DefaultDataIdField}) => {
+const TableRow:FC<Props> = ({columns, rowData, onSelectionChange, selection, selected, fullRowSelectable, dataIdField = AppConsts.DefaultDataIdField}) => {
 
   const handleCheckboxSelectionChange = () => {
     if(fullRowSelectable){
@@ -42,7 +41,7 @@ const TableRow:FC<Props> = ({rowIndex, columns, rowData, onSelectionChange, sele
   const rowClassName = selection && checkState === CheckedState.Checked ? 'NiceTable-Row-Selected' : '';
   
   return (
-    <tr key={rowIndex} className={rowClassName} onClick={handleRowSelectionChange}>
+    <tr className={rowClassName} onClick={handleRowSelectionChange}>
       {selectionCell}
       {columns.map((column:ColumnModel, colIndex:number) => {
         const content = column.render ? column.render(rowData) : rowData[column.field!];
