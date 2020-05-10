@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { ColumnModel } from '../src/types/DataModel';
-import NiceTable from '../src/NiceTable';
-import { createData } from './storyhelper';
+import { ColumnModel } from '../../src/types/DataModel';
+import NiceTable from '../../src/NiceTable';
+import { createData } from '../storyhelper';
 
 export default {
   component:NiceTable,
-  title: 'NiceTable',
+  title: 'Selection',
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/
 };
@@ -19,15 +19,15 @@ const tableColumns:ColumnModel[] = [
   { title: 'Age', field: 'age', align:'right'}
 ];
 
-export const Selection = () => {
-  const [selectedIds, setSelectedIds] = React.useState<any[]>([]);
+const DefaultSelectedIds = [1, 4, 5, 6, 20, 21];
+
+export const DefaultSelectedRows = () => {
+  const [selectedIds, setSelectedIds] = React.useState<any[]>(DefaultSelectedIds);
   const handleSelectionChange = (selectedRowDataIds:any[]) => {
     setSelectedIds(selectedRowDataIds);
   }
   return (
     <>
-    <div>A limitation: In remote data mode, checkbox will not appear in header row.</div>
-    <div>The data must have the 'id' property. You can change it with the prop 'dataIdField'</div>
   <NiceTable 
       columns={tableColumns} 
       data={tableData} 
@@ -35,7 +35,8 @@ export const Selection = () => {
       height="300px" 
       selection={true} 
       onSelectionChange={handleSelectionChange}
-      dataIdField='id'/>
+      defaultSelectedIds={DefaultSelectedIds}
+      />
   <div>Selected Ids: [{selectedIds.join(',')}]</div>
   </>
   );

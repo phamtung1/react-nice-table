@@ -38,6 +38,7 @@ export type NiceTableProps = {
   selection?:boolean;
   onSelectionChange?(selectedRowDataIds:any[]):void;
   defaultSelectedIds?:any[];
+  fullRowSelectable?:boolean;
   dataIdField?:string;
 }
 
@@ -45,7 +46,7 @@ const NiceTable: FC<NiceTableProps> = ({
   columns, data, hasPagination, pageSizeOptions, height, width, 
   footerToolbar, filterComponent, filterData, 
   sortable, defaultSortBy, defaultSortOrder,
-  selection, onSelectionChange, defaultSelectedIds, dataIdField = AppConsts.DefaultDataIdField}) => {
+  selection, onSelectionChange, defaultSelectedIds, fullRowSelectable, dataIdField = AppConsts.DefaultDataIdField}) => {
 
   const isRemoteData = typeof(data) === 'function';
   
@@ -171,7 +172,14 @@ const NiceTable: FC<NiceTableProps> = ({
           checkedState={headerCheckedState}
           onSelectionChange={handleHeaderSelectionChange}
            />
-      <TableBody columns={columns} data={showingData} selection={selection} onSelectionChange={handleSelectionChange} selectedRowDataIds={selectedRowDataIds}/>
+      <TableBody 
+          columns={columns} 
+          data={showingData} 
+          selection={selection} 
+          onSelectionChange={handleSelectionChange} 
+          selectedRowDataIds={selectedRowDataIds}
+          fullRowSelectable={fullRowSelectable}
+          />
       </table>  
     </div>
     { (hasPagination || footerToolbar) &&
