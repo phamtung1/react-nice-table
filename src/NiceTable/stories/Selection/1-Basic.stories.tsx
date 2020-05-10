@@ -31,7 +31,7 @@ export const Basic = () => {
       data={tableData} 
       hasPagination={true} 
       height="300px" 
-      selection={true} 
+      selectable={true} 
       onSelectionChange={handleSelectionChange}
       dataIdField='id'/>
   <div>Selected Ids: [{selectedIds.join(',')}]</div>

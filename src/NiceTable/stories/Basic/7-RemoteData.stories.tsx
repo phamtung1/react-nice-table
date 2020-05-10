@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { ColumnModel, FilterDataModel, DataQueryModel, RemoteDataFn } from '../src/types/DataModel';
-import NiceTable from '../src/NiceTable';
-import { FilterComponentProps } from '../src/types/FilterComponentProps';
-import { createData } from './storyhelper';
+import { ColumnModel, FilterDataModel, DataQueryModel, RemoteDataFn } from '../../src/types/DataModel';
+import NiceTable from '../../src/NiceTable';
+import { FilterComponentProps } from '../../src/types/FilterComponentProps';
+import { createData } from '../storyhelper';
 
 export default {
   component:NiceTable,
-  title: 'NiceTable',
+  title: 'Basic',
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/,
 };
@@ -89,7 +89,7 @@ export const RemoteDataLoading = () => {
     hasPagination={true}
     sortable={true}
     defaultSortBy="id"
-    selection={true} onSelectionChange={handleSelectionChange}
+    selectable={true} onSelectionChange={handleSelectionChange}
     />
   <div>Selected Ids: [<span ref={spanContentRef}></span>]</div>
   </>

@@ -31,7 +31,7 @@ export const FullRowSelectable = () => {
       data={tableData} 
       hasPagination={true} 
       height="300px" 
-      selection={true} 
+      selectable={true} 
       onSelectionChange={handleSelectionChange}
       dataIdField='id'
       fullRowSelectable={true}

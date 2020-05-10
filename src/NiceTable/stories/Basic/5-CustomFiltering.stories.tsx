@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 
-import { ColumnModel, FilterDataModel } from '../src/types/DataModel';
-import NiceTable from '../src/NiceTable';
-import { FilterComponentProps } from '../src/types/FilterComponentProps';
-import { createData } from './storyhelper';
+import { ColumnModel, FilterDataModel } from '../../src/types/DataModel';
+import NiceTable from '../../src/NiceTable';
+import { FilterComponentProps } from '../../src/types/FilterComponentProps';
+import { createData } from '../storyhelper';
 
-import './demo.css';
+import '../demo.css';
 
 export default {
   component:NiceTable,
-  title: 'NiceTable',
+  title: 'Basic',
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/,
 };

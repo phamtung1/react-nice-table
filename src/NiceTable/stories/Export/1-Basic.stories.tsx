@@ -26,7 +26,7 @@ const exportButtons:ExportButtonModel[] = [
     }
   }
 ];
-export const Default = () => 
+export const Basic = () => 
   <NiceTable 
     columns={tableColumns} 
     data={tableData} 

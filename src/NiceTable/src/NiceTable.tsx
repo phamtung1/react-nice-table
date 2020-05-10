@@ -12,7 +12,6 @@ import TablePagination from './table-components/TablePagination';
 import DataService from './functions/DataService';
 import {CheckedState} from './types/Enum';
 import AppConsts from './types/AppConsts';
-import Button from './core-components/Button';
 import TableFooterToolbar from './table-components/TableFooterToolbar';
 
 const useStyles = createUseStyles({
@@ -36,7 +35,7 @@ export type NiceTableProps = {
   sortable?:boolean;
   defaultSortBy?:string;
   defaultSortOrder?:string;
-  selection?:boolean;
+  selectable?:boolean;
   onSelectionChange?(selectedRowDataIds:any[]):void;
   defaultSelectedIds?:any[];
   fullRowSelectable?:boolean;
@@ -48,7 +47,7 @@ const NiceTable: FC<NiceTableProps> = ({
   columns, data, hasPagination, pageSizeOptions, height, width, 
   filterComponent, filterData, 
   sortable, defaultSortBy, defaultSortOrder,
-  selection, onSelectionChange, defaultSelectedIds, fullRowSelectable, dataIdField = AppConsts.DefaultDataIdField,
+  selectable, onSelectionChange, defaultSelectedIds, fullRowSelectable, dataIdField = AppConsts.DefaultDataIdField,
   exportButtons}) => {
 
   const isRemoteData = typeof(data) === 'function';
@@ -175,7 +174,7 @@ const NiceTable: FC<NiceTableProps> = ({
           defaultSortBy={sortBy} 
           defaultSortOrder={sortOrder}
           onSort={handleOnSort}
-          selection={selection}
+          selectable={selectable}
           hideSelectionBox={isRemoteData}
           checkedState={headerCheckedState}
           onSelectionChange={handleHeaderSelectionChange}
@@ -183,7 +182,7 @@ const NiceTable: FC<NiceTableProps> = ({
       <TableBody 
           columns={columns} 
           data={showingData} 
-          selection={selection} 
+          selectable={selectable} 
           onSelectionChange={handleSelectionChange} 
           selectedRowDataIds={selectedRowDataIds}
           fullRowSelectable={fullRowSelectable}

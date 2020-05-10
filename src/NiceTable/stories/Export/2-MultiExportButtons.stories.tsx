@@ -19,6 +19,7 @@ const tableColumns:ColumnModel[] = [
 const tableData = createData(20);
 const exportButtons:ExportButtonModel[] = [
   {
+    icon:'save',
     label:'CSV',
     exportFn: (columns:ColumnModel[], data:any[]) => {
       alert('Implement a code to export CSV');
