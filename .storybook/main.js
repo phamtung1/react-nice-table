@@ -1,7 +1,7 @@
 var nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  stories: ['../src/**/*.stories.tsx'],
+  stories: ['../src/NiceTable/stories/**/*.stories.tsx'],
   addons: ['@storybook/addon-storysource', '@storybook/preset-typescript'],
   webpackFinal: async config => {
     
