@@ -21,6 +21,8 @@ Add material icons font if you use features related to it (pagination, sorting, 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 ```
 
+List of icons: https://material.io/resources/icons/?icon=picture_as_pdf&style=baseline
+
 ## Demo
 
 [DEMO with Code examples](https://phamtung1.github.io/react-nice-table/storybook-static/)
@@ -32,7 +34,7 @@ Add material icons font if you use features related to it (pagination, sorting, 
 * Pagination
 * Customer Filtering
 * Custom Rendering
-* Footer Toolbar
+* Export Buttons
 * Remote Data Loading 
 * Sorting
 * Selection
@@ -93,16 +95,17 @@ type NiceTableProps = {
   pageSizeOptions?: number[];
   height?:string;
   width?:string;
-  footerToolbar?: React.ReactNode;
   filterComponent?: React.ReactNode;
   filterData?: FilterDataModel;
   sortable?:boolean;
   defaultSortBy?:string;
   defaultSortOrder?:string;
-  selection?:boolean;
+  selectable?:boolean;
   onSelectionChange?(selectedRowDataIds:any[]):void;
   defaultSelectedIds?:any[];
+  fullRowSelectable?:boolean;
   dataIdField?:string;
+  exportButtons?:ExportButtonModel[];
 }
 ```
 
