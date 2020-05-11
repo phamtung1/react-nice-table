@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { ColumnModel, ActionButtonModel } from '../../src/types/DataModel';
+import { ColumnModel } from '../../src/types/DataModel';
 import NiceTable from '../../src/NiceTable';
 import { createData } from '../storyhelper';
 
 export default {
   component:NiceTable,
-  title: 'Action Column',
+  title: '1-Basic',
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/
 };
@@ -19,15 +19,7 @@ const tableColumns:ColumnModel[] = [
   { title: 'Age', field: 'age', align:'right'}
 ];
 
-const actionButtons:ActionButtonModel[] = [
-  { icon: 'save', tooltip:'Save', onClick:(rowData:any) => alert(JSON.stringify(rowData))}
-];
-export const Basic = () => {
-  return <NiceTable 
-            columns={tableColumns} 
-            data={tableData} 
-            hasPagination={true} 
-            height="300px"
-            actionButtons={actionButtons}
-            />;
+
+export const Pagination = () => {
+  return <NiceTable columns={tableColumns} data={tableData} hasPagination={true} height="300px"/>;
 }

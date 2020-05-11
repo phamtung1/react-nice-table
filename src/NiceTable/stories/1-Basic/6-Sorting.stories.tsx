@@ -6,12 +6,12 @@ import { createData } from '../storyhelper';
 
 export default {
   component:NiceTable,
-  title: 'Basic',
+  title: '1-Basic',
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/
 };
 
-const tableData = createData(36);
+const tableData = createData(50);
 const tableColumns:ColumnModel[] = [
   { title: 'Id', field: 'id', align:'center', width: '50px'},
   { title: 'Name', field: 'name'},
@@ -20,6 +20,12 @@ const tableColumns:ColumnModel[] = [
 ];
 
 
-export const Pagination = () => {
-  return <NiceTable columns={tableColumns} data={tableData} hasPagination={true} height="300px"/>;
+export const Sorting = () => {
+  return <NiceTable 
+            columns={tableColumns} 
+            data={tableData} 
+            hasPagination={true} height="300px"
+            sortable={true}
+            defaultSortBy="id"
+            />;
 }

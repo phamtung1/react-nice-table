@@ -6,7 +6,7 @@ import { createData } from '../storyhelper';
 
 export default {
   component:NiceTable,
-  title: 'Selection',
+  title: '4-Selection',
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/
 };
@@ -19,8 +19,10 @@ const tableColumns:ColumnModel[] = [
   { title: 'Age', field: 'age', align:'right'}
 ];
 
-export const FullRowSelectable = () => {
-  const [selectedIds, setSelectedIds] = React.useState<any[]>([]);
+const DefaultSelectedIds = [1, 4, 5, 6, 20, 21];
+
+export const DefaultSelectedRows = () => {
+  const [selectedIds, setSelectedIds] = React.useState<any[]>(DefaultSelectedIds);
   const handleSelectionChange = (selectedRowDataIds:any[]) => {
     setSelectedIds(selectedRowDataIds);
   }
@@ -33,8 +35,7 @@ export const FullRowSelectable = () => {
       height="300px" 
       selectable={true} 
       onSelectionChange={handleSelectionChange}
-      dataIdField='id'
-      fullRowSelectable={true}
+      defaultSelectedIds={DefaultSelectedIds}
       />
   <div>Selected Ids: [{selectedIds.join(',')}]</div>
   </>

@@ -6,7 +6,7 @@ import { createData } from '../storyhelper';
 
 export default {
   component:NiceTable,
-  title: 'Action Column',
+  title: '2-Action Column',
   excludeStories: /.*Data$/
 };
 

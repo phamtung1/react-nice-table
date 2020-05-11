@@ -6,7 +6,7 @@ import { createData } from '../storyhelper';
 
 export default {
   component:NiceTable,
-  title: 'Large Data (5000 Rows)',
+  title: '5-Large Data (5000 Rows)',
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/
 };
@@ -19,7 +19,7 @@ export default {
   ];
   
 const data = createData(5000);
-export const Pagination = () => {
+export const Basic = () => {
   const [tableData, setTableData] = React.useState<any[]>(data);
 
   const handleClearData = () => {
@@ -36,7 +36,7 @@ export const Pagination = () => {
     <button onClick={handleClearData}>Clear Data</button>
     <button onClick={handleAddData} style={{margin: '0 10px'}}>Add 1000 rows</button>
     <span>Total rows = {tableData.length}</span>
-    <NiceTable columns={tableColumns} data={tableData} height="300px" sortable={true} hasPagination={true} pageSizeOptions={[100,500,1000]}/>
+    <NiceTable columns={tableColumns} data={tableData} height="300px" sortable={true}/>
   </>
   );
 }
