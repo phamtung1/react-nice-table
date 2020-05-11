@@ -3,7 +3,7 @@ import './style.scss';
 
 import {createUseStyles} from 'react-jss';
 
-import { ColumnModel, DataResultModel, FilterDataModel, RemoteDataFn, ExportButtonModel } from './types/DataModel';
+import { ColumnModel, DataResultModel, FilterDataModel, RemoteDataFn, ExportButtonModel, ActionButtonModel } from './types/DataModel';
 import TableHead from './table-components/TableHead';
 import TableBody from './table-components/TableBody';
 import TableFooter from './table-components/TableFooter';
@@ -41,6 +41,7 @@ export type NiceTableProps = {
   fullRowSelectable?:boolean;
   dataIdField?:string;
   exportButtons?:ExportButtonModel[];
+  actionButtons?:ActionButtonModel[];
 }
 
 const NiceTable: FC<NiceTableProps> = ({
@@ -48,7 +49,7 @@ const NiceTable: FC<NiceTableProps> = ({
   filterComponent, filterData, 
   sortable, defaultSortBy, defaultSortOrder,
   selectable, onSelectionChange, defaultSelectedIds, fullRowSelectable, dataIdField = AppConsts.DefaultDataIdField,
-  exportButtons}) => {
+  exportButtons, actionButtons}) => {
 
   const isRemoteData = typeof(data) === 'function';
   
@@ -178,6 +179,7 @@ const NiceTable: FC<NiceTableProps> = ({
           hideSelectionBox={isRemoteData}
           checkedState={headerCheckedState}
           onSelectionChange={handleHeaderSelectionChange}
+          actionButtonsCount={actionButtons ? actionButtons.length : 0}
            />
       <TableBody 
           columns={columns} 
@@ -186,6 +188,7 @@ const NiceTable: FC<NiceTableProps> = ({
           onSelectionChange={handleSelectionChange} 
           selectedRowDataIds={selectedRowDataIds}
           fullRowSelectable={fullRowSelectable}
+          actionButtons={actionButtons}
           />
       </table>  
     </div>

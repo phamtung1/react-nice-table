@@ -6,7 +6,7 @@ import { createData } from '../storyhelper';
 
 export default {
   component:NiceTable,
-  title: 'Large Data (10000 Rows)',
+  title: 'Large Data (5000 Rows)',
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/
 };
@@ -18,7 +18,7 @@ export default {
     { title: 'Age', field: 'age', align:'right'}
   ];
   
-const data = createData(10000);
+const data = createData(5000);
 export const Basic = () => {
   const [tableData, setTableData] = React.useState<any[]>(data);
 

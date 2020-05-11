@@ -14,10 +14,11 @@ type Props = {
   hideSelectionBox?:boolean;
   checkedState?:CheckedState;
   onSelectionChange?(newState:CheckedState):void;
+  actionButtonsCount:number;
 }
 
 const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder, onSort, 
-  selectable, hideSelectionBox,checkedState, onSelectionChange}) => {
+  selectable, hideSelectionBox,checkedState, onSelectionChange, actionButtonsCount = 0}) => {
   
   defaultSortOrder = defaultSortOrder ?? 'asc';
 
@@ -31,7 +32,7 @@ const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder
 
   const getSelectionCell = () => {
     if(!selectable) {
-      return null;
+      return undefined;
     }
     
     return <SelectionTableCell hideCheckbox={hideSelectionBox} checkedState={checkedState} onChange={(_:any, newState:CheckedState) => handleSelectionChange(newState)}/>
@@ -56,6 +57,7 @@ const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder
             </TableHeadCell> 
             );
         })}
+        {actionButtonsCount > 0 && <TableHeadCell align='center' width={32 * actionButtonsCount}>{ actionButtonsCount > 1 ? 'Actions' : undefined}</TableHeadCell>}
         </tr>
       </thead>
   );

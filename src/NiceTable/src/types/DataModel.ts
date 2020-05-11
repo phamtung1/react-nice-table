@@ -35,3 +35,9 @@ export type ExportButtonModel = {
   label?:string, 
   exportFn?(columns:ColumnModel[], data:any[]):void;
 }
+
+export type ActionButtonModel = {
+  icon:string, 
+  tooltip?:string, 
+  onClick?(rowData:any):void;
+}

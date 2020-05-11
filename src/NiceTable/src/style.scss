@@ -132,9 +132,9 @@ body {
   .NiceTable-Button {
     transition: background-color .4s;
     cursor: pointer;
+    display: flex;
     padding:  0.3rem;
     margin: 0.2rem;
-    display:flex;
     align-items: center;
     user-select: none; 
     
@@ -150,11 +150,11 @@ body {
     cursor: pointer;
     padding:  0.2rem;
     margin: 0.1rem;
-    display:flex;
     align-items: center;
     border-radius: 50%;
     width: 1.5rem;
     height: 1.5rem;
+    display: inline-flex;
     justify-content: center;
     
     .material-icons {
