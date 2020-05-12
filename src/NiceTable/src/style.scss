@@ -4,6 +4,8 @@ body {
 
 .NiceTableRoot {
   /* table container */
+  color:#333;
+
   .NiceTableContainer {
     overflow: auto;
     border: 1px solid #ccc;
@@ -56,6 +58,7 @@ body {
     top: 0;
     z-index: 2;
     font-weight: 500;
+    height:2rem;
 
     .material-icons {
       font-size:1rem; // smaller sorting icon
@@ -137,7 +140,8 @@ body {
     margin: 0.2rem;
     align-items: center;
     user-select: none; 
-    
+    color: #65819D;
+
     &.disabled {
       cursor: default;
       color: #bbb;
@@ -156,7 +160,7 @@ body {
     height: 1.5rem;
     display: inline-flex;
     justify-content: center;
-    
+
     .material-icons {
       font-size:1.2rem;
       text-indent: 0;
