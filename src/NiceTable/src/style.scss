@@ -44,7 +44,6 @@ body {
   th, td {
     padding: 0.4em 0.5em 0.4em 1em;
     text-align: left;
-    text-indent: -0.5em;
     border: none;
     border-bottom: 1px solid rgba(224, 224, 224, 1);
     border-spacing: 0;
@@ -153,7 +152,7 @@ body {
   .NiceTable-Button-Icon {
     cursor: pointer;
     padding:  0.2rem;
-    margin: 0.2rem 0.6rem;
+    margin: 0.1rem;
     align-items: center;
     border-radius: 50%;
     width: 1.5rem;

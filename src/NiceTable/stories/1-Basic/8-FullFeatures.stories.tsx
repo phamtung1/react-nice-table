@@ -38,11 +38,10 @@ const exportButtons:ExportButtonModel[] = [
 export const FullFeatures = () => {
   const tableColumns:ColumnModel[] = [
     { title: 'Id', field: 'id', align:'center', width: '50px'},
-    { title: 'Avatar',  width: '50px', render: (rowData:any) => <img src={`https://api.adorable.io/avatars/36/${rowData.id}.png`}/>},
     { title: 'Name', field: 'name'},
     { title: 'Email', field: 'email', render: (rowData:any) => <a href={`mailto:${rowData.email}`}>{rowData.email}</a> },
     { title: 'Age', field: 'age', align:'right'}
   ];
 
-  return <NiceTable columns={tableColumns}  data={tableData} hasPagination={true} actionButtons={actionButtons} sortable={true} height="400px" exportButtons={exportButtons} />;
+  return <NiceTable columns={tableColumns}  data={tableData} selectable={true} hasPagination={true} actionButtons={actionButtons} sortable={true} height="400px" exportButtons={exportButtons} />;
 }
