@@ -10,3 +10,11 @@ input.demo-control, select.demo-control {
 label {
     padding: 10px;
 }
+
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: #1E90FF;
+}
