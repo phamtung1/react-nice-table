@@ -57,7 +57,7 @@ const TableHead:FC<Props> = ({columns, sortable, defaultSortBy, defaultSortOrder
             </TableHeadCell> 
             );
         })}
-        {actionButtonsCount > 0 && <TableHeadCell align='center' width={32 * actionButtonsCount}>{ actionButtonsCount > 1 ? 'Actions' : undefined}</TableHeadCell>}
+        {actionButtonsCount > 0 && <TableHeadCell align='center' width={35 * actionButtonsCount}>{ actionButtonsCount > 1 ? 'Actions' : undefined}</TableHeadCell>}
         </tr>
       </thead>
   );
