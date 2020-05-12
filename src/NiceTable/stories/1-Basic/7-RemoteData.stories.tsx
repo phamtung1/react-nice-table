@@ -1,15 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-import { ColumnModel, FilterDataModel } from '../../src/types/DataModel';
+import { ColumnModel, FilterDataModel, DataQueryModel, RemoteDataFn } from '../../src/types/DataModel';
 import NiceTable from '../../src/NiceTable';
 import { FilterComponentProps } from '../../src/types/FilterComponentProps';
 import { createData } from '../storyhelper';
 
-import '../demo.css';
-
 export default {
   component:NiceTable,
-  title: 'Basic',
+  title: '1-Basic',
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/,
 };
@@ -21,9 +19,6 @@ const tableColumns:ColumnModel[] = [
   { title: 'Age', field: 'age', align:'right'}
 ];
 
-const tableData = createData(50);
-
-// Component containing filter controls  
 const CustomFilter: React.FC<FilterComponentProps> = ({onChange}) => {
   const defaultFilterData:FilterDataModel = {
     name: {
@@ -36,7 +31,7 @@ const CustomFilter: React.FC<FilterComponentProps> = ({onChange}) => {
     }
   };
 
-  const [filterData, setFilterData] = useState(defaultFilterData);
+  const [filterData, setFilterData] = React.useState(defaultFilterData);
 
   const handleChangeName =(value:string) => {
     const newData = { ...filterData, name: { value : value, rule: filterData.name.rule }};
@@ -60,15 +55,43 @@ const CustomFilter: React.FC<FilterComponentProps> = ({onChange}) => {
   );
 }
 
-export const CustomFiltering = () => {
-  const [filterData, setFilterData] = useState(undefined);
+export const RemoteDataLoading = () => {
+   const [filterData, setFilterData] = React.useState(undefined);
+   
+   const spanContentRef = React.useRef<any>(null);
+
+  const handleSelectionChange = (selectedRowDataIds:any[]) => {
+    if(spanContentRef.current){
+      spanContentRef.current.innerHTML = selectedRowDataIds.join(',');
+    }
+  }
+   
+  const loadRemoteData:RemoteDataFn = (query:DataQueryModel) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log('Query data: ', query);
+        resolve({
+          currentPageData: createData(query.pageSize, query.pageIndex * query.pageSize),
+          totalRows: 100
+        });
+      }, 200); // simulate request
+    });
+  }
 
   return (
-    <NiceTable 
-        filterData={filterData} 
-        filterComponent={<CustomFilter onChange={setFilterData} />} 
-        columns={tableColumns} 
-        data={tableData} 
-        hasPagination={true} height="300px"/>
-  );
+    <>
+  <NiceTable 
+    filterData={filterData} 
+    filterComponent={<CustomFilter onChange={setFilterData} />} 
+    columns={tableColumns} 
+    data={loadRemoteData} 
+    height="300px"
+    hasPagination={true}
+    sortable={true}
+    defaultSortBy="id"
+    selectable={true} onSelectionChange={handleSelectionChange}
+    />
+  <div>Selected Ids: [<span ref={spanContentRef}></span>]</div>
+  </>
+);
 }

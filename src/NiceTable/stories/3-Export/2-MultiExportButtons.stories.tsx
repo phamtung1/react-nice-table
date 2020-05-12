@@ -6,7 +6,7 @@ import { createData } from '../storyhelper';
 
 export default {
   component:NiceTable,
-  title: 'Export'
+  title: '3-Export'
 };
 
 const tableColumns:ColumnModel[] = [
@@ -22,11 +22,26 @@ const exportButtons:ExportButtonModel[] = [
     icon:'save',
     label:'CSV',
     exportFn: (columns:ColumnModel[], data:any[]) => {
-      alert('Implement a code to export ' + data.length +' rows');
+      alert('Implement a code to export CSV');
+    }
+  },
+  {
+    icon:'picture_as_pdf',
+    label:'',
+    exportFn: (columns:ColumnModel[], data:any[]) => {
+      alert('Implement a code to export PDF');
+    }
+  },
+  {
+    icon:'save_alt',
+    label:'Excel',
+    exportFn: (columns:ColumnModel[], data:any[]) => {
+      alert('Implement a code to export Excel');
     }
   }
 ];
-export const Basic = () => 
+
+export const MultiExportButtons = () => 
   <NiceTable 
     columns={tableColumns} 
     data={tableData} 

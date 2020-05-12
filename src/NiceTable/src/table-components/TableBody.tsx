@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { ColumnModel } from '../types/DataModel';
+import { ColumnModel, ActionButtonModel } from '../types/DataModel';
 import TableRow from './TableRow';
 import {CheckedState} from '../types/Enum';
 import AppConsts from '../types/AppConsts';
@@ -12,9 +12,12 @@ type Props = {
   selectedRowDataIds?:any[];
   fullRowSelectable?:boolean;
   dataIdField?:string;
+  actionButtons?:ActionButtonModel[];
 }
 
-const TableBody:FC<Props> = ({data, columns, selectable, onSelectionChange, selectedRowDataIds, fullRowSelectable, dataIdField = AppConsts.DefaultDataIdField}) => {
+const TableBody:FC<Props> = ({
+    data, columns, selectable, onSelectionChange, selectedRowDataIds, fullRowSelectable,
+     dataIdField = AppConsts.DefaultDataIdField, actionButtons}) => {
 
   const renderBodyData = () => {
     return data.map((item:any, rowIndex:number) => {
@@ -34,6 +37,7 @@ const TableBody:FC<Props> = ({data, columns, selectable, onSelectionChange, sele
               dataIdField={dataIdField}
               onSelectionChange={handleSelectionChange}
               fullRowSelectable={fullRowSelectable}
+              actionButtons={actionButtons}
                />
     });
   }

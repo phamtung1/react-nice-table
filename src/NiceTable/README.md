@@ -38,6 +38,7 @@ List of icons: https://material.io/resources/icons/?icon=picture_as_pdf&style=ba
 * Remote Data Loading 
 * Sorting
 * Selection
+* Actions Column
 
 ## Code example
 ```js
@@ -106,6 +107,7 @@ type NiceTableProps = {
   fullRowSelectable?:boolean;
   dataIdField?:string;
   exportButtons?:ExportButtonModel[];
+  actionButtons?:ActionButtonModel[];
 }
 ```
 
@@ -122,7 +124,6 @@ type ColumnModel = {
 
 # TODO List
 - [ ] Localization
-- [ ] Actions column
 
 # Licensee
 MIT

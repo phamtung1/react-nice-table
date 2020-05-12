@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
-import { ColumnModel } from '../types/DataModel';
+import { ColumnModel, ActionButtonModel } from '../types/DataModel';
 import TableCell from './TableCell';
 import SelectionTableCell from '../table-components/SelectionTableCell';
 import {CheckedState} from '../types/Enum';
 import AppConsts from '../types/AppConsts';
+import IconButton from '../core-components/IconButton';
 
 type Props = {
   columns: ColumnModel[];
@@ -13,9 +14,12 @@ type Props = {
   selected?:boolean;
   fullRowSelectable?:boolean;
   dataIdField?:string;
+  actionButtons?:ActionButtonModel[];
 }
 
-const TableRow:FC<Props> = ({columns, rowData, onSelectionChange, selectable, selected, fullRowSelectable, dataIdField = AppConsts.DefaultDataIdField}) => {
+const TableRow:FC<Props> = ({
+  columns, rowData, onSelectionChange, selectable, selected, fullRowSelectable, 
+  dataIdField = AppConsts.DefaultDataIdField, actionButtons}) => {
 
   const handleCheckboxSelectionChange = () => {
     if(fullRowSelectable){
@@ -33,12 +37,28 @@ const TableRow:FC<Props> = ({columns, rowData, onSelectionChange, selectable, se
 
        const newState = selected ? CheckedState.Unchecked : CheckedState.Checked;
        onSelectionChange && onSelectionChange(rowData[dataIdField], newState);
- };
+   };
+
+  
+   const createActionButtons = (actionButtons?:ActionButtonModel[]) => {
+     if(!actionButtons || actionButtons.length === 0)
+     {
+       return null;
+     }
+
+     return (
+       <td>
+        {actionButtons.map((action:ActionButtonModel, index:number) => {
+          return <IconButton key={index} tooltip={action.tooltip} icon={action.icon} onClick={() => action.onClick && action.onClick(rowData)}></IconButton>;
+        })}
+       </td>
+     );
+   }
 
   const checkState = selected ? CheckedState.Checked : CheckedState.Unchecked;
   
   const selectionCell = selectable && <SelectionTableCell checkedState={checkState} rowDataId={rowData[dataIdField]} onChange={handleCheckboxSelectionChange}/>;
-  const rowClassName = selectable && checkState === CheckedState.Checked ? 'NiceTable-Row-Selected' : '';
+  const rowClassName = selectable && checkState === CheckedState.Checked ? 'NiceTable-Row-Selected' : undefined;
   
   return (
     <tr className={rowClassName} onClick={handleRowSelectionChange}>
@@ -51,6 +71,7 @@ const TableRow:FC<Props> = ({columns, rowData, onSelectionChange, selectable, se
         </TableCell>          
       );
       })}
+      {createActionButtons(actionButtons)}
     </tr>);
 }
 

@@ -6,7 +6,7 @@ import { createData } from '../storyhelper';
 
 export default {
   component:NiceTable,
-  title: 'Basic',
+  title: '1-Basic',
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/,
 };
