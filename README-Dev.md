@@ -14,28 +14,27 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `yarn build`
 
 ### `yarn storybook`
 
 Run storybook
 
+## Steps to release
+
+### `yarn test`
+
 ### `yarn build-storybook`
 
-Build storybook-static folder
-
+### tsconfig.json - noEmit:false
 ### `yarn build:components`
 
 Build component to 'dist' folder
 
+### `yarn version`
+
 ### `lerna publish` 
 
-### `yarn version`
 Update Change log
 
 ### `npm deprecate react-nice-table@0.1.3 'Test'`
