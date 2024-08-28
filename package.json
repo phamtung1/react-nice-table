@@ -60,7 +60,7 @@
     "sass-loader": "^8.0.2",
     "ts-loader": "^7.0.2",
     "typescript": "^3.8.3",
-    "webpack": "4.42.0",
+    "webpack": "5.94.0",
     "webpack-cli": "3.3.11"
   },
   "description": "Simple data table component",
